@@ -1,0 +1,36 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "ie": "9"
+                },
+                "modules": false,
+                "loose": true
+            }
+        ],
+        [
+            "@vue/babel-preset-jsx",
+            {
+              "vModel": true,
+              "vOn": true
+            }
+        ]
+    ],
+    "plugins": [
+        ["babel-plugin-graphql-tag", { "importName": "graphql-tag", "strip": true }],
+        "@babel/plugin-transform-runtime"
+    ],
+    "comments": false,
+    "env": {
+        "test": {
+            "presets": [
+                "@babel/preset-env"
+            ],
+            "plugins": [
+                "istanbul"
+            ]
+        }
+    }
+}

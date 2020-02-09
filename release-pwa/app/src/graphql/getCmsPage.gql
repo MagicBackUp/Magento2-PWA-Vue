@@ -1,0 +1,12 @@
+query getCmsPage($id: Int!) {
+    cmsPage(id: $id) {
+        url_key
+        title
+        content
+        content_heading
+        page_layout
+        meta_title
+        meta_keywords
+        meta_description
+    }
+}

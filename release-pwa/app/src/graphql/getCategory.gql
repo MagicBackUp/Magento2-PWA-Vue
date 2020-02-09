@@ -1,0 +1,67 @@
+query getCategory ($id: Int!, $pageSize: Int!, $currentPage: Int!) {
+    category(id: $id) {
+        id
+        name
+        filter_price_range
+        default_sort_by
+        available_sort_by
+        products(pageSize: $pageSize, currentPage: $currentPage, sort: {
+
+        }) {
+            items {
+                id
+                name
+                sku
+                type_id
+                image {
+                    label
+                    url
+                }
+                price {
+                    maximalPrice {
+                        amount {
+                            currency
+                            value
+                        }
+                    }
+                    minimalPrice {
+                        amount {
+                            currency
+                            value
+                        }
+                    }
+                    regularPrice {
+                        amount {
+                            currency
+                            value
+                        }
+                    }
+                }
+                special_price
+                tier_prices {
+                    qty
+                    value
+                    percentage_value
+                }
+                url_key
+                url_path
+                new_from_date
+                new_to_date
+                special_from_date
+                special_to_date
+                created_at
+                updated_at
+            }
+            page_info {
+                current_page
+                page_size
+                total_pages
+            }
+        }
+        meta_description
+        meta_keywords
+        meta_title
+        created_at
+        updated_at
+    }
+}

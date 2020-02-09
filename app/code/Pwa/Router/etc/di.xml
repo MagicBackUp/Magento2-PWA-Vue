@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Pwa\Router\ValidationManagerInterface" type="Pwa\Router\ValidationManager"/>
+    <preference for="Magento\Framework\View\Result\Page" type="Pwa\Router\View\Result\Page"/>
+    <preference for="Pwa\Router\Controller\Router" type="Pwa\Router\Controller\ConfigurableRouter"/>
+    <type name="Magento\Customer\Controller\Account\Confirm">
+        <plugin name="customize_email_validation_redirect"
+                type="Pwa\Router\Controller\Customer\RedirectPlugin"></plugin>
+    </type>
+    <type name="Pwa\Router\ValidationManager">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <!-- <item name="category" xsi:type="string">Pwa\Router\Validator\Category</item> -->
+                <item name="product" xsi:type="string">Pwa\Router\Validator\Product</item>
+                <item name="page" xsi:type="string">Pwa\Router\Validator\Cms</item>
+                <item name="cart" xsi:type="string">Pwa\Router\Validator\AlwaysPass</item>
+                <item name="customer" xsi:type="string">Pwa\Router\Validator\AlwaysPass</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Pwa\Router\Controller\ConfigurableRouter" type="Pwa\Router\Controller\Router">
+        <arguments>
+            <argument name="ignoredURLs" xsi:type="array">
+                <item name="confirmSubscribeToNewsletter" xsi:type="string">^/newsletter/subscriber/confirm/.*</item>
+                <item name="unsubscribeFromNewslettter" xsi:type="string">^/newsletter/subscriber/unsubscribe/.*</item>
+                <item name="validateCustomerEmail" xsi:type="string">^/customer/account/confirm/.*</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

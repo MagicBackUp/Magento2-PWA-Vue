@@ -1,0 +1,96 @@
+input ProductFilterInput {
+    sku: FilterInput!
+}
+
+input FilterInput {
+    eq: String
+}
+
+query getProduct ($filter: ProductAttributeFilterInput!) {
+    products(filter: $filter) {
+        items {
+            id
+            name
+            sku
+            type_id
+            url_key
+            media_gallery_entries {
+                image {
+                    url
+                }
+                thumbnail {
+                    url
+                }
+            }
+            price {
+                regularPrice {
+                    amount {
+                        value
+                    }
+                }
+            }
+            special_price
+            tier_prices {
+                customer_group_id
+                qty
+                value
+            }
+            description {
+                html
+            }
+            special_options
+            special_value {
+                closeout
+                new_item
+                special
+            }
+            pricing_model
+            min_qty
+            limit_status
+            minimum_order_qty
+            inner_pk_qty
+            case_pk_qty
+            upc
+            case_pk_dimensions
+            weight
+            cube_inches
+            item_info {
+                case_qty
+                inner_qty
+                input_qty
+                minimum
+                pricing_model
+                qty
+                qty_increment
+                is_saleable
+                tier_max_qty
+            }
+            specifications {
+                specifications_info {
+                    title
+                    value
+                    url
+                    special_cats {
+                        url
+                        value
+                    }
+                }
+            }
+            prop_65 {
+                title
+                content
+                icon_url
+                is_enable
+            }
+            deal_info {
+                datetime_from
+                datetime_to
+                deal_price
+                deal_qty
+                min_order_qty
+  			}
+            special_from_date
+            special_to_date
+        }
+    }
+}
