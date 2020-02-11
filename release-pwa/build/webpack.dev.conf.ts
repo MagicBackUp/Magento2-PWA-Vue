@@ -48,7 +48,14 @@ const baseConfig = new WebpackConfig({
         },
         historyApiFallback: true,
         disableHostCheck: false,
-        contentBase: path.join(__dirname, `../app/src`)
+        contentBase: path.join(__dirname, `../app/src`),
+        proxy: {
+            '/graphql': {
+                target: 'http://dev.vpwa.cn/graphql',
+                changeOrigin: true,
+                secure: false
+            }
+        }
     },
     watchOptions: {
         aggregateTimeout: 300,

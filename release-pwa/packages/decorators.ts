@@ -20,13 +20,14 @@ export interface InputConfig extends Configuration {
         host?: string,
         https?: boolean,
         overlay?: {
-            warnings?: boolean,
+            warnings?: boolean
             errors?: boolean
         },
         publicPath?: string,
         contentBase?: string,
         disableHostCheck?: boolean,
-        historyApiFallback?: boolean
+        historyApiFallback?: boolean,
+        proxy?: any
     },
     [key: string]: any
 }

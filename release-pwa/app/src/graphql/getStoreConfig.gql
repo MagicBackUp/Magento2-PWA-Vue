@@ -19,7 +19,7 @@ query getStoreConfig {
         logo_alt
         logo_height
         logo_width
-        no_route
+        header_logo_src
         product_url_suffix
         secure_base_link_url
         secure_base_media_url

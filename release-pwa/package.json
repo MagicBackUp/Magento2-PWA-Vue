@@ -3,11 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "build-copy": "gulp copy",
-        "build-css": "gulp styles",
-        "build-js": "gulp build",
-        "build-fragment": "ts-node build/schema.query.ts",
-        "build-production": "npm-run-all -p build-copy build-css build-js "
+        "copy": "gulp copy",
+        "dev": "gulp dev",
+        "build": "gulp build",
+        "fragment": "ts-node build/schema.query.ts"
     },
     "keywords": [
         "gulp",
@@ -79,6 +78,8 @@
         "cache-loader": "^4.0.1",
         "css-loader": "^2.1.1",
         "es6-promise": "^4.2.8",
+        "eslint": "^6.8.0",
+        "eslint-loader": "^3.0.3",
         "file-loader": "^3.0.1",
         "friendly-errors-webpack-plugin": "^1.7.0",
         "graphql": "^14.4.2",

@@ -122,6 +122,15 @@ export class WebpackConfig {
             },
             module: {
                 rules: [
+                    // {
+                    //     test: /\.(tsx|vue)$/,
+                    //     loader: ['eslint-loader'],
+                    //     enforce: 'pre',
+                    //     include: [this.path],
+                    //     exclude: [
+                    //         /node_modules/
+                    //     ]
+                    // },
                     {
                         test: /\.vue$/,
                         loader: ['cache-loader', 'vue-loader'],
