@@ -2,9 +2,9 @@ import { ThemeConfig } from '../packages'
 
 const themeConfig: ThemeConfig = {
     default: {
-        name: 'vpwa',
+        name: 'pwa',
         area: 'frontend',
-        src: 'Pwa/vpwa',
+        src: 'Pwa/vue',
         locale: 'en_US',
         parent: '',
         mode: 'development',
