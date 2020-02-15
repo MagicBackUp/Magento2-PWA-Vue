@@ -6,7 +6,7 @@
                 "targets": {
                     "ie": "9"
                 },
-                "modules": false,
+                "modules": "commonjs",
                 "loose": true
             }
         ],

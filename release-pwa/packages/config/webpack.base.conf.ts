@@ -25,7 +25,6 @@ export class WebpackConfig {
                 let cssLoader = {
                     loader: 'css-loader',
                     options: {
-                        minimize: process.env.NODE_ENV === 'production',
                         sourceMap: options.sourceMap
                     }
                 }
@@ -60,7 +59,7 @@ export class WebpackConfig {
                     css: generateLoaders(),
                     postcss: generateLoaders(),
                     less: generateLoaders('less'),
-                    sass: generateLoaders('sass', { indentedSyntax: true }),
+                    sass: generateLoaders('sass'),
                     scss: generateLoaders('sass'),
                     stylus: generateLoaders('stylus'),
                     styl: generateLoaders('stylus')
@@ -131,6 +130,9 @@ export class WebpackConfig {
                     //         /node_modules/
                     //     ]
                     // },
+                    ...this.utils.styleLoaders({
+                        sourceMap: true
+                    }),
                     {
                         test: /\.vue$/,
                         loader: ['cache-loader', 'vue-loader'],

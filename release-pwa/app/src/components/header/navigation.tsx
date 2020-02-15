@@ -9,10 +9,14 @@ import VLogo from './logo'
     }
 })
 export default class VNavigation extends Vue {
+    private name: string = ''
+
     protected render (h: CreateElement) {
         return (
             <nav class="v-navigation">
                 <v-logo></v-logo>
+                <v-icon></v-icon>
+                <v-input vModel={this.name} password-reveal={true}></v-input>
             </nav>
         )
     }
