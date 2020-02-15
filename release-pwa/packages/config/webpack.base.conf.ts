@@ -42,11 +42,12 @@ export class WebpackConfig {
 
                     if (options.extract) {
                         return [
-                            MiniCssExtractPlugin,
+                            MiniCssExtractPlugin.loader, 
+                            cssLoader,
                             {
-                                loader: 'vue-style-loader',
-                                options: {
-                                    minimize: process.env.NODE_ENV === 'production'
+                                loader: 'sass-loader',
+                                options: { 
+                                    sourceMap: options.sourceMap
                                 }
                             }
                         ]
@@ -131,7 +132,8 @@ export class WebpackConfig {
                     //     ]
                     // },
                     ...this.utils.styleLoaders({
-                        sourceMap: true
+                        sourceMap: true,
+                        extract: true
                     }),
                     {
                         test: /\.vue$/,

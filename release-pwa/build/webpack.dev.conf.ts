@@ -102,7 +102,7 @@ const baseConfig = new WebpackConfig({
         }]),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: `../../app/design/${area}/${src}/web/css/[name].[contenthash:8].css`
+            filename: `[name].[contenthash:8].css`
         }),
         new DashboardPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),

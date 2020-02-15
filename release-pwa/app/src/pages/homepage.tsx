@@ -5,10 +5,13 @@ import { Component } from 'vue-property-decorator'
     name: 'v-homepage'
 })
 export default class VHomePage extends Vue {
+    private name: string = ''
+    
     protected render (h: CreateElement) {
         return (
             <div class="v-homepage">
-                Hellow Magento 333!
+                <v-icon></v-icon>
+                <v-input vModel={this.name} password-reveal={true}></v-input>
             </div>
         )
     }

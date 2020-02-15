@@ -86,7 +86,7 @@ const baseConfig = new WebpackConfig({
         }]),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: `[name].[contenthash:8].css`
+            filename: `../css/[name].bundle.css`
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),

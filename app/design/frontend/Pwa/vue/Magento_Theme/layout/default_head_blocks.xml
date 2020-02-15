@@ -17,6 +17,7 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="og:title" content="PWA" />
         <meta name="og:description" content="PWA" />
+        <css src="css/app.bundle.css" />
         <remove src="mage/calendar.css" />
         <remove src="requirejs/require.js" />
         <remove src="mage/polyfill.js" />
