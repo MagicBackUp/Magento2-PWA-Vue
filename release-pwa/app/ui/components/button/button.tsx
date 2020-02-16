@@ -37,9 +37,7 @@ export default class VButton extends Vue {
                     :size="iconSize"
                 />
                 <span v-if="label">{{ label }}</span>
-                <span v-else-if="hasDefaultSlot">
-                    <slot />
-                </span>
+                <span v-else-if="hasDefaultSlot">{this.$slots.default}</span>
                 <b-icon
                     v-if="iconRight"
                     :pack="iconPack"

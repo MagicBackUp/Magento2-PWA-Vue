@@ -89,7 +89,7 @@ export default class VElementMixins extends Vue {
         this.setValidity(type, message)
     }
 
-    public setValidity (type: string, message: string) {
+    public setValidity (type: any, message: any) {
         this.$nextTick(() => {
             if (this.parentField) {
                 if (!this.parentField.type) {
