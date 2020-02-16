@@ -13,8 +13,10 @@ export default class VCheckbox extends Vue {
     @Prop({ default: false }) readonly falseValue: string | number | boolean | object | any[] | any
 
     public keydown (e: Event) {
-        e.preventDefault()
+        const event: any = e
         const label: any = this.$refs.label
+
+        if (event.keyCode == 13) e.preventDefault()
         label && label.click()
     }
 

@@ -3,7 +3,7 @@ const signPoly: Function = (value: number) => {
     return value > 0 ? 1 : 0
 }
 
-export const sign = Math.sign || signPoly
+export const sign: Function = Math.sign || signPoly
 
 export const getValueByPath: Function = (obj: any, path: string) => {
     const value: any = path.split('.').reduce((o, i) => o ? o[i] : null, obj)

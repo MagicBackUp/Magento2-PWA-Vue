@@ -9,8 +9,10 @@ import { VRadioMixins } from '../../utils'
 })
 export default class VRadio extends Vue {
     public keydown (e: Event) {
-        e.preventDefault()
+        const event: any = e
         const label: any = this.$refs.label
+
+        if (event.keyCode == 13) e.preventDefault()
         label && label.click()
     }
 
