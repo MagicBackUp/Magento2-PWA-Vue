@@ -55,6 +55,23 @@ export default class VHomePage extends Vue {
                 <div class="v-row">
                     <v-progress value={60} show-value={true} format="percent"></v-progress>
                 </div>
+                <div class="v-row">
+                    <v-collapse open={false} aria-id="content">
+                        <button
+                            class="button is-primary"
+                            slot="trigger"
+                            aria-controls="content">Toggle</button>
+                        <div class="notification">
+                            <div class="content">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+                                    Nulla accumsan, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. <br/>
+                                    Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.
+                                </p>
+                            </div>
+                        </div>
+                    </v-collapse>
+                </div>
             </div>
         )
     }

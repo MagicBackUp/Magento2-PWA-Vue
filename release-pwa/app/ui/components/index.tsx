@@ -9,6 +9,7 @@ import VCarousel from './carousel/carousel'
 import VCarouselList from './carousel/list'
 import VCarouselItem from './carousel/item'
 import VProgress from './progress/progress'
+import VCollapse from './collapse/collapse'
 
 const components: VComponent[] = [
     { name: 'v-icon', component: VIcon },
@@ -20,7 +21,8 @@ const components: VComponent[] = [
     { name: 'v-carousel', component: VCarousel },
     { name: 'v-carousel-list', component: VCarouselList },
     { name: 'v-carousel-item', component: VCarouselItem },
-    { name: 'v-progress', component: VProgress }
+    { name: 'v-progress', component: VProgress },
+    { name: 'v-collapse', component: VCollapse }
 ]
 
 export default components

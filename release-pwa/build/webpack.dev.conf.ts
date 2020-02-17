@@ -51,7 +51,7 @@ const baseConfig = new WebpackConfig({
         contentBase: path.join(__dirname, `../app/src`),
         proxy: {
             '/graphql': {
-                target: 'http://dev.vpwa.cn/graphql',
+                target: 'http://dev.vue-pwa.cn/graphql',
                 changeOrigin: true,
                 secure: false
             }
