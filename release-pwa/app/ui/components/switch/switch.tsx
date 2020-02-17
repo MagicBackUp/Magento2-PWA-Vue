@@ -19,7 +19,7 @@ export default class VSwitch extends Vue {
     @Prop({ default: false }) readonly outlined: boolean | undefined
 
     @Watch('value')
-    onValueChanged(value: any) {
+    onValueChanged (value: any) {
         this.newValue = value
     }
 

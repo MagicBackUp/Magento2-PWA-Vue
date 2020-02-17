@@ -1,0 +1,37 @@
+{this.progress && (
+    <progress
+        class={['progress', this.progressType]}
+        value={this.activeItem}
+        max={this.carouselItems.length - 1}>{this.carouselItems.length - 1}</progress>
+)}
+
+{this.autoplay && this.pauseHover && this.pauseInfo && this.isPause && (
+    <div class="carousel-pause">
+        <span class={['tag', this.pauseInfoType]}>{this.pauseText}</span>
+    </div>
+)}
+{this.withCarouselList && !this.indicator && (
+    // this.$scopedSlots.list({
+    //     active: this.activeItem,
+    //     switch: this.changeItem
+    // })
+    <div></div>
+)}
+{this.indicator && (
+    <div class={['carousel-indicator', this.indicatorClasses]}>
+        {this.carouselItems.map((item: any, index: number) => {
+
+        })}
+        <a
+            class={['indicator-item', {'is-active': this.index === this.activeItem}]}
+            onMouseover={() => { this.modeChange('hover', this.index) }}
+            onClick={() => { this.modeChange('click', this.index) }}>
+            <slot name="indicators" i={this.index}>
+                <span class={['indicator-style', this.indicatorStyle]}></span>
+            </slot>
+        </a>
+    </div>
+)}
+{this.overlay && (
+    this.$slots.overlay
+)}
