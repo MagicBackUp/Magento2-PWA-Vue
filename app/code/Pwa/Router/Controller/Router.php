@@ -66,10 +66,10 @@ class Router extends BaseRouter
     public function match(RequestInterface $request)
     {
 
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
-        $customeLogger = new \Zend\Log\Logger();
-        $customeLogger->addWriter($writer);
-        $customeLogger->info('match action');
+        // $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
+        // $customeLogger = new \Zend\Log\Logger();
+        // $customeLogger->addWriter($writer);
+        // $customeLogger->info('match action');
 
         $themeId = $this->_scopeConfig->getValue(
             DesignInterface::XML_PATH_THEME_ID,
@@ -77,18 +77,18 @@ class Router extends BaseRouter
             $this->storeManager->getStore()->getId()
         );
 
-        $customeLogger->info('themeId:'.$themeId);
+        // $customeLogger->info('themeId:'.$themeId);
 
         $theme = $this->themeProvider->getThemeById($themeId);
         $themeType = $theme->getType();
 
-        $customeLogger->info('themeType:'.$themeType);
+        // $customeLogger->info('themeType:'.$themeType);
 
         if ((int)$themeType !== 0) { // Use custom theme type to support PWA and non-PWA within one installation
             return null;
         }
 
-        $customeLogger->info('isRequestIgnored:'.$this->isRequestIgnored($request));
+        // $customeLogger->info('isRequestIgnored:'.$this->isRequestIgnored($request));
 
         if ($this->isRequestIgnored($request)) { // Bypass to standard router, i.e. for payment GW callbacks
             return null;
@@ -98,9 +98,9 @@ class Router extends BaseRouter
         $action = $this->actionFactory->create(Pwa::class);
         $rewrite = $this->getRewrite($request);
 
-        $customeLogger->info('rewrite:'.$rewrite);
-        $customeLogger->info('request:'.$request);
-        $customeLogger->info('validate:'.$this->validationManager->validate($request));
+        // $customeLogger->info('rewrite:'.$rewrite);
+        // $customeLogger->info('request:'.$request);
+        // $customeLogger->info('validate:'.$this->validationManager->validate($request));
 
         if ($rewrite) {
             // Do not execute any action for external rewrites,

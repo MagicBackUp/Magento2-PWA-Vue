@@ -49,3 +49,18 @@
 .v-row {
     margin: 1rem 0;
 }
+
+.v-navigation {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .v-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        > li {
+            flex: 1; 
+        }
+    }
+}
