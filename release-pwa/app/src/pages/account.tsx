@@ -2,7 +2,13 @@ import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-    name: 'v-account'
+    name: 'v-account',
+    head: {
+        title: {
+            inner: 'PWA',
+            complement: 'Account'
+        }
+    }
 })
 export default class VAccount extends Vue {
     protected render (h: CreateElement) {

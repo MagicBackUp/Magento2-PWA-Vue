@@ -2,7 +2,13 @@ import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-    name: 'v-homepage'
+    name: 'v-homepage',
+    head: {
+        title: {
+            inner: 'PWA',
+            complement: 'Homepage'
+        }
+    }
 })
 export default class VHomePage extends Vue {
     private name: string = ''

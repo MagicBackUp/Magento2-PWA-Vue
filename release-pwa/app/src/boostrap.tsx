@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as VueHead from 'vue-head'
 import VueRouter from 'vue-router'
 import VueApollo from 'vue-apollo'
 import { Component } from 'vue-property-decorator'
@@ -13,9 +14,11 @@ import '../ui/scss/vui.scss'
 const apolloProvider: any = new VueApollo({
     ...apolloOptions
 })
-
 Vue.config.productionTip = false
 Vue.use(Vuex)
+Vue.use(VueHead, {
+    separator: '-'
+})
 Vue.use(VueRouter)
 Vue.use(VueApollo)
 Vue.use(Vui)

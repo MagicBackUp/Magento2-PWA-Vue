@@ -2,13 +2,19 @@ import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-    name: 'v-category'
+    name: 'v-cart',
+    head: {
+        title: {
+            inner: 'PWA',
+            complement: 'Cart'
+        }
+    }
 })
-export default class VCategory extends Vue {
+export default class VCart extends Vue {
     protected render (h: CreateElement) {
         return (
-            <div class="v-category">
-                Category Page
+            <div class="v-cart">
+                Cart Page
             </div>
         )
     }

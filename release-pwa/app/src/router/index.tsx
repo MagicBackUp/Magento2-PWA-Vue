@@ -1,3 +1,4 @@
+import { Component } from 'vue'
 import VueRouter, { RouteConfig, Route } from 'vue-router'
 import { 
     VHomePage, 
@@ -20,12 +21,12 @@ const routes: Array<RouteConfig> = [
     },
     { 
         name: 'category',
-        path: '/category', 
+        path: '/category*', 
         component: VCategory
     },
     {
         name: 'product',
-        path: '/product',
+        path: '/product*',
         component: VProduct
     },
     {
@@ -55,7 +56,7 @@ const routes: Array<RouteConfig> = [
     },
     {
         name: 'page',
-        path: '/page',
+        path: '/page*',
         component: VPage
     },
     {
@@ -76,6 +77,31 @@ const router: VueRouter = new VueRouter({
             }, 500)
         })
     }
+})
+
+router.beforeResolve((to: Route, from: Route, next: any) => {
+    const matched: Component[] = router.getMatchedComponents(to)
+    const prevMatched: Component[] = router.getMatchedComponents(from)
+    
+    let diffed: boolean = false
+    let activated: Component[] = matched.filter((c: Component, i: number) => diffed || (diffed = (prevMatched[i] !== c)))
+
+    if (!activated.length) {
+        return next()
+    }
+
+    Promise.all(
+        activated
+        .filter((c: any) => c.asyncData && (!c.asyncDataFetched || !to.meta.keepAlive))
+        .map(async (c: any) => {
+            await c.asyncData({ route: to })
+            c.asyncDataFetched = true
+        })
+    ).then(() => {
+        next()
+    }).catch(() => {
+        next()
+    })
 })
 
 export default router

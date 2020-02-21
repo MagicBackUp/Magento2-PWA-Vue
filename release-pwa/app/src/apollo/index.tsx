@@ -8,7 +8,7 @@ import deviceType from './device'
 
 // HTTP options 
 let httpOptions: FetchOptions = {
-    uri: `graphql`,
+    uri: `${httpOrigin()}/graphql`,
     credentials: 'same-origin',
     useGETForQueries: true
 }
