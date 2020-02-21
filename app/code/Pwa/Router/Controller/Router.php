@@ -25,13 +25,17 @@ use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 
 class Router extends BaseRouter
 {
+
+    const PWA_ENABLED = 'pwa/settings/enabled';
+    const PWA_THEME_ID = 'pwa/settings/theme_id';
+
     protected $validationManager;
     protected $paths;
     private $storeManager;
     private $urlFinder;
     private $themeProvider;
     private $ignoredURLs;
-    
+
     public function __construct(
         ActionList $actionList,
         ActionFactory $actionFactory,
@@ -57,7 +61,7 @@ class Router extends BaseRouter
         $this->ignoredURLs = $ignoredURLs;
         parent::__construct($actionList, $actionFactory, $defaultPath, $responseFactory, $routeConfig, $url, $nameBuilder, $pathConfig);
     }
-    
+
     /**
      * @param RequestInterface $request
      * @return ActionInterface|null
@@ -66,10 +70,13 @@ class Router extends BaseRouter
     public function match(RequestInterface $request)
     {
 
-        // $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
-        // $customeLogger = new \Zend\Log\Logger();
-        // $customeLogger->addWriter($writer);
-        // $customeLogger->info('match action');
+        $pwaStatus = $this->_scopeConfig->getValue(
+            self::PWA_ENABLED,
+            ScopeInterface::SCOPE_STORE,
+            $this->storeManager->getStore()->getId()
+        );
+
+        if(!$pwaStatus) return null;
 
         $themeId = $this->_scopeConfig->getValue(
             DesignInterface::XML_PATH_THEME_ID,
@@ -77,30 +84,30 @@ class Router extends BaseRouter
             $this->storeManager->getStore()->getId()
         );
 
-        // $customeLogger->info('themeId:'.$themeId);
+        $pwaAppliedThemeId = $this->_scopeConfig->getValue(
+            self::PWA_THEME_ID,
+            ScopeInterface::SCOPE_STORE,
+            $this->storeManager->getStore()->getId()
+        );
 
-        $theme = $this->themeProvider->getThemeById($themeId);
-        $themeType = $theme->getType();
-
-        // $customeLogger->info('themeType:'.$themeType);
-
-        if ((int)$themeType !== 0) { // Use custom theme type to support PWA and non-PWA within one installation
+        if($pwaAppliedThemeId && $pwaAppliedThemeId != $themeId){
             return null;
         }
 
-        // $customeLogger->info('isRequestIgnored:'.$this->isRequestIgnored($request));
+        // $theme = $this->themeProvider->getThemeById($themeId);
+        // $themeType = $theme->getType();
+        // Use custom theme type to support PWA and non-PWA within one installation
+        // if ((int)$themeType !== 4) {
+        //     return null;
+        // }
 
         if ($this->isRequestIgnored($request)) { // Bypass to standard router, i.e. for payment GW callbacks
             return null;
         }
-        
+
         $this->forceHttpRedirect($request);
         $action = $this->actionFactory->create(Pwa::class);
         $rewrite = $this->getRewrite($request);
-
-        // $customeLogger->info('rewrite:'.$rewrite);
-        // $customeLogger->info('request:'.$request);
-        // $customeLogger->info('validate:'.$this->validationManager->validate($request));
 
         if ($rewrite) {
             // Do not execute any action for external rewrites,
@@ -118,10 +125,10 @@ class Router extends BaseRouter
             $action->setType('NOT_FOUND');
             $action->setCode(404)->setPhrase('Not Found');
         }
-        
+
         return $action;
     }
-    
+
     /**
      * @param RequestInterface $request
      * @return UrlRewrite|null
@@ -132,7 +139,7 @@ class Router extends BaseRouter
         $requestPath = $request->getPathInfo();
         return $this->resolveRewrite($requestPath);
     }
-    
+
     /**
      * @param string $requestPath
      * @param        $storeId
@@ -146,7 +153,7 @@ class Router extends BaseRouter
             UrlRewrite::STORE_ID => $storeId
         ]);
     }
-    
+
     /**
      * @param UrlRewrite $urlRewrite
      * @return string
@@ -161,10 +168,10 @@ class Router extends BaseRouter
         } elseif ($type === 'product') {
             return 'PRODUCT';
         }
-        
+
         return 'CUSTOM';
     }
-    
+
     /**
      * @param RequestInterface $request
      * @throws NoSuchEntityException
@@ -175,10 +182,10 @@ class Router extends BaseRouter
         $actionPath = $this->matchActionPath($request, $params['actionPath']);
         $action = $request->getActionName() ?: ($params['actionName'] ?: $this->_defaultPath->getPart('action'));
         $moduleFrontName = $this->matchModuleFrontName($request, $params['moduleFrontName']);
-        
+
         $this->_checkShouldBeSecure($request, '/' . $moduleFrontName . '/' . $actionPath . '/' . $action);
     }
-    
+
     /**
      * Checks whether request is ignored using provided regular expression
      * @param RequestInterface $request
@@ -187,17 +194,17 @@ class Router extends BaseRouter
     protected function isRequestIgnored(RequestInterface $request): bool
     {
         $requestPath = $request->getPathInfo();
-        
+
         foreach ($this->ignoredURLs as $pattern) {
             // Use | as delimiter to allow / without escaping
             if (preg_match('|' . $pattern . '|', $requestPath)) {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
+
     /**
      * @param RequestInterface $request
      * @param string           $path
@@ -208,16 +215,16 @@ class Router extends BaseRouter
         if ($request->getPostValue()) {
             return;
         }
-        
+
         if ($this->pathConfig->shouldBeSecure($path) && !$request->isSecure()) {
             $alias = $request->getAlias(Url::REWRITE_REQUEST_PATH_ALIAS) ?: $request->getPathInfo();
             $url = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_WEB) . "$alias";
-            
-            
+
+
             if ($this->_shouldRedirectToSecure()) {
                 $url = $this->_url->getRedirectUrl($url);
             }
-            
+
             $this->_responseFactory->create()->setRedirect($url)->sendResponse();
             exit;
         }
