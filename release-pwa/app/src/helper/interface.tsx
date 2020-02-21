@@ -1,3 +1,9 @@
+export interface Logo {
+    url: string
+    href: string
+    title: string
+}
+
 export interface CategoryItem {
     id: string
     name: string

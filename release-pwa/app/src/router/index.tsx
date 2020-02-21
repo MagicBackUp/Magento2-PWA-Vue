@@ -1,5 +1,16 @@
 import VueRouter, { RouteConfig, Route } from 'vue-router'
-import { VHomePage, VCategory } from './config'
+import { 
+    VHomePage, 
+    VCategory,  
+    VProduct, 
+    VCart, 
+    VCheckout, 
+    VLogin, 
+    VRegister, 
+    VAccount, 
+    VPage, 
+    VNotFind 
+} from './config'
 
 const routes: Array<RouteConfig> = [
     {
@@ -11,6 +22,46 @@ const routes: Array<RouteConfig> = [
         name: 'category',
         path: '/category', 
         component: VCategory
+    },
+    {
+        name: 'product',
+        path: '/product',
+        component: VProduct
+    },
+    {
+        name: 'cart',
+        path: '/cart',
+        component: VCart
+    },
+    {
+        name: 'checkout',
+        path: '/checkout',
+        component: VCheckout
+    },
+    {
+        name: 'login',
+        path: '/login',
+        component: VLogin
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: VRegister
+    },
+    {
+        name: 'account',
+        path: '/account',
+        component: VAccount
+    },
+    {
+        name: 'page',
+        path: '/page',
+        component: VPage
+    },
+    {
+        name: '404',
+        path: '*',
+		component: VNotFind
     }
 ]
 

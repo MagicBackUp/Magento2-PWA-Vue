@@ -23,14 +23,14 @@ export default class VNavigation extends Vue {
                             return (
                                 menu.include_in_menu && (
                                     <li>
-                                        <a href={menu.url_path} title={menu.name}>{menu.name}</a>
+                                        <a href={`category/${menu.url_path}`} title={menu.name}>{menu.name}</a>
                                         {menu.children_count > 0 && (
                                             <ul class="v-subcate">
                                                 {menu.children.map((item: CategoryItem) => {
                                                     return (
                                                         item.include_in_menu && (
                                                             <li>
-                                                                <a href={item.url_path} title={item.name}>{item.name}</a>
+                                                                <a href={`category/${item.url_path}`} title={item.name}>{item.name}</a>
                                                             </li>
                                                         )
                                                     )

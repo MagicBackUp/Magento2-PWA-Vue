@@ -1,11 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
-
-interface Logo {
-    url: string
-    href: string
-    title: string
-}
+import { Logo } from '@helper/interface'
 
 @Component({
     name: 'v-logo'
