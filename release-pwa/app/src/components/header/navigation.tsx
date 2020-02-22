@@ -16,33 +16,48 @@ export default class VNavigation extends Vue {
     protected render (h: CreateElement) {
         return (
             <nav class="v-navigation">
-                <v-logo></v-logo>
-                {this.categoryMemu.length > 0 && (
-                    <ul class="v-list">
-                        {this.categoryMemu.map((menu: CategoryItem) => {
-                            return (
-                                menu.include_in_menu && (
-                                    <li>
-                                        <a href={`category/${menu.url_path}`} title={menu.name}>{menu.name}</a>
-                                        {menu.children_count > 0 && (
-                                            <ul class="v-subcate">
+                <v-navbar shadow={true}>
+                    <template slot="brand">
+                        <v-navbar-item tag="router-link" to={{ path: '/' }}>
+                            <v-logo></v-logo>
+                        </v-navbar-item>
+                    </template>
+                    {this.categoryMemu.length > 0 && (
+                        <template slot="start">
+                            {this.categoryMemu.map((menu: CategoryItem) => {
+                                return (
+                                    menu.include_in_menu && (
+                                        menu.children_count > 0 ? (
+                                            <v-navbar-dropdown label={menu.name} hoverable={true}>
                                                 {menu.children.map((item: CategoryItem) => {
                                                     return (
-                                                        item.include_in_menu && (
-                                                            <li>
-                                                                <a href={`category/${item.url_path}`} title={item.name}>{item.name}</a>
-                                                            </li>
+                                                        menu.include_in_menu && (
+                                                            <v-navbar-item tag="router-link" to={`/category/${item.url_path}`} title={item.name}>
+                                                                {item.name}
+                                                            </v-navbar-item>
                                                         )
-                                                    )
+                                                    ) 
                                                 })}
-                                            </ul>
-                                        )}
-                                    </li>
+                                            </v-navbar-dropdown>
+                                        ) : (
+                                            <v-navbar-item tag="router-link" to={`/category/${menu.url_path}`} title={menu.name}>
+                                                {menu.name}
+                                            </v-navbar-item>
+                                        )
+                                    )
                                 )
-                            )
-                        })}
-                    </ul>
-                )}
+                            })}
+                        </template>
+                    )}
+                    <template slot="end">
+                        <v-navbar-item tag="div">
+                            <div class="buttons">
+                                <v-button tag="router-link" to="/login" type="is-link">Log in</v-button>
+                                <v-button tag="router-link" to="/register" type="is-info">Sign up</v-button>
+                            </div>
+                        </v-navbar-item>
+                    </template>
+                </v-navbar>
             </nav>
         )
     }

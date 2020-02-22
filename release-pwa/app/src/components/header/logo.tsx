@@ -1,22 +1,23 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 import { Logo } from '@helper/interface'
 
 @Component({
     name: 'v-logo'
 })
 export default class VLogo extends Vue {
-    public logo: Logo = {
-        url: '',
-        href: '',
-        title: ''
-    } 
+    @Getter('logoStore') logoStore: any
 
     protected render (h: CreateElement) {
+        const logo: Logo = this.logoStore
+
         return (
-            <a href={this.logo.href} class="v-logo" title={this.logo.title}>
-                <img src={this.logo.url} alt={this.logo.title} />
-            </a>
+            logo && (
+                <a href={logo.href} class="v-logo" title={logo.title}>
+                    <img src={logo.url} alt={logo.title} />
+                </a>
+            )
         )
     }
 }

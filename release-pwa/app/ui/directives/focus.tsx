@@ -1,3 +1,5 @@
+import { DirectiveFunction } from 'vue'
+
 let onKeyDown: Function = () => {}
 
 const findFocusable: Function = (element: any) => {
@@ -20,9 +22,7 @@ const findFocusable: Function = (element: any) => {
     )
 }
 
-const bind: Function = (el: any, playload: any) => {
-    let { value } = playload
-    
+const bind: DirectiveFunction = (el: any, { value = true }) => {
     if (value) {
         const focusable = findFocusable(el)
 
@@ -44,13 +44,13 @@ const bind: Function = (el: any, playload: any) => {
     }
 }
 
-const unbind: Function = (el: any) => {
+const unbind: DirectiveFunction = (el: any) => {
     el.removeEventListener('keydown', onKeyDown)
 }
 
-const directive: any = {
+const trapFocus: any = {
     bind,
     unbind
 }
 
-export default directive
+export default trapFocus

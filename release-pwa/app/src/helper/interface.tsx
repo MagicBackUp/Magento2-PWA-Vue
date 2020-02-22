@@ -1,3 +1,14 @@
+export interface StoreConfig {
+    header_logo_src?: string
+    logo_width?: number
+    logo_height?: number
+    logo_alt?: string
+    base_url: string
+    base_media_url: string
+    secure_base_url: string
+    secure_base_media_url: string
+}
+
 export interface Logo {
     url: string
     href: string
