@@ -1,7 +1,8 @@
 const state: any = {
     storeConfig: null,
     rootIds: 2,
-    categoryMemu: []
+    categoryMemu: [],
+    cmsPage: null
 }
 
 export default state

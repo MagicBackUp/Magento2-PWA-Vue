@@ -12,6 +12,13 @@ const getters: GetterTree<any, any> = {
                 title: config.logo_alt
             }
         }
+    },
+    cmsContent: (state) => {
+        const cmsPage: any = state.cmsPage
+        
+        if (cmsPage) {
+            return cmsPage.content
+        }
     }
 }
 

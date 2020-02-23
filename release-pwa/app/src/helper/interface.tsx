@@ -32,3 +32,8 @@ export interface CategoryItem {
     url_path: string | null
     children: any[]
 }
+
+export interface Links {
+    title: string
+    url: string
+}

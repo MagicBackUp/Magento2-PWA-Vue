@@ -1,4 +1,4 @@
-import Vue, { CreateElement, VNode } from 'vue'
+import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 
 @Component({
