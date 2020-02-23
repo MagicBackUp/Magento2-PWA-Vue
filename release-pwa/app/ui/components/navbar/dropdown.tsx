@@ -6,9 +6,11 @@ import { clickOutside } from '../../directives'
     name: 'v-navbar-dropdown',
     directives: {
         clickOutside
-    }
+    },
+    inheritAttrs: false
 })
 export default class VNavBarDropDown extends Vue {
+    @Prop({ default: 'a' }) readonly tag: string | any
     @Prop(String) readonly label: string | any
     @Prop(Boolean) readonly hoverable: boolean | any
     @Prop(Boolean) readonly active: boolean | any
@@ -50,6 +52,8 @@ export default class VNavBarDropDown extends Vue {
     }
 
     protected render (h: CreateElement) {
+        const Component: string = this.tag
+
         return (
             <div
                 class={['navbar-item has-dropdown', {
@@ -61,21 +65,21 @@ export default class VNavBarDropDown extends Vue {
                     name: 'click-outside',
                     value: () => { this.closeMenu() }
                 }}}>
-                <a
+                <Component
                     class={['navbar-link', {
                         'is-arrowless': this.arrowless
                     }]}
-                    href="javascript:;"
                     role="menuitem"
                     title={this.label}
                     aria-haspopup="true"
+                    {...{attrs: this.$attrs}}
                     onClick={(e: Event) => { this.handleClick(e) }}>
                     {this.label ? (
                         this.label
                     ) : (
                         this.$slots.label
                     )}
-                </a>
+                </Component>
                 <div
                     class={['navbar-dropdown', {
                         'is-right': this.right,
