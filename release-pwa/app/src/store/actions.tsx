@@ -1,16 +1,27 @@
 import { ApolloActionTree } from './interface'
+import { validateRouter } from '../graphql/validateRouter.gql'
 import { getStoreConfig } from '../graphql/getStoreConfig.gql'
 import { getCategoryList } from '../graphql/getCategoryList.gql'
 
 const actions: ApolloActionTree<any, any> = {
+    async validateRouter ({ apollo }, url: string) {
+        return await apollo.query({
+            query: validateRouter,
+            variables: {
+                url: url
+            }
+        })
+    },
+    async routeInit ({ dispatch }) {
+        dispatch('getStoreConfig')
+    },
     async getStoreConfig ({ commit, apollo }) {
         let res: any = await apollo.query({
             query: getStoreConfig
         })
 
-        if (res) {
+        if (res.data) {
             const storeConfig: any = res.data.storeConfig
-
             commit('saveStoreConfig', storeConfig)
         }
     },

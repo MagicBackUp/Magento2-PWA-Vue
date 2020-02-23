@@ -8,7 +8,7 @@ input FilterEqualTypeInput {
 }
 
 query getCategoryList($filters: CategoryFilterInput!) {
-    categoryList (filters: $filters) {
+    categoryList(filters: $filters) {
         id
         name
         meta_description

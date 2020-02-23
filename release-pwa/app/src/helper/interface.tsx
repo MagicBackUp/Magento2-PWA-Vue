@@ -9,6 +9,11 @@ export interface StoreConfig {
     secure_base_media_url: string
 }
 
+export interface Router {
+    name: string
+    path: string
+}
+
 export interface Logo {
     url: string
     href: string

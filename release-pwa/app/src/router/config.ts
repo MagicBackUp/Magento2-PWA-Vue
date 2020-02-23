@@ -1,3 +1,5 @@
+import { RouteConfig } from 'vue-router'
+
 const VHomePage: any = () => import(/* webpackChunkName: "vsf-homepage" */ '../pages/homepage')
 const VCategory: any = () => import(/* webpackChunkName: "vsf-category" */ '../pages/category')
 const VProduct: any = () => import(/* webpackChunkName: "vsf-product" */ '../pages/product')
@@ -9,15 +11,62 @@ const VAccount: any = () => import(/* webpackChunkName: "vsf-account" */ '../pag
 const VPage: any = () => import(/* webpackChunkName: "vsf-page" */ '../pages/page')
 const VNotFind: any = () => import(/* webpackChunkName: "vsf-notFind" */ '../pages/notFind')
 
-export {
-    VHomePage,
-    VCategory,
-    VProduct,
-    VCart,
-    VCheckout,
-    VLogin,
-    VRegister,
-    VAccount,
-    VPage,
-    VNotFind
-}
+const routes: Array<RouteConfig> = [
+    {
+        name: 'homepage',
+        path: '/', 
+        component: VHomePage
+    },
+    { 
+        name: 'category',
+        path: '/category*', 
+        component: VCategory
+    },
+    {
+        name: 'product',
+        path: '/product*',
+        component: VProduct
+    },
+    {
+        name: 'cart',
+        path: '/cart',
+        component: VCart
+    },
+    {
+        name: 'checkout',
+        path: '/checkout',
+        component: VCheckout
+    },
+    {
+        name: 'login',
+        path: '/login',
+        component: VLogin
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: VRegister
+    },
+    {
+        name: 'account',
+        path: '/account',
+        component: VAccount
+    },
+    {
+        name: 'page',
+        path: '/page*',
+        component: VPage
+    },
+    {
+        name: '404',
+        path: '/404',
+        component: VNotFind
+    },
+    {
+        name: 'redirect',
+        path: '*',
+		redirect: '/404'
+    }
+]
+
+export default routes

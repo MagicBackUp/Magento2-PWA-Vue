@@ -118,7 +118,9 @@ export class WebpackConfig {
                 alias: {
                     'vue$': 'vue/dist/vue.esm.js',
                     '@components': resolve('app/src/components/'),
-                    '@helper': resolve('app/src/helper/')
+                    '@helper': resolve('app/src/helper/'),
+                    '@config': resolve('app/src/config'),
+                    '@utils': resolve('app/src/utils/')
                 }
             },
             module: {

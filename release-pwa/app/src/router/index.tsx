@@ -1,70 +1,7 @@
 import { Component } from 'vue'
-import VueRouter, { RouteConfig, Route } from 'vue-router'
-import { 
-    VHomePage, 
-    VCategory,  
-    VProduct, 
-    VCart, 
-    VCheckout, 
-    VLogin, 
-    VRegister, 
-    VAccount, 
-    VPage, 
-    VNotFind 
-} from './config'
-
-const routes: Array<RouteConfig> = [
-    {
-        name: 'homepage',
-        path: '/', 
-        component: VHomePage
-    },
-    { 
-        name: 'category',
-        path: '/category*', 
-        component: VCategory
-    },
-    {
-        name: 'product',
-        path: '/product*',
-        component: VProduct
-    },
-    {
-        name: 'cart',
-        path: '/cart',
-        component: VCart
-    },
-    {
-        name: 'checkout',
-        path: '/checkout',
-        component: VCheckout
-    },
-    {
-        name: 'login',
-        path: '/login',
-        component: VLogin
-    },
-    {
-        name: 'register',
-        path: '/register',
-        component: VRegister
-    },
-    {
-        name: 'account',
-        path: '/account',
-        component: VAccount
-    },
-    {
-        name: 'page',
-        path: '/page*',
-        component: VPage
-    },
-    {
-        name: '404',
-        path: '*',
-		component: VNotFind
-    }
-]
+import VueRouter, { Route } from 'vue-router'
+import routes from './config'
+import RouterUtil from '@utils/router'
 
 const router: VueRouter = new VueRouter({
     mode: 'history',
@@ -76,6 +13,21 @@ const router: VueRouter = new VueRouter({
                 resolve({ x: 0, y: 0 })
             }, 500)
         })
+    }
+})
+
+router.beforeEach((to: Route, from: Route, next: any) => {
+    if (RouterUtil.hasRouter(to)) {
+        const params: string = RouterUtil.filterRouter(to)
+
+        router.app.$store.dispatch('validateRouter', params).then((res: any) => {
+            const urlResolver: any = res.data.urlResolver
+            urlResolver ? next() : next({ name: '404' })
+        }).catch((err: Error) => {
+            console.log(err)
+        })
+    } else {
+        next()
     }
 })
 

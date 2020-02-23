@@ -10,11 +10,9 @@ import VNavigation from './navigation'
     }
 })
 export default class VHeader extends Vue {
-    @Action('getStoreConfig') getStoreConfig: any
     @Action('getCategoryList') getCategoryList: any
     
     created () {
-        this.getStoreConfig()
         this.getCategoryList()
     }
 

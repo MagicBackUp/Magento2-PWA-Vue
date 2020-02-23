@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as VueHead from 'vue-head'
 import VueRouter from 'vue-router'
 import VueApollo from 'vue-apollo'
+import { sync } from 'vuex-router-sync'
 import { Component } from 'vue-property-decorator'
 import Vui from '../ui'
 import VApp from './app'
@@ -33,6 +34,8 @@ const store: any = new Vuex.Store({
     ...storeOption
 })
 store.$apollo = apolloOptions
+
+sync(store, router)
 
 new Vue({
     el: '#app',
