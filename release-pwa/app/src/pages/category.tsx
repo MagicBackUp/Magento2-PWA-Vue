@@ -20,6 +20,12 @@ export default class VCategory extends Vue {
             vm.getCategoryInfo()
         })
     }
+    
+    public beforeRouteUpdate (to: Route, from: Route, next: Function) {
+        next((vm: Vue) => {
+            vm.getCategoryInfo()
+        })
+    }
 
     protected render (h: CreateElement) {
         return (
