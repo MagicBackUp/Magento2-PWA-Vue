@@ -1,0 +1,55 @@
+input ProductAttributeFilterInput {
+    url_key: FilterEqualTypeInput!
+}
+
+input FilterEqualTypeInput {
+    eq: String
+}
+
+query getProductDetail($filter: ProductAttributeFilterInput!) {
+    products(filter: $filter) {
+        items {
+            id
+            name
+            sku
+            type_id
+            url_key
+            img {
+                label
+                url
+            }
+            media_gallery {
+                label
+                url
+            }
+            short_description {
+                html
+            }        
+            description {
+                html
+            }
+            configurable_options {
+                attribute_code
+                attribute_id
+                id
+                label
+                position
+                product_id
+                use_default
+                value {
+                    default_label
+                    label
+                    store_label
+                    use_default_value
+                    value_index
+                }
+            }
+            meta_title
+            meta_keywords
+            meta_description
+            special_options
+            special_from_date
+            special_to_date
+        }
+    }
+}

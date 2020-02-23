@@ -11,6 +11,7 @@ import router from './router'
 import apolloOptions from './apollo'
 import storeOption from './store'
 import '../ui/scss/vui.scss'
+import './styles/pwa.scss'
 
 const apolloProvider: any = new VueApollo({
     ...apolloOptions

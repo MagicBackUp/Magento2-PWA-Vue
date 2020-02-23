@@ -1,0 +1,4 @@
+.v-main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    max-width: 100vw;
+}

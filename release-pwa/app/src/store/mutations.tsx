@@ -6,6 +6,9 @@ const mutations: MutationTree<any> = {
     },
     saveCategoryMenu (state, menu: any[]) {
         state.categoryMemu = menu
+    },
+    saveCmsPage (state, page: any) {
+        state.cmsPage = page
     }
 }
 
