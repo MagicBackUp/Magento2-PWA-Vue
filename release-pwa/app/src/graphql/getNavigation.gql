@@ -7,7 +7,7 @@ input FilterEqualTypeInput {
     in: [String]
 }
 
-query getCategoryList($filters: CategoryFilterInput!) {
+query getNavigation($filters: CategoryFilterInput!) {
     categoryList(filters: $filters) {
         id
         name
@@ -21,9 +21,6 @@ query getCategoryList($filters: CategoryFilterInput!) {
         children {
             id
             name
-            meta_description
-            meta_keywords
-            meta_title
             include_in_menu
             children_count
             url_key
@@ -31,9 +28,6 @@ query getCategoryList($filters: CategoryFilterInput!) {
             children {
                 id
                 name
-                meta_description
-                meta_keywords
-                meta_title
                 include_in_menu
                 children_count
                 url_key

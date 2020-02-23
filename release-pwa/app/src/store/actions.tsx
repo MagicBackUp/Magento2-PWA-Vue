@@ -1,7 +1,8 @@
 import { ApolloActionTree } from './interface'
 import { validateRouter } from '../graphql/validateRouter.gql'
 import { getStoreConfig } from '../graphql/getStoreConfig.gql'
-import { getCategoryList } from '../graphql/getCategoryList.gql'
+import { getNavigation } from '../graphql/getNavigation.gql'
+import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
 
 const actions: ApolloActionTree<any, any> = {
     async validateRouter ({ apollo }, url: string) {
@@ -25,10 +26,10 @@ const actions: ApolloActionTree<any, any> = {
             commit('saveStoreConfig', storeConfig)
         }
     },
-    async getCategoryList ({ commit, state, apollo }) {
+    async getNavigation ({ commit, state, apollo }) {
         let { rootIds } = state
         let res: any = await apollo.query({
-            query: getCategoryList,
+            query: getNavigation,
             variables: {
                 filters: {
                     ids: {
@@ -41,6 +42,24 @@ const actions: ApolloActionTree<any, any> = {
         if (res.data) {
             const categoryMenu: any = res.data.categoryList[0].children
             commit('saveCategoryMenu', categoryMenu)
+        }
+    },
+    async getCategoryInfo ({ commit, state, apollo }) {
+        let path: string = state.route.path
+        let res: any = await apollo.query({
+            query: getCategoryInfo,
+            variables: {
+                filters: {
+                    url_key: {
+                        eq: path.replace('/category/', '')
+                    }
+                }
+            }
+        })
+
+        if (res.data) {
+            const category: any = res.data.categoryList
+            console.log(category)
         }
     }
 }

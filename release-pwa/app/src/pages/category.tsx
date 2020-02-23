@@ -1,5 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
+import { Action } from 'vuex-class'
 
 @Component({
     name: 'v-category',
@@ -11,6 +12,12 @@ import { Component } from 'vue-property-decorator'
     }
 })
 export default class VCategory extends Vue {
+    @Action('getCategoryInfo') getCategoryInfo: any
+
+    public created () {
+        this.getCategoryInfo()
+    }
+
     protected render (h: CreateElement) {
         return (
             <div class="v-category">

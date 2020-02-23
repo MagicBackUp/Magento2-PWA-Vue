@@ -10,10 +10,10 @@ import VNavigation from './navigation'
     }
 })
 export default class VHeader extends Vue {
-    @Action('getCategoryList') getCategoryList: any
+    @Action('getNavigation') getNavigation: any
     
     created () {
-        this.getCategoryList()
+        this.getNavigation()
     }
 
     protected render (h: CreateElement) {
