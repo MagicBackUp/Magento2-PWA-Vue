@@ -26,9 +26,8 @@ export default class VPage extends Vue {
     }
     
     public beforeRouteUpdate (to: Route, from: Route, next: Function) {
-        next((vm: Vue) => {
-            vm.getCmsPage()
-        })
+        this.getCmsPage()
+        next()
     }
 
     protected render (h: CreateElement) {

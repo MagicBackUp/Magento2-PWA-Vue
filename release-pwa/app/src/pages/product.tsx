@@ -22,9 +22,8 @@ export default class VProduct extends Vue {
     }
     
     public beforeRouteUpdate (to: Route, from: Route, next: Function) {
-        next((vm: Vue) => {
-            vm.getProductDetail()
-        })
+        this.getProductDetail()
+        next()
     }
     
     protected render (h: CreateElement) {
