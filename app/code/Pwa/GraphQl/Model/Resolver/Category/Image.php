@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Pwa\CustomGraphQl\Model\Resolver\Category;
+namespace Pwa\GraphQl\Model\Resolver\Category;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;

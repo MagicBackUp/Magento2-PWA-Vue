@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Pwa\CustomGraphQl\Model\Resolver;
+namespace Pwa\GraphQl\Model\Resolver;
 
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\ExtractDataFromCategoryTree;
 use Magento\Framework\Exception\InputException;
@@ -10,7 +10,7 @@ use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\CategoryTree;
-use Pwa\CustomGraphQl\Model\Category\CategoryFilter;
+use Pwa\GraphQl\Model\Category\CategoryFilter;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 
 /**
