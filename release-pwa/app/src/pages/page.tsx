@@ -1,8 +1,7 @@
 import Vue, { CreateElement } from 'vue'
-import { Component } from 'vue-property-decorator'
-import { Action } from 'vuex-class'
+import { Component, Watch } from 'vue-property-decorator'
+import { State, Action } from 'vuex-class'
 import { Route } from 'vue-router'
-import VCms from '@components/cms/page'
 
 @Component({
     name: 'v-page',
@@ -11,12 +10,15 @@ import VCms from '@components/cms/page'
             inner: 'PWA',
             complement: 'Page'
         }
-    },
-    components: {
-        VCms
     }
 })
 export default class VPage extends Vue {
+    @Watch('cmsPage')
+    onCmsPageChanged(page: any) {
+        this.$emit('updateHead')
+    }
+
+    @State('cmsPage') cmsPage: any
     @Action('getCmsPage') getCmsPage: any
 
     public beforeRouteEnter (to: Route, from: Route, next: Function) {
@@ -26,14 +28,16 @@ export default class VPage extends Vue {
     }
     
     public beforeRouteUpdate (to: Route, from: Route, next: Function) {
-        this.getCmsPage()
         next()
+        this.getCmsPage()
     }
 
     protected render (h: CreateElement) {
         return (
             <div class="v-page">
-                <v-cms></v-cms>
+                {this.cmsPage && (
+                    <div class="v-cms" domPropsInnerHTML={this.cmsPage.content}></div>
+                )}
             </div>
         )
     }

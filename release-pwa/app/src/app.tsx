@@ -17,7 +17,9 @@ export default class VApp extends Vue {
                 <v-header></v-header>
                 <main class="v-main">
                     <transition name="fade">
-                        <router-view></router-view>
+                        <keep-alive>
+                            <router-view></router-view>
+                        </keep-alive>
                     </transition>
                 </main>
                 <v-footer></v-footer>
