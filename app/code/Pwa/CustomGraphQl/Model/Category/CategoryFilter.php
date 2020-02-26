@@ -46,9 +46,13 @@ class CategoryFilter
                 if ($field === 'ids') {
                     $categoryCollection->addIdFilter($value);
                 } else {
-                    $valueArr = explode("/",rtrim($value, '/'));
-                    $newValue = end($valueArr);
-                    $this->addAttributeFilter($categoryCollection, $field, $condType, $newValue, $store);
+                    if($field === 'url_key'){
+                        $field = 'url_path';
+                        $newValue = rtrim($value, '/');
+                        $this->addAttributeFilter($categoryCollection, $field, $condType, $newValue, $store);
+                    }else{
+                        $this->addAttributeFilter($categoryCollection, $field, $condType, $value, $store);
+                    }
                 }
             }
         }
