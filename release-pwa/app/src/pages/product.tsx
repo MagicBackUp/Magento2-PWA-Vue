@@ -6,9 +6,8 @@ import { Route } from 'vue-router'
 @Component({
     name: 'v-product',
     head: {
-        title: {
-            inner: 'PWA',
-            complement: 'Product'
+        title: function () {
+            return this.title
         }
     }
 })

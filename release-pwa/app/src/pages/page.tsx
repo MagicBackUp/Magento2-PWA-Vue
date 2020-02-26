@@ -6,15 +6,23 @@ import { Route } from 'vue-router'
 @Component({
     name: 'v-page',
     head: {
-        title: {
-            inner: 'PWA',
-            complement: 'Page'
+        title: function () {
+            return this.title
         }
     }
 })
 export default class VPage extends Vue {
+    public title: object = {
+        inner: 'PWA',
+        complement: 'Page'
+    }
+    
     @Watch('cmsPage')
     onCmsPageChanged(page: any) {
+        this.title = {
+            inner: 'PWA',
+            complement: page.title
+        }
         this.$emit('updateHead')
     }
 

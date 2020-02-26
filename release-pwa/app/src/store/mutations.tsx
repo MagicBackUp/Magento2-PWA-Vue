@@ -9,6 +9,9 @@ const mutations: MutationTree<any> = {
     },
     saveCmsPage (state, page: any) {
         state.cmsPage = page
+    },
+    saveCategory (state, category: any) {
+        state.currentCategory = category
     }
 }
 

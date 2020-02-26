@@ -73,8 +73,7 @@ const actions: ApolloActionTree<any, any> = {
         })
 
         if (res.data) {
-            const category: any = res.data.categoryList
-            console.log(category)
+            commit('saveCategory', res.data.categoryList[0])
         }
     },
     async getProductDetail ({ commit, state, apollo }) {
