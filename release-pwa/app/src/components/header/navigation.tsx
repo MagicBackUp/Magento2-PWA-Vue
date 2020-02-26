@@ -28,7 +28,7 @@ export default class VNavigation extends Vue {
                                 return (
                                     menu.include_in_menu && (
                                         menu.children_count > 0 ? (
-                                            <v-navbar-dropdown label={menu.name} hoverable={true}>
+                                            <v-navbar-dropdown tag="router-link" label={menu.name} hoverable={true} to={`/category/${menu.url_path}`}>
                                                 {menu.children.map((item: CategoryItem) => {
                                                     return (
                                                         menu.include_in_menu && (

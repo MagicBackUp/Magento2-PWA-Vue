@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Pwa\CustomGraphQl\Model\Category;
+namespace Pwa\GraphQl\Model\Category;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;

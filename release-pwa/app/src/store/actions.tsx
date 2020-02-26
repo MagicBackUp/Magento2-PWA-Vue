@@ -2,7 +2,9 @@ import { ApolloActionTree } from './interface'
 import { validateRouter } from '../graphql/validateRouter.gql'
 import { getStoreConfig } from '../graphql/getStoreConfig.gql'
 import { getNavigation } from '../graphql/getNavigation.gql'
+import { getCmsPage } from '../graphql/getCmsPage.gql'
 import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
+import { getProductDetail } from '../graphql/getProductDetail.gql'
 
 const actions: ApolloActionTree<any, any> = {
     async validateRouter ({ apollo }, url: string) {
@@ -44,6 +46,19 @@ const actions: ApolloActionTree<any, any> = {
             commit('saveCategoryMenu', categoryMenu)
         }
     },
+    async getCmsPage ({ commit, state, apollo }) {
+        let path: string = state.route.path
+        let res: any = await apollo.query({
+            query: getCmsPage,
+            variables: {
+                identifier: path.replace('/page/', '')
+            }
+        })
+
+        if (res.data) {
+            commit('saveCmsPage', res.data.cmsPage)
+        }
+    },
     async getCategoryInfo ({ commit, state, apollo }) {
         let path: string = state.route.path
         let res: any = await apollo.query({
@@ -58,8 +73,24 @@ const actions: ApolloActionTree<any, any> = {
         })
 
         if (res.data) {
-            const category: any = res.data.categoryList
-            console.log(category)
+            commit('saveCategory', res.data.categoryList[0])
+        }
+    },
+    async getProductDetail ({ commit, state, apollo }) {
+        let path: string = state.route.path
+        let res: any = await apollo.query({
+            query: getProductDetail,
+            variables: {
+                filters: {
+                    url_key: {
+                        eq: path.replace('/product/', '')
+                    }
+                }
+            }
+        })
+
+        if (res.data) {
+            console.log(res.data)
         }
     }
 }

@@ -7,7 +7,7 @@ const RouterUtil: any =  {
     },
     filterRouter (router: Router) {
         if (RouterSet.has(router.name)) {
-            return router.path.replace(`/${router.name}`, '')
+            return router.path.replace(`/${router.name}/`, '')
         }
     }
 }

@@ -1,10 +1,7 @@
-query getCmsPage($id: Int!) {
-    cmsPage(id: $id) {
-        url_key
+query getCmsPage($identifier: String) {
+    cmsPage(identifier: $identifier) {
         title
         content
-        content_heading
-        page_layout
         meta_title
         meta_keywords
         meta_description
