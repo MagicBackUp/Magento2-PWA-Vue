@@ -14,6 +14,8 @@ import VNavBarItem from './navbar/item'
 import VNavBarBurger from './navbar/burger'
 import VNavBarDropDown from './navbar/dropdown'
 import VNavBar from './navbar/navbar'
+import VBreadcrumb from './breadcrumb/breadcrumb'
+import VBreadcrumbItem from './breadcrumb/item'
 
 const components: VComponent[] = [
     { name: 'v-icon', component: VIcon },
@@ -30,7 +32,9 @@ const components: VComponent[] = [
     { name: 'v-navbar-item', component: VNavBarItem },
     { name: 'v-navbar-burger', component: VNavBarBurger },
     { name: 'v-navbar-dropdown', component: VNavBarDropDown },
-    { name: 'v-navbar', component: VNavBar }
+    { name: 'v-navbar', component: VNavBar },
+    { name: 'v-breadcrumb', component: VBreadcrumb },
+    { name: 'v-breadcrumb-item', component: VBreadcrumbItem }
 ]
 
 export default components

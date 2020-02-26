@@ -5,6 +5,7 @@ import { getNavigation } from '../graphql/getNavigation.gql'
 import { getCmsPage } from '../graphql/getCmsPage.gql'
 import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
 import { getProductDetail } from '../graphql/getProductDetail.gql'
+import { getProductList } from '../graphql/getProductList.gql'
 
 const actions: ApolloActionTree<any, any> = {
     async validateRouter ({ apollo }, url: string) {
@@ -59,7 +60,7 @@ const actions: ApolloActionTree<any, any> = {
             commit('saveCmsPage', res.data.cmsPage)
         }
     },
-    async getCategoryInfo ({ commit, state, apollo }) {
+    async getCategoryInfo ({ commit, dispatch, state, apollo }) {
         let path: string = state.route.path
         let res: any = await apollo.query({
             query: getCategoryInfo,
@@ -73,7 +74,32 @@ const actions: ApolloActionTree<any, any> = {
         })
 
         if (res.data) {
-            commit('saveCategory', res.data.categoryList[0])
+            const category: any = res.data.categoryList[0]
+
+            commit('saveCategory', category)
+
+            if (category.product_count > 0) dispatch('getProductList', category.id)
+        }
+    },
+    async getProductList ({ commit, apollo }, id: string) {
+        let res: any = await apollo.query({
+            query: getProductList,
+            variables: {
+                filter: {
+                    category_id: {
+                        eq: id
+                    }
+                },
+                pageSize: 20,
+                currentPage: 1,
+                sort: {
+                    name: 'ASC'
+                }
+            }
+        })
+
+        if (res.data) {
+            console.log(res.data)
         }
     },
     async getProductDetail ({ commit, state, apollo }) {

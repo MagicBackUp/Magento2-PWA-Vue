@@ -44,7 +44,7 @@ export default class VPage extends Vue {
         return (
             <div class="v-page">
                 {this.cmsPage && (
-                    <div class="v-cms" domPropsInnerHTML={this.cmsPage.content}></div>
+                    <div class="container" domPropsInnerHTML={this.cmsPage.content}></div>
                 )}
             </div>
         )

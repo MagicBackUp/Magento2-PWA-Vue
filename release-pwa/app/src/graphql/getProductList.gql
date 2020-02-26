@@ -1,0 +1,96 @@
+input ProductAttributeFilterInput {
+    category_id: FilterEqualTypeInput!
+    name: FilterMatchTypeInput!
+    price: FilterRangeTypeInput!
+}
+
+input FilterEqualTypeInput {
+    eq: String
+    in: [String]
+}
+
+input FilterMatchTypeInput {
+    match: String
+}
+
+input FilterRangeTypeInput {
+    from: String
+    to: String
+}
+
+input ProductAttributeSortInput {
+    name: [SortEnum]
+    position: [SortEnum]
+    price: [SortEnum]
+    relevance: [SortEnum]
+}
+
+enum SortEnum {
+    ASC
+    DESC
+}
+
+fragment configurableOptions on ConfigurableProduct {
+    configurable_options {
+        attribute_code
+        attribute_id
+        id
+        product_id
+        label
+        values {
+            label
+            value_index
+        } 
+    }
+}
+
+query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pageSize: Int!, $currentPage: Int!, $sort: ProductAttributeSortInput!) {
+    products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
+        aggregations {
+            attribute_code
+            label
+            options {
+                label
+                value
+            }
+        }
+        items {
+            id
+            name
+            sku
+            type_id
+            url_key
+            image {
+                label
+                url
+            }
+            price_range {
+                minimum_price {
+                    final_price {
+                        value
+                    }
+                }
+            }
+            ...configurableOptions
+            special_price
+            stock_status
+            new_from_date
+            new_to_date
+            special_from_date
+            special_to_date
+        }
+        page_info {
+            current_page
+            page_size
+            total_pages
+        }
+        sort_fields {
+            default
+            options {
+                label
+                value
+            }
+        }
+        total_count
+    }
+}

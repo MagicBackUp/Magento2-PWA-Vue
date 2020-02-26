@@ -14,7 +14,7 @@ const VDescription: FunctionalComponentOptions<Description> = {
         const { html } = context.props
 
         return (
-            <div class="v-description" domPropsInnerHTML={html}></div>
+            <div class="description" domPropsInnerHTML={html}></div>
         )
     } 
 }

@@ -3,6 +3,8 @@ import { Component, Watch } from 'vue-property-decorator'
 import { State, Action } from 'vuex-class'
 import { Route } from 'vue-router'
 import { VDescription, VImage } from '@components/common'
+import { VFilters } from '@components/filter'
+import { VProductsList } from '@components/list'
 
 @Component({
     name: 'v-category',
@@ -13,7 +15,9 @@ import { VDescription, VImage } from '@components/common'
     },
     components: {
         VDescription,
-        VImage
+        VImage,
+        VFilters,
+        VProductsList
     }
 })
 export default class VCategory extends Vue {
@@ -51,10 +55,23 @@ export default class VCategory extends Vue {
         return (
             <div class="v-category">
                 {currentCategory && (
-                    <div class="v-wrapper">
-                        <v-description html={currentCategory.description}></v-description>
-                        <v-image url={currentCategory.image} title={currentCategory.name}></v-image>
-                    </div>  
+                    <div class="container">
+                        <div class="columns">
+                            <div class="column">
+                                <v-filters></v-filters>
+                            </div>
+                            <div class="column is-four-fifths">
+                                <article class="in-description">
+                                    <div class="content">
+                                        <h1>{currentCategory.name}</h1>
+                                        <v-description html={currentCategory.description}></v-description>
+                                    </div>
+                                    <v-image url={currentCategory.image} title={currentCategory.name}></v-image>
+                                </article>
+                                <v-products-list></v-products-list>
+                            </div>
+                        </div>
+                    </div> 
                 )}
             </div>
         )

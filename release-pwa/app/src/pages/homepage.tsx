@@ -26,57 +26,59 @@ export default class VHomePage extends Vue {
     protected render (h: CreateElement) {
         return (
             <div class="v-homepage">
-                <div class="v-row">
-                    <v-icon></v-icon>
-                    <v-button tag="router-link" to="/category" type="is-link">Category</v-button>
-                </div>
-                <div class="v-row">
-                    <v-input vModel={this.name} password-reveal={true}></v-input>
-                </div>
-                <div class="v-row">
-                    <v-radio name="name" vModel={this.method} native-value={0}></v-radio>
-                    <v-radio name="name" vModel={this.method} native-value={1}></v-radio>
-                </div>
-                <div class="v-row">
-                    <v-checkbox name="checkbox" vModel={this.checkbox} true-value={'Yes'} false-value={'No'}>{this.checkbox}</v-checkbox>
-                </div>
-                <div class="v-row">
-                    <v-switch name="switch" vModel={this.switch} true-value={'On'} false-value={'Off'}>{this.switch}</v-switch>
-                </div>
-                <div class="v-row">
-                    <v-carousel>
-                        {this.carousels.map((carousel: any) => {
-                            return (
-                                <v-carousel-item>
-                                    <section class={`hero is-medium is-${carousel.color}`}>
-                                        <div class="hero-body has-text-centered">
-                                            <h1 class="title">{carousel.text}</h1>
-                                        </div>
-                                    </section>
-                                </v-carousel-item>
-                            )
-                        })}
-                    </v-carousel>
-                </div>
-                <div class="v-row">
-                    <v-progress value={60} show-value={true} format="percent"></v-progress>
-                </div>
-                <div class="v-row">
-                    <v-collapse open={false} aria-id="content">
-                        <button
-                            class="button is-primary"
-                            slot="trigger"
-                            aria-controls="content">Toggle</button>
-                        <div class="notification">
-                            <div class="content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                                    Nulla accumsan, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. <br/>
-                                    Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.
-                                </p>
+                <div class="container">
+                    <div class="v-row">
+                        <v-icon></v-icon>
+                        <v-button tag="router-link" to="/category" type="is-link">Category</v-button>
+                    </div>
+                    <div class="v-row">
+                        <v-input vModel={this.name} password-reveal={true}></v-input>
+                    </div>
+                    <div class="v-row">
+                        <v-radio name="name" vModel={this.method} native-value={0}></v-radio>
+                        <v-radio name="name" vModel={this.method} native-value={1}></v-radio>
+                    </div>
+                    <div class="v-row">
+                        <v-checkbox name="checkbox" vModel={this.checkbox} true-value={'Yes'} false-value={'No'}>{this.checkbox}</v-checkbox>
+                    </div>
+                    <div class="v-row">
+                        <v-switch name="switch" vModel={this.switch} true-value={'On'} false-value={'Off'}>{this.switch}</v-switch>
+                    </div>
+                    <div class="v-row">
+                        <v-carousel>
+                            {this.carousels.map((carousel: any) => {
+                                return (
+                                    <v-carousel-item>
+                                        <section class={`hero is-medium is-${carousel.color}`}>
+                                            <div class="hero-body has-text-centered">
+                                                <h1 class="title">{carousel.text}</h1>
+                                            </div>
+                                        </section>
+                                    </v-carousel-item>
+                                )
+                            })}
+                        </v-carousel>
+                    </div>
+                    <div class="v-row">
+                        <v-progress value={60} show-value={true} format="percent"></v-progress>
+                    </div>
+                    <div class="v-row">
+                        <v-collapse open={false} aria-id="content">
+                            <button
+                                class="button is-primary"
+                                slot="trigger"
+                                aria-controls="content">Toggle</button>
+                            <div class="notification">
+                                <div class="content">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+                                        Nulla accumsan, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. <br/>
+                                        Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </v-collapse>
+                        </v-collapse>
+                    </div>
                 </div>
             </div>
         )

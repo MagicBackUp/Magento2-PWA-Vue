@@ -14,7 +14,7 @@ export default class VFooter extends Vue {
     protected render (h: CreateElement) {
         return (
             <footer class="v-footer">
-                <div class="v-container">
+                <div class="container">
                     <v-links></v-links>
                     <v-copyright></v-copyright>
                 </div>
