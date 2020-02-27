@@ -68,7 +68,10 @@ export default class VCategory extends Vue {
                                     </div>
                                     <v-image url={currentCategory.image} title={currentCategory.name}></v-image>
                                 </article>
-                                <v-products-list></v-products-list>
+                                <aside>
+                                    <p class="count">{`${currentCategory.product_count} items found`}</p>
+                                    <v-products-list></v-products-list>
+                                </aside>
                             </div>
                         </div>
                     </div> 

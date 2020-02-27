@@ -1,0 +1,36 @@
+.v-filters {
+    .title {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    article {
+        display: block;
+        margin: 1rem 0;
+    }
+
+    .in-code {
+        span {
+            font-weight: 700;
+        }
+    }
+
+    .in-label {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: var(--product-configurable-attributes-direction);
+        align-items: center;
+
+        span {
+            background-color: var(--option-background-color);
+            border-color: var(--option-border-color);
+            border-width: 1px;
+            color: var(--option-text-color);
+            display: inline-block;
+            min-height: var(--option-size);
+            width: var(--option-size);
+            margin: var(--option-margin);
+            padding: var(--option-padding);
+        }
+    }
+}
