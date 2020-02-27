@@ -3,7 +3,9 @@ const state: any = {
     rootIds: 2,
     categoryMemu: [],
     cmsPage: null,
-    currentCategory: null
+    currentCategory: null,
+    currentProduct: null,
+    productCollection: null
 }
 
 export default state

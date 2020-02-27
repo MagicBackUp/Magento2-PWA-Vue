@@ -4,50 +4,80 @@ input ProductAttributeFilterInput {
 
 input FilterEqualTypeInput {
     eq: String
+    in: [String]
+}
+
+fragment configurableOptions on ConfigurableProduct {
+    configurable_options {
+        attribute_code
+        attribute_id
+        id
+        product_id
+        label
+        values {
+            label
+            value_index
+        } 
+    }
 }
 
 query getProductDetail($filter: ProductAttributeFilterInput!) {
     products(filter: $filter) {
         items {
             id
-            name
             sku
+            name
             type_id
             url_key
-            img {
+            attribute_set_id
+            canonical_url
+            price_range {
+                minimum_price {
+                    final_price {
+                        value
+                    }
+                }
+            }
+            thumbnail {
                 label
                 url
             }
-            media_gallery {
+            small_image {
                 label
                 url
             }
             short_description {
                 html
-            }        
+            }     
+            ...configurableOptions
+            special_price
+            stock_status
+            meta_title
+            meta_keyword
+            meta_description
             description {
                 html
             }
-            configurable_options {
-                attribute_code
-                attribute_id
-                id
+            media_gallery {
                 label
+                url
+            }
+            product_links {
+                link_type
+                linked_product_sku
                 position
-                product_id
-                use_default
-                value {
-                    default_label
-                    label
-                    store_label
-                    use_default_value
-                    value_index
+            }
+            categories {
+                name
+                url_path
+                breadcrumbs {
+                    category_name
+                    category_url_key
+                    category_url_path
                 }
             }
-            meta_title
-            meta_keywords
-            meta_description
-            special_options
+            new_from_date
+            new_to_date
             special_from_date
             special_to_date
         }

@@ -99,7 +99,8 @@ const actions: ApolloActionTree<any, any> = {
         })
 
         if (res.data) {
-            console.log(res.data)
+            const products: any = res.data.products
+            commit('updateProducts', products)
         }
     },
     async getProductDetail ({ commit, state, apollo }) {
@@ -107,7 +108,7 @@ const actions: ApolloActionTree<any, any> = {
         let res: any = await apollo.query({
             query: getProductDetail,
             variables: {
-                filters: {
+                filter: {
                     url_key: {
                         eq: path.replace('/product/', '')
                     }
@@ -116,7 +117,8 @@ const actions: ApolloActionTree<any, any> = {
         })
 
         if (res.data) {
-            console.log(res.data)
+            const product: any = res.data.products.items[0]
+            commit('saveProductDetail', product)
         }
     }
 }

@@ -1,0 +1,49 @@
+.in-description {
+    display: grid;
+    grid-template-columns: auto minmax(100px,15rem);
+    grid-gap: 1rem;
+    background-color: var(--category-details-background);
+    margin-bottom: 1rem;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 1.5rem;
+        height: 7rem;
+    }
+
+    h1 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: .5rem
+    }
+
+    .v-image {
+        display: inline-block;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        mix-blend-mode: multiply;
+
+        img {
+            height: 7rem;
+        }
+    }
+
+    .description {
+        max-width: 500px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 2rem;
+    }
+}
+
+img {
+    object-position: 50% 50%;
+    object-fit: contain;
+}

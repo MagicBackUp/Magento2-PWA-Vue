@@ -8,11 +8,15 @@ import { State } from 'vuex-class'
 export default class VFilters extends Vue {
     @State('currentCategory') currentCategory: any
 
+    public i18n: any = {
+        shoping: 'Shopping Options'
+    }
+
     protected render (h: CreateElement) {
         return (
             this.currentCategory && (
                 <div class="v-filters">
-                    
+                    <h2>{this.i18n.shoping}</h2>
                 </div>
             )
         )

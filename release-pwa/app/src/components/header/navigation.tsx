@@ -16,7 +16,7 @@ export default class VNavigation extends Vue {
     protected render (h: CreateElement) {
         return (
             <nav class="v-navigation">
-                <v-navbar shadow={true}>
+                <v-navbar shadow={true} fixedTop={true}>
                     <template slot="brand">
                         <v-navbar-item tag="router-link" to={{ path: '/' }}>
                             <v-logo></v-logo>

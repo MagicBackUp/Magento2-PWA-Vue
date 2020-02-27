@@ -60,7 +60,7 @@ query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pa
             sku
             type_id
             url_key
-            image {
+            thumbnail {
                 label
                 url
             }

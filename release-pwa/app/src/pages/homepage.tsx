@@ -27,10 +27,7 @@ export default class VHomePage extends Vue {
         return (
             <div class="v-homepage">
                 <div class="container">
-                    <div class="v-row">
-                        <v-icon></v-icon>
-                        <v-button tag="router-link" to="/category" type="is-link">Category</v-button>
-                    </div>
+                    <h1>Silk SPA - Headless Magento</h1>
                     <div class="v-row">
                         <v-input vModel={this.name} password-reveal={true}></v-input>
                     </div>

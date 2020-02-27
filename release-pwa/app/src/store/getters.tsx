@@ -12,6 +12,16 @@ const getters: GetterTree<any, any> = {
                 title: config.logo_alt
             }
         }
+    },
+    productList: (state) => {
+        const collection: any = state.productCollection
+
+        return collection ? collection.items : []
+    },
+    filter: (state) => {
+        const collection: any = state.productCollection
+
+        return collection ? collection.aggregations : []
     }
 }
 

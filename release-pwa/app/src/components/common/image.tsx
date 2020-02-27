@@ -16,7 +16,9 @@ const VImage: FunctionalComponentOptions<Image> = {
         const { url, title } = context.props
 
         return (
-            <img src={url} class="v-image" alt={title} />
+            <p class="v-image">
+                <img src={url} alt={title} />
+            </p>
         )
     } 
 }
