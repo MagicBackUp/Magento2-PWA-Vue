@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import VueApollo from 'vue-apollo'
 import { sync } from 'vuex-router-sync'
 import { Component } from 'vue-property-decorator'
+import { VuexConnector } from './hook'
 import Vui from '../ui'
 import VApp from './app'
 import router from './router'
@@ -34,8 +35,9 @@ Component.registerHooks([
 const store: any = new Vuex.Store({
     ...storeOption
 })
-store.$apollo = apolloOptions
+const connector: VuexConnector = new VuexConnector(store)
 
+store.$apollo = apolloOptions
 sync(store, router)
 
 new Vue({

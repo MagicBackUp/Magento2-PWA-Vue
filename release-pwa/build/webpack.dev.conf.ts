@@ -49,6 +49,7 @@ const baseConfig = new WebpackConfig({
         historyApiFallback: true,
         disableHostCheck: false,
         contentBase: path.join(__dirname, `../app/src`),
+        publicPath: 'http://127.0.0.1:8080',
         proxy: {
             '/graphql': {
                 target: 'http://dev.vue-pwa.cn/graphql',
