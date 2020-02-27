@@ -1,0 +1,21 @@
+{
+    "name": "pwa/reviews-graphql",
+    "description": "N/A",
+    "type": "magento2-module",
+    "require": {
+        "magento/magento2-base": "^2.3.1",
+        "scandipwa/performance": "^1.0"
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Pwa\\ReviewsGraphQl\\": ""
+        }
+    }
+}
