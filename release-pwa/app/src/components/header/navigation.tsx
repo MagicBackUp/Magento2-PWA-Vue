@@ -51,10 +51,8 @@ export default class VNavigation extends Vue {
                     )}
                     <template slot="end">
                         <v-navbar-item tag="div">
-                            <div class="buttons">
-                                <v-button tag="router-link" to="/login" type="is-link">Log in</v-button>
-                                <v-button tag="router-link" to="/register" type="is-info">Sign up</v-button>
-                            </div>
+                            <v-icon icon="account" size="is-small"></v-icon>
+                            <v-icon icon="cart" size="is-small"></v-icon>
                         </v-navbar-item>
                     </template>
                 </v-navbar>

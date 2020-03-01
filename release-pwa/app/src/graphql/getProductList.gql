@@ -39,6 +39,7 @@ fragment configurableOptions on ConfigurableProduct {
         label
         values {
             label
+            store_label
             value_index
         } 
     }

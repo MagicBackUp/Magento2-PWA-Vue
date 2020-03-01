@@ -16,7 +16,6 @@ export default class VNavBarBurger extends Vue {
                 aria-label="menu"
                 aria-expanded={this.isOpened}
                 {...{on: this.$listeners}}>
-            >
                 <span aria-hidden="true"/>
                 <span aria-hidden="true"/>
                 <span aria-hidden="true"/>
