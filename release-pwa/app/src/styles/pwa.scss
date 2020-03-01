@@ -1,4 +1,8 @@
+@import 'mixins/_typography';
+@import 'variable/fonts';
+
 @import 'common/_root';
+@import 'common/_icons';
 @import 'common/_header';
 @import 'common/_main';
 @import 'common/_footer';

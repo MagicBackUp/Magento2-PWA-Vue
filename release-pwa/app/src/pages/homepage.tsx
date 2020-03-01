@@ -15,6 +15,7 @@ export default class VHomePage extends Vue {
     private method: number = 0
     private checkbox: string = 'Yes'
     private switch: string = 'On'
+    public star: number = 5
     private carousels: any[] = [
         { text: 'Slide 1', color: 'primary' },
         { text: 'Slide 2', color: 'info' },
@@ -40,6 +41,9 @@ export default class VHomePage extends Vue {
                     </div>
                     <div class="v-row">
                         <v-switch name="switch" vModel={this.switch} true-value={'On'} false-value={'Off'}>{this.switch}</v-switch>
+                    </div>
+                    <div class="v-row">
+                        <v-rate vModel={this.star} showScore={true}></v-rate>
                     </div>
                     <div class="v-row">
                         <v-carousel>

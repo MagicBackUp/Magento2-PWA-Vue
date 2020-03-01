@@ -30,21 +30,6 @@ enum SortEnum {
     DESC
 }
 
-fragment configurableOptions on ConfigurableProduct {
-    configurable_options {
-        attribute_code
-        attribute_id
-        id
-        product_id
-        label
-        values {
-            label
-            store_label
-            value_index
-        } 
-    }
-}
-
 query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pageSize: Int!, $currentPage: Int!, $sort: ProductAttributeSortInput!) {
     products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
         aggregations {
@@ -72,7 +57,6 @@ query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pa
                     }
                 }
             }
-            ...configurableOptions
             special_price
             stock_status
             new_from_date

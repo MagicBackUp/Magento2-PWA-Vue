@@ -7,7 +7,7 @@ input FilterEqualTypeInput {
     in: [String]
 }
 
-fragment configurableOptions on ConfigurableProduct {
+fragment configurable on ConfigurableProduct {
     configurable_options {
         attribute_code
         attribute_id
@@ -49,7 +49,7 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
             short_description {
                 html
             }     
-            ...configurableOptions
+            ...configurable
             special_price
             stock_status
             meta_title
