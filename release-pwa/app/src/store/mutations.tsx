@@ -12,6 +12,10 @@ const mutations: MutationTree<any> = {
     },
     saveCategory (state, category: any) {
         state.currentCategory = category
+        if (category.product_count == 0) state.productCollection = {
+            items: [],
+            aggregations: []
+        }
     },
     saveProductDetail (state, product: any) {
         state.currentProduct = product

@@ -66,7 +66,7 @@ export default class VRate extends Vue {
 
     public confirmValue (index: number) {
         if (this.disabled) return false
-        this.newValue = index + 1
+        this.newValue = index
         this.$emit('change', this.newValue)
         this.$emit('input', this.newValue)
     }
@@ -93,7 +93,7 @@ export default class VRate extends Vue {
         const generateItem: Function = (len: number) => {
             let rates: any[] = []
 
-            for(let i = 0; i < len; i++) {
+            for(let i = 1; i <= len; i++) {
                 rates.push(
                     <div class={['rate-item', this.rateClass(i)]} key={i}
                         onMousemove={(e: Event) => { this.previewRate(i, e) }}
