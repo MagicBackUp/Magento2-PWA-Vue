@@ -33,10 +33,10 @@ const baseConfig = new WebpackConfig({
         app: path.resolve(__dirname, `../app/src/boostrap.tsx`)
     })),
     output: {
-        path: path.resolve(__dirname, `../../app/design/${area}/${src}/web/js/`),
         filename: '[name].bundle.js',
         pathinfo: true,
         globalObject: 'this', 
+        path: path.resolve(__dirname, `../../app/design/${area}/${src}/web/js/`),
         publicPath: path.resolve(__dirname, `../../app/design/${area}/${src}/web/js/`)
     },
     mode: 'development',

@@ -13,7 +13,7 @@ const FirendlyErrorePlugin = require('friendly-errors-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
-const { port, https, host } = themeConfig.default
+const { area, src, port, https, host } = themeConfig.default
 const createHappyPlugin: any = (id: string, loaders: string[]) => new HappyPack({
     id: id,
     loaders: loaders,
@@ -28,8 +28,11 @@ const baseConfig = new WebpackConfig({
     })),
     cache: true,
     output: {
-        path: path.resolve(__dirname, '../dist'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        publicPath: '/',
+        pathinfo: true,
+        globalObject: 'this',
+        path: path.resolve(__dirname, `../../app/design/${area}/${src}/web/js`)
     },
     mode: 'development',
     devtool: 'inline-source-map',
@@ -49,6 +52,8 @@ const baseConfig = new WebpackConfig({
         historyApiFallback: true,
         disableHostCheck: false,
         contentBase: path.resolve(__dirname, '../app/src'),
+        watchContentBase: true,
+        publicPath: '/',
         proxy: {
             '/graphql': {
                 target: 'http://dev.vue-pwa.cn/graphql',
@@ -62,6 +67,7 @@ const baseConfig = new WebpackConfig({
         poll: 1000
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.NamedChunksPlugin(),
         new webpack.DefinePlugin({
@@ -84,6 +90,7 @@ const baseConfig = new WebpackConfig({
             filename: 'index.html',
             inject: 'body',
             hash: true,
+            publicPath: '/',
             showErrors: true,
             minify: {
                 removeComments: true,
@@ -105,7 +112,6 @@ const baseConfig = new WebpackConfig({
         }),
         new DashboardPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new HardSourceWebpackPlugin()
     ],
