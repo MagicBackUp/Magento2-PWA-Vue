@@ -10,11 +10,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const FirendlyErrorePlugin = require('friendly-errors-webpack-plugin')
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
-const { area, src, port, https, host } = themeConfig.default
+const { port, https, host } = themeConfig.default
 const createHappyPlugin: any = (id: string, loaders: string[]) => new HappyPack({
     id: id,
     loaders: loaders,
@@ -29,6 +28,7 @@ const baseConfig = new WebpackConfig({
     })),
     cache: true,
     output: {
+        path: path.resolve(__dirname, '../dist'),
         filename: '[name].bundle.js'
     },
     mode: 'development',
@@ -48,8 +48,7 @@ const baseConfig = new WebpackConfig({
         },
         historyApiFallback: true,
         disableHostCheck: false,
-        contentBase: path.join(__dirname, `../app/src`),
-        publicPath: 'http://127.0.0.1:8080',
+        contentBase: path.resolve(__dirname, '../app/src'),
         proxy: {
             '/graphql': {
                 target: 'http://dev.vue-pwa.cn/graphql',
@@ -81,9 +80,8 @@ const baseConfig = new WebpackConfig({
         }),
         new HtmlWebpackPlugin({
             title: 'Magento Vue Pwa',
-            template: path.resolve(__dirname, `../app/src/index.html`),
+            template: path.join(__dirname, `../app/src/index.html`),
             filename: 'index.html',
-            publicPath: '/',
             inject: 'body',
             hash: true,
             showErrors: true,

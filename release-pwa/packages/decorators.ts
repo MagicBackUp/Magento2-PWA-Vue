@@ -23,6 +23,7 @@ export interface InputConfig extends Configuration {
             warnings?: boolean
             errors?: boolean
         },
+        public?: string,
         publicPath?: string,
         contentBase?: string,
         disableHostCheck?: boolean,
