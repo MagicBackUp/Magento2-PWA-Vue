@@ -17,6 +17,7 @@ import VNavBar from './navbar/navbar'
 import VBreadcrumb from './breadcrumb/breadcrumb'
 import VBreadcrumbItem from './breadcrumb/item'
 import VRate from './rate/rate'
+import VTooltip from './tooltip/tooltip'
 
 const components: VComponent[] = [
     { name: 'v-icon', component: VIcon },
@@ -36,7 +37,8 @@ const components: VComponent[] = [
     { name: 'v-navbar', component: VNavBar },
     { name: 'v-breadcrumb', component: VBreadcrumb },
     { name: 'v-breadcrumb-item', component: VBreadcrumbItem },
-    { name: 'v-rate', component: VRate }
+    { name: 'v-rate', component: VRate },
+    { name: 'v-tooltip', component: VTooltip }
 ]
 
 export default components

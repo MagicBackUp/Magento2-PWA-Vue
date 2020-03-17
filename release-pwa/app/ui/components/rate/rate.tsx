@@ -1,7 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import VIcon from '../icon/icon'
-import { Template } from 'webpack'
 
 @Component({
     name: 'v-rate',
