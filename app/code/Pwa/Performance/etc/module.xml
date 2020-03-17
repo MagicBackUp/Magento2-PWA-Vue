@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Pwa
+ * @package     Pwa_Performance
+ * @author      Alfreds Genkins <info@scandiweb.com>
+ * @copyright   Copyright (c) 2019 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Pwa_Performance">
+        <sequence>
+            <module name="Magento_CatalogGraphQl"/>
+            <module name="Pwa_CatalogGraphQl"/>
+            <module name="Magento_InventoryApi"/>
+            <module name="Magento_CatalogInventory"/>
+        </sequence>
+    </module>
+</config>

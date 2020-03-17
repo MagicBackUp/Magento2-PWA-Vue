@@ -1,0 +1,10 @@
+{
+    "name": "pwa/performance",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Pwa\\Performance\\": ""
+        }
+    }
+}

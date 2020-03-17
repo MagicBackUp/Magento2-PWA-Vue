@@ -4,7 +4,7 @@
     "type": "magento2-module",
     "require": {
         "magento/magento2-base": "^2.3.1",
-        "scandipwa/performance": "^1.0"
+        "pwa/performance": "^1.0"
     },
     "license": [
         "OSL-3.0",
