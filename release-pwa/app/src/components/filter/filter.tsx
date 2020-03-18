@@ -21,22 +21,20 @@ export default class VFilters extends Vue {
                 <h2 class="title">{this.i18n.shoping}</h2>
                 {filter.map((attribute: any) => {
                     return (
-                        attribute.options.length > 0 && (
-                            <article>
-                                <div class="in-code">
-                                    <span>{attribute.label}</span>
-                                </div>
-                                <div class="in-label">
-                                    {attribute.options.map((code: any) => {
-                                        return (
-                                            <router-link tag="a" to={`${path}?${attribute.attribute_code}:${code.value}`} class="in-value" title={code.label}>
-                                                <span>{code.label}</span>
-                                            </router-link>
-                                        )
-                                    })}
-                                </div>
-                            </article>
-                        )
+                        <article>
+                            <div class="in-code">
+                                <span>{attribute.name}</span>
+                            </div>
+                            <div class="in-label">
+                                {attribute.filter_items.map((code: any) => {
+                                    return (
+                                        <router-link tag="a" to={`${path}?${attribute.request_var}:${code.value_string}`} class="in-value" title={code.label}>
+                                            <span>{code.label}</span>
+                                        </router-link>
+                                    )
+                                })}
+                            </div>
+                        </article>
                     )
                 })}
             </div>

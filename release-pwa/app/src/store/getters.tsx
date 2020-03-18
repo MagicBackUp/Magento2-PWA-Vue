@@ -21,7 +21,7 @@ const getters: GetterTree<any, any> = {
     filter: (state) => {
         const collection: any = state.productCollection
 
-        return collection ? collection.aggregations : []
+        return collection ? collection.filters : []
     }
 }
 

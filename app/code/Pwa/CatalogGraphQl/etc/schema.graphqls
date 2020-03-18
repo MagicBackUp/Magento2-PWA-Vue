@@ -36,7 +36,7 @@ type CategoryTree {
 
 interface ProductInterface {
     attributes: [AttributeWithValue] @resolver(class:"Pwa\\CatalogGraphQl\\Model\\Resolver\\AttributesWithValue")
-    stock_item: ProductStockItem @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\Inventory\\StockCount")
+    # stock_item: ProductStockItem @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\Inventory\\StockCount")
 }
 
 interface CategoryInterface {

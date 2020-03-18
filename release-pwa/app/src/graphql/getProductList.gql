@@ -19,9 +19,7 @@ input FilterRangeTypeInput {
 }
 
 input ProductAttributeSortInput {
-    name: [SortEnum]
     position: [SortEnum]
-    price: [SortEnum]
     relevance: [SortEnum]
 }
 
@@ -32,12 +30,12 @@ enum SortEnum {
 
 query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pageSize: Int!, $currentPage: Int!, $sort: ProductAttributeSortInput!) {
     products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
-        aggregations {
-            attribute_code
-            label
-            options {
+        filters {
+            name
+            request_var
+            filter_items {
                 label
-                value
+                value_string
             }
         }
         items {

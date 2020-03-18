@@ -93,7 +93,7 @@ const actions: ApolloActionTree<any, any> = {
                 pageSize: 20,
                 currentPage: 1,
                 sort: {
-                    name: 'ASC'
+                    position: 'ASC'
                 }
             }
         })

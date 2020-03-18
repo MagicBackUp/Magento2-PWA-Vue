@@ -94,14 +94,14 @@
     </type>
 
     <!-- Performance related changes -->
-    <preference for="Magento\ConfigurableProductGraphQl\Model\Resolver\ConfigurableVariant"
+    <!-- <preference for="Magento\ConfigurableProductGraphQl\Model\Resolver\ConfigurableVariant"
                 type="Pwa\CatalogGraphQl\Model\Resolver\ConfigurableVariant" />
 
     <type name="Pwa\CatalogGraphQl\Model\Resolver\ConfigurableVariant">
         <arguments>
             <argument name="variantCollection" xsi:type="object">Pwa\CatalogGraphQl\Model\Variant\Collection</argument>
         </arguments>
-    </type>
+    </type> -->
 
     <type name="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CompositeCollectionProcessor">
         <arguments>
