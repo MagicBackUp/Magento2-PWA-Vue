@@ -9,6 +9,7 @@ const VLogin: any = () => import(/* webpackChunkName: "vsf-login" */ '../pages/l
 const VRegister: any = () => import(/* webpackChunkName: "vsf-register" */ '../pages/register')
 const VAccount: any = () => import(/* webpackChunkName: "vsf-account" */ '../pages/account')
 const VPage: any = () => import(/* webpackChunkName: "vsf-page" */ '../pages/page')
+const VBlog: any = () => import(/* webpackChunkName: "vsf-blog" */ '../pages/blog')
 const VNotFind: any = () => import(/* webpackChunkName: "vsf-notFind" */ '../pages/notFind')
 
 const routes: Array<RouteConfig> = [
@@ -56,6 +57,11 @@ const routes: Array<RouteConfig> = [
         name: 'page',
         path: '/page*',
         component: VPage
+    },
+    {
+        name: 'blog',
+        path: '/blog'
+        component: VBlog
     },
     {
         name: '404',

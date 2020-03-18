@@ -6,6 +6,7 @@ import { getCmsPage } from '../graphql/getCmsPage.gql'
 import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
 import { getProductDetail } from '../graphql/getProductDetail.gql'
 import { getProductList } from '../graphql/getProductList.gql'
+import { getBlogPosts } from '../graphql/getBlogPosts.gql'
 
 const actions: ApolloActionTree<any, any> = {
     async validateRouter ({ apollo }, url: string) {
@@ -119,6 +120,21 @@ const actions: ApolloActionTree<any, any> = {
         if (res.data) {
             const product: any = res.data.products.items[0]
             commit('saveProductDetail', product)
+        }
+    },
+    async getBlogList ({ commit, state, apollo }) {
+        let res: any = await apollo.query({
+            query: getBlogPosts,
+            variables: {
+                filter: {},
+                pageSize: 20,
+                currentPage: 1,
+                sort: 'ASC'
+            }
+        })
+
+        if (res.data) {
+            console.log(res.data)
         }
     }
 }

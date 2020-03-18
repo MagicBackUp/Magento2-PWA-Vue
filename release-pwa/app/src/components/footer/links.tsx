@@ -8,7 +8,8 @@ import { Links } from '@helper/interface'
 export default class VLinks extends Vue {
     public links: Array<Links> = [
         { title: 'Privacy policy', url: '/page/privacy-policy-cookie-restriction-mode' },
-        { title: 'Enable Cookies', url: '/page/enable-cookies' }
+        { title: 'Enable Cookies', url: '/page/enable-cookies' },
+        { title: 'Blog', url: '/blog' }
     ]
 
     protected render (h: CreateElement) {
