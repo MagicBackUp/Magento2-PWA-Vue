@@ -28,16 +28,26 @@ enum SortEnum {
     DESC
 }
 
+fragment swatchLayer on SwatchLayerFilterItem {
+    label
+    value_string
+    swatch_data {
+        type
+        value
+    }
+}
+
 query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pageSize: Int!, $currentPage: Int!, $sort: ProductAttributeSortInput!) {
     products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
         filters {
             name
             request_var
             filter_items {
-                label
-                value_string
+                ...swatchLayer
             }
         }
+        min_price
+        max_price
         items {
             id
             name
