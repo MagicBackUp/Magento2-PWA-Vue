@@ -120,7 +120,8 @@ export class WebpackConfig {
                     '@components': resolve('app/src/components/'),
                     '@helper': resolve('app/src/helper/'),
                     '@config': resolve('app/src/config'),
-                    '@utils': resolve('app/src/utils/')
+                    '@utils': resolve('app/src/utils/'),
+                    '@store': resolve('app/src/store/')
                 }
             },
             module: {

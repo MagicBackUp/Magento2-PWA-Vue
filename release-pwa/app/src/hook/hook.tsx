@@ -57,7 +57,7 @@ export default class VuexConnector {
         mapDispatchToProps = {},
         mapCommitToProps = {},
         mapDispatchToEmits = {}
-    }: any = {}) : (component: typeof Vue) => FunctionalComponentOptions<any> {
+    }: any = {}) : (component: any) => FunctionalComponentOptions<any> {
         return (component: typeof Vue): any => {
             return {
                 functional: true,
