@@ -10,6 +10,9 @@ const mutations: MutationTree<any> = {
     saveCmsPage (state, page: any) {
         state.cmsPage = page
     },
+    saveCmsBanner (state, banner: any[]) {
+        state.cmsBanner = banner
+    },
     saveCategory (state, category: any) {
         state.currentCategory = category
         if (category.product_count == 0) state.productCollection = {

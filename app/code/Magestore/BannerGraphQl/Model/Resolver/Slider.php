@@ -28,7 +28,6 @@ class Slider implements ResolverInterface
     }
 
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null) {
-
         $silderId = $this->scopeConfig->getValue ( 'bannerslider/general/graphql_slider_id' , \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $silderEnable = $this->scopeConfig->getValue ( 'bannerslider/general/enable_frontend' , \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
@@ -45,7 +44,7 @@ class Slider implements ResolverInterface
                 ->setOrder('order_banner', 'ASC');
 
             foreach ($bannerCollection as $slider) {
-                $result['banner_info'][] = [
+                $result['banner'][] = [
                     'slider_id' => $slider->getData('slider_id'),
                     'banner_id' => $slider->getData('banner_id'),
                     'title' => $slider->getData('name'),

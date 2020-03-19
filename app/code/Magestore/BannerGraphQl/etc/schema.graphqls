@@ -3,10 +3,10 @@ type Query {
 }
 
 type Slider {
-   banner_info: [Banner_Info]
+   banner: [Banner]
 }
 
-type Banner_Info @doc(description: "foo defines bar"){
+type Banner @doc(description: "foo defines bar"){
     slider_id: ID @doc(description: "")
     title: String @doc(description: "")
     banner_id: Int @doc(description: "")

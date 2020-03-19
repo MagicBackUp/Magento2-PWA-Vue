@@ -3,6 +3,7 @@ const state: any = {
     rootIds: 2,
     categoryMemu: [],
     cmsPage: null,
+    cmsBanner: [],
     currentCategory: null,
     currentProduct: null,
     productCollection: null

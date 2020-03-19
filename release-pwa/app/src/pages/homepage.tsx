@@ -1,5 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
+import { State, Action } from 'vuex-class'
+import { VCmsBanner } from '@components/common'
 
 @Component({
     name: 'v-homepage',
@@ -8,6 +10,9 @@ import { Component } from 'vue-property-decorator'
             inner: 'PWA',
             complement: 'Homepage'
         }
+    },
+    components: {
+        VCmsBanner
     }
 })
 export default class VHomePage extends Vue {
@@ -16,19 +21,24 @@ export default class VHomePage extends Vue {
     private checkbox: string = 'Yes'
     private switch: string = 'On'
     public star: number = 5
-    private carousels: any[] = [
-        { text: 'Slide 1', color: 'primary' },
-        { text: 'Slide 2', color: 'info' },
-        { text: 'Slide 3', color: 'success' },
-        { text: 'Slide 4', color: 'warning' },
-        { text: 'Slide 5', color: 'danger' }
-    ]
+
+    @State('cmsBanner') cmsBanner: any
+    @Action('getBanner') getBanner: any
+
+    public mounted () {
+        this.getBanner()
+    }
     
     protected render (h: CreateElement) {
         return (
             <div class="v-homepage">
                 <div class="container">
                     <h1>Silk SPA - Headless Magento</h1>
+                    {this.cmsBanner.length > 0 && (
+                        <div class="v-row">
+                            <v-cms-banner carousels={this.cmsBanner}></v-cms-banner>
+                        </div>
+                    )}
                     <div class="v-row">
                         <v-input vModel={this.name} password-reveal={true}></v-input>
                     </div>
@@ -46,39 +56,10 @@ export default class VHomePage extends Vue {
                         <v-rate vModel={this.star} showScore={true}></v-rate>
                     </div>
                     <div class="v-row">
-                        <v-carousel>
-                            {this.carousels.map((carousel: any) => {
-                                return (
-                                    <v-carousel-item>
-                                        <section class={`hero is-medium is-${carousel.color}`}>
-                                            <div class="hero-body has-text-centered">
-                                                <h1 class="title">{carousel.text}</h1>
-                                            </div>
-                                        </section>
-                                    </v-carousel-item>
-                                )
-                            })}
-                        </v-carousel>
+                        
                     </div>
                     <div class="v-row">
                         <v-progress value={60} show-value={true} format="percent"></v-progress>
-                    </div>
-                    <div class="v-row">
-                        <v-collapse open={false} aria-id="content">
-                            <button
-                                class="button is-primary"
-                                slot="trigger"
-                                aria-controls="content">Toggle</button>
-                            <div class="notification">
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                                        Nulla accumsan, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. <br/>
-                                        Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.
-                                    </p>
-                                </div>
-                            </div>
-                        </v-collapse>
                     </div>
                 </div>
             </div>

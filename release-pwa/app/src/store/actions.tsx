@@ -3,6 +3,7 @@ import { validateRouter } from '../graphql/validateRouter.gql'
 import { getStoreConfig } from '../graphql/getStoreConfig.gql'
 import { getNavigation } from '../graphql/getNavigation.gql'
 import { getCmsPage } from '../graphql/getCmsPage.gql'
+import { getSlider } from '../graphql/getSlider.gql'
 import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
 import { getProductDetail } from '../graphql/getProductDetail.gql'
 import { getProductList } from '../graphql/getProductList.gql'
@@ -59,6 +60,16 @@ const actions: ApolloActionTree<any, any> = {
 
         if (res.data) {
             commit('saveCmsPage', res.data.cmsPage)
+        }
+    },
+    async getBanner ({ commit, apollo }) {
+        let res: any = await apollo.query({
+            query: getSlider
+        })
+
+        if (res.data) {
+            const banner: any[] = res.data.slider.banner
+            commit('saveCmsBanner', banner)
         }
     },
     async getCategoryInfo ({ commit, dispatch, state, apollo }) {
