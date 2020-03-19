@@ -1,0 +1,23 @@
+type Query {
+    slider: Slider @resolver(class: "Magestore\\BannerGraphQl\\Model\\Resolver\\Slider") @doc(description: "The Slider entity returns slider data")
+}
+
+type Slider {
+   banner_info: [Banner_Info]
+}
+
+type Banner_Info @doc(description: "foo defines bar"){
+    slider_id: ID @doc(description: "")
+    title: String @doc(description: "")
+    banner_id: Int @doc(description: "")
+    order_banner: Int @doc(description: "")
+    status: Boolean @doc(description: "")
+    url: String @doc(description: "")
+    image: String @doc(description: "")
+    image_alt: String @doc(description: "")
+    width: String @doc(description: "")
+    height: String @doc(description: "")
+    start_time: String @doc(description: "")
+    end_time: String @doc(description: "")
+    slider_type: String @doc(description: "")
+}
