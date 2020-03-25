@@ -11,6 +11,7 @@ const themeConfig: ThemeConfig = {
         port: 8080,
         https: false,
         host: '127.0.0.1',
+        domain: 'dev.vue-pwa.cn',
         styles: 'scss',
         scripts: 'tsx',
         files: [

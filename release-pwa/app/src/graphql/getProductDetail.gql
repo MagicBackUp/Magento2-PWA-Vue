@@ -66,6 +66,7 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
                 html
             }     
             ...configurable
+            __typename
             special_price
             stock_status
             meta_title
@@ -77,6 +78,16 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
             media_gallery {
                 label
                 url
+                ... on ProductVideo {
+                    video_content {
+                        media_type
+                        video_provider
+                        video_url
+                        video_title
+                        video_description
+                        video_metadata
+                    }
+                }
             }
             product_links {
                 link_type

@@ -3,10 +3,10 @@ import * as path from 'path'
 import fetch from 'node-fetch'
 import { themeConfig } from '../build'
 
-const { https, host } = themeConfig.default
+const { https, domain } = themeConfig.default
 const protocol: string = https ? 'https' :  'http'
 
-fetch(`${protocol}://${host}/graphql`, {
+fetch(`${protocol}://${domain}/graphql`, {
     method: 'POST',
     headers: { 
         'Content-Type': 'application/json' 

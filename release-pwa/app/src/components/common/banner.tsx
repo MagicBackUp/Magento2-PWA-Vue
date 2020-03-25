@@ -1,5 +1,6 @@
 import { CreateElement, FunctionalComponentOptions, RenderContext } from 'vue'
 import { connector } from '@store/index'
+import router from 'router'
 
 interface BannerOptions {
     carousels: any[]
@@ -31,9 +32,9 @@ const VCmsBanner: FunctionalComponentOptions<BannerOptions> = {
                 {carousels.map((carousel: any) => {
                     return (
                         <v-carousel-item>
-                            <a href={carousel.url} title={carousel.title}>
+                            <router-link tag="a" to={carousel.url} title={carousel.title}>
                                 <img src={filterImg(carousel.image)} alt={carousel.image_alt} />
-                            </a>
+                            </router-link>
                         </v-carousel-item>
                     )
                 })}

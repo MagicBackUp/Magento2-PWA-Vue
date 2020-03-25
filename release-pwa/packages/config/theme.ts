@@ -8,6 +8,7 @@ export interface ThemeConfig {
         port?: number,
         https?: boolean,
         host?: string,
+        domain?: string,
         mode: string,
         styles: string,
         scripts: string,

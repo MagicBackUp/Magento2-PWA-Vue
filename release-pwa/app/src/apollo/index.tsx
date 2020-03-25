@@ -2,9 +2,11 @@ import fetch from 'unfetch'
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { createHttpLink, FetchOptions } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { onError } from 'apollo-link-error'
+import { InMemoryCache, IntrospectionFragmentMatcher, FragmentMatcherInterface } from 'apollo-cache-inmemory'
 import httpOrigin from './origin'
 import deviceType from './device'
+import * as fragmentTypesJson from '../../../fragmentTypes.json'
 
 // HTTP options 
 let httpOptions: FetchOptions = {
@@ -37,14 +39,34 @@ const middlewareLink: ApolloLink = new ApolloLink((operation: any, forward: any)
     return forward(operation)
 })
 
+// HTTP errors done
+const errorLink: ApolloLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+        graphQLErrors.forEach(({ message }, index: number) => {
+            graphQLErrors[index].message = message.replace('GraphQL error: ', '')
+        })
+    }
+
+    if (networkError) console.log(`[Network error]: ${networkError}`)
+})
+
+// Fragment Matcher
+const fragmentMatcher: FragmentMatcherInterface = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData: fragmentTypesJson
+})
+
 // Cache implementation
 const cache: InMemoryCache = new InMemoryCache({
     addTypename: false,
+    fragmentMatcher: fragmentMatcher
 })
+
+// Merge http to middleware
+const apolloLink: ApolloLink = middlewareLink.concat(httpLink)
 
 // Create the apollo client
 const apolloClient: any = new ApolloClient({
-    link: middlewareLink.concat(httpLink),
+    link: errorLink.concat(apolloLink),
     cache,
     connectToDevTools: true
 })
