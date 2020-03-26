@@ -13,10 +13,20 @@ export default class VProductMedia extends Vue {
         return (
             product && (
                 <div class="v-media">
-                    <img src={product.thumbnail.url} alt={product.thumbnail.label} />
+                    <div class="in-thumb">
+                        {product.media_gallery && product.media_gallery.length > 0 && (
+                            product.media_gallery.map((media: any) => {
+                                return (
+                                    <img src={media.url} alt={media.label} />
+                                )
+                            })
+                        )}
+                    </div>
+                    <div class="in-graller">
+                        <img src={product.thumbnail.url} alt={product.thumbnail.label} />
+                    </div>
                 </div>
             )
-                           
         )
     }
 }
