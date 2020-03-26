@@ -34,6 +34,8 @@ query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pa
             name
             request_var
             filter_items {
+                label
+                value_string
                 ...on SwatchLayerFilterItem {
                     label
                     value_string

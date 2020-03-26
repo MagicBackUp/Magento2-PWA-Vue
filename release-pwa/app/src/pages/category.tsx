@@ -56,26 +56,22 @@ export default class VCategory extends Vue {
             <div class="v-category">
                 {currentCategory && (
                     <div class="container">
-                        <div class="columns">
-                            <div class="column">
-                                <v-filters></v-filters>
-                            </div>
-                            <div class="column is-four-fifths">
-                                <article class="in-description">
-                                    <div class="content">
-                                        <h1>{currentCategory.name}</h1>
-                                        <v-description html={currentCategory.description}></v-description>
-                                    </div>
-                                    {currentCategory.image && (
-                                        <v-image url={currentCategory.image} title={currentCategory.name}></v-image>
-                                    )}
-                                </article>
-                                <aside>
-                                    <p class="count">{`${currentCategory.product_count} items found`}</p>
-                                    <v-products-list></v-products-list>
-                                </aside>
-                            </div>
-                        </div>
+                        <section class="in-wrapper">
+                            <v-filters></v-filters>
+                            <article class="in-description">
+                                <div class="content">
+                                    <h1>{currentCategory.name}</h1>
+                                    <v-description html={currentCategory.description}></v-description>
+                                </div>
+                                {currentCategory.image && (
+                                    <v-image url={currentCategory.image} title={currentCategory.name}></v-image>
+                                )}
+                            </article>
+                            <aside>
+                                <p class="count">{`${currentCategory.product_count} items found`}</p>
+                            </aside>
+                            <v-products-list></v-products-list>
+                        </section>
                     </div> 
                 )}
             </div>

@@ -1,18 +1,22 @@
-import Vue, { CreateElement } from 'vue'
-import { Component } from 'vue-property-decorator'
-import { State } from 'vuex-class'
+import { CreateElement, FunctionalComponentOptions, RenderContext } from 'vue'
 
-@Component({
-    name: 'v-copyright'
-})
-export default class VCopyright extends Vue {
-    @State (state => state.storeConfig) storeConfig: any
-
-    protected render (h: CreateElement) {
-        return (
-            this.storeConfig && (
-                <small class="v-copyright">{this.storeConfig.copyright}</small>
-            )
-        )
-    }
+interface Copyright {
+    html: string
 }
+
+const VCopyright: FunctionalComponentOptions<Copyright> = {
+    name: 'v-copyright',
+    props: {
+        html: String
+    },
+    functional: true,
+    render (h: CreateElement, context: RenderContext<Copyright>) {
+        const { html } = context.props
+
+        return (
+            <small class="v-copyright" domPropsInnerHTML={html}></small>
+        )
+    } 
+}
+
+export default VCopyright

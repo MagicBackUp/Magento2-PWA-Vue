@@ -1,5 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
+import { State } from 'vuex-class'
 import VLinks from './links'
 import VCopyright from './copyright'
 
@@ -11,13 +12,17 @@ import VCopyright from './copyright'
     }
 })
 export default class VFooter extends Vue {
+    @State (state => state.storeConfig) storeConfig: any
+
     protected render (h: CreateElement) {
         return (
             <footer class="v-footer">
-                <div class="container">
-                    <v-links></v-links>
-                    <v-copyright></v-copyright>
-                </div>
+                {this.storeConfig && (
+                    <div class="container">
+                        <v-links></v-links>
+                        <v-copyright html={this.storeConfig.copyright}></v-copyright>
+                    </div>
+                )}
             </footer>
         )
     }

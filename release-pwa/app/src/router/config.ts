@@ -60,7 +60,7 @@ const routes: Array<RouteConfig> = [
     },
     {
         name: 'blog',
-        path: '/blog'
+        path: '/blog',
         component: VBlog
     },
     {

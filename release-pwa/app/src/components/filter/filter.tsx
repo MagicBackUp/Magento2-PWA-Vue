@@ -28,8 +28,16 @@ export default class VFilters extends Vue {
                             <div class="in-label">
                                 {attribute.filter_items.map((code: any) => {
                                     return (
-                                        <router-link tag="a" to={`${path}?${attribute.request_var}:${code.value_string}`} class="in-value" title={code.label}>
-                                            <span>{code.label}</span>
+                                        <router-link tag="a" to={`${path}?${attribute.request_var}=${code.value_string}`} class="in-value" title={code.label}>
+                                            {code.swatch_data ? (
+                                                attribute.request_var === 'color' ? (
+                                                    <data value={code.label} title={code.label} class={`in-attr in-${attribute.request_var}`} style={{'--option-background-color': code.swatch_data.value , '--option-border-color': code.swatch_data.value, '--option-check-mark-background': '#fff'}}></data>
+                                                ) : (
+                                                    <span title={code.label} class="in-attr in-text">{code.swatch_data.value}</span>
+                                                )
+                                            ) : (
+                                                <span title={attribute.name} class="in-attr" domPropsInnerHTML={code.label}></span>
+                                            )}
                                         </router-link>
                                     )
                                 })}
