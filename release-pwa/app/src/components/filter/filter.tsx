@@ -19,32 +19,34 @@ export default class VFilters extends Vue {
         return (
             <div class="v-filters">
                 <h2 class="title">{this.i18n.shoping}</h2>
-                {filter.map((attribute: any) => {
-                    return (
-                        <article>
-                            <div class="in-code">
-                                <span>{attribute.name}</span>
-                            </div>
-                            <div class="in-label">
-                                {attribute.filter_items.map((code: any) => {
-                                    return (
-                                        <router-link tag="a" to={`${path}?${attribute.request_var}=${code.value_string}`} class="in-value" title={code.label}>
-                                            {code.swatch_data ? (
-                                                attribute.request_var === 'color' ? (
-                                                    <data value={code.label} title={code.label} class={`in-attr in-${attribute.request_var}`} style={{'--option-background-color': code.swatch_data.value , '--option-border-color': code.swatch_data.value, '--option-check-mark-background': '#fff'}}></data>
+                {filter && filter.length > 0 && (
+                    filter.map((attribute: any) => {
+                        return (
+                            <article>
+                                <div class="in-code">
+                                    <span>{attribute.name}</span>
+                                </div>
+                                <div class="in-label">
+                                    {attribute.filter_items.map((code: any) => {
+                                        return (
+                                            <router-link tag="a" to={`${path}?${attribute.request_var}=${code.value_string}`} class="in-value" title={code.label}>
+                                                {code.swatch_data ? (
+                                                    attribute.request_var === 'color' ? (
+                                                        <data value={code.label} title={code.label} class={`in-attr in-${attribute.request_var}`} style={{'--option-background-color': code.swatch_data.value , '--option-border-color': code.swatch_data.value, '--option-check-mark-background': '#fff'}}></data>
+                                                    ) : (
+                                                        <span title={code.label} class="in-attr in-text">{code.swatch_data.value}</span>
+                                                    )
                                                 ) : (
-                                                    <span title={code.label} class="in-attr in-text">{code.swatch_data.value}</span>
-                                                )
-                                            ) : (
-                                                <span title={attribute.name} class="in-attr" domPropsInnerHTML={code.label}></span>
-                                            )}
-                                        </router-link>
-                                    )
-                                })}
-                            </div>
-                        </article>
-                    )
-                })}
+                                                    <span title={attribute.name} class="in-attr" domPropsInnerHTML={code.label}></span>
+                                                )}
+                                            </router-link>
+                                        )
+                                    })}
+                                </div>
+                            </article>
+                        )
+                    })
+                )}
             </div>
         )
     }

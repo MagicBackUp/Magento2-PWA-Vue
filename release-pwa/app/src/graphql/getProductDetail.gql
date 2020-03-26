@@ -7,20 +7,6 @@ input FilterEqualTypeInput {
     in: [String]
 }
 
-fragment configurable on ConfigurableProduct {
-    configurable_options {
-        attribute_code
-        attribute_id
-        id
-        product_id
-        label
-        values {
-            label
-            value_index
-        } 
-    }
-}
-
 query getProductDetail($filter: ProductAttributeFilterInput!) {
     products(filter: $filter) {
         items {
@@ -65,7 +51,19 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
             short_description {
                 html
             }     
-            ...configurable
+            ...on ConfigurableProduct {
+                configurable_options {
+                    attribute_code
+                    attribute_id
+                    id
+                    product_id
+                    label
+                    values {
+                        label
+                        value_index
+                    } 
+                }
+            }
             __typename
             special_price
             stock_status
@@ -88,6 +86,7 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
                         video_metadata
                     }
                 }
+                __typename
             }
             product_links {
                 link_type
