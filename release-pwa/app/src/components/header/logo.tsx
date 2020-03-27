@@ -15,7 +15,7 @@ export default class VLogo extends Vue {
         return (
             logo && (
                 <a href={logo.href} class="v-logo" title={logo.title}>
-                    <img src={logo.url} alt={logo.title} />
+                    <img v-lazy={logo.url} alt={logo.title} />
                 </a>
             )
         )

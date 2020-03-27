@@ -26,7 +26,7 @@ export default class VProductsList extends Vue {
                                         <router-link tag="a" to={`/product/${product.url_key}`} title={product.title}>
                                             <figure class="in-figure">
                                                 <div class="picture">
-                                                    <img src={image.url} alt={image.label} />
+                                                    <img v-lazy={image.url} alt={image.label} />
                                                 </div>
                                             </figure>
                                             <div class="in-content">

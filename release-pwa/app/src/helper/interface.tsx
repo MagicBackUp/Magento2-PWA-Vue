@@ -16,6 +16,9 @@ export interface Router {
 
 export interface I18n {
     productInfo?: string
+    customerReivew?: string
+    noReviews?: string
+    writeReview?: string
 }
 
 export interface Logo {

@@ -2,7 +2,7 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import { State, Action } from 'vuex-class'
 import { Route } from 'vue-router'
-import { VProductMedia, VProductDetail, VProductInformation } from '@components/product'
+import { VProductMedia, VProductDetail, VProductInformation, VProductReviews } from '@components/product'
 import { I18n } from '@helper/interface'
 
 @Component({
@@ -15,7 +15,8 @@ import { I18n } from '@helper/interface'
     components: {
         VProductMedia,
         VProductDetail,
-        VProductInformation
+        VProductInformation,
+        VProductReviews
     }
 })
 export default class VProduct extends Vue {
@@ -53,16 +54,23 @@ export default class VProduct extends Vue {
     protected render (h: CreateElement) {
         return (
             <div class="v-product">
-                <div class="container">
-                    <section class="in-wrapper">
-                        <v-product-media product={this.currentProduct}></v-product-media>
-                        <v-product-detail product={this.currentProduct}></v-product-detail>
-                    </section>
-                </div>
+                <section class="v-details">
+                    <div class="container">
+                        <section class="in-wrapper">
+                            <v-product-media product={this.currentProduct}></v-product-media>
+                            <v-product-detail product={this.currentProduct}></v-product-detail>
+                        </section>
+                    </div>
+                </section>
                 <section class="v-information">
                     <div class="container">
                         <h3 class="in-title">{this.i18n.productInfo}</h3>
                         <v-product-information product={this.currentProduct}></v-product-information>
+                    </div>
+                </section>
+                <section class="v-reviews">
+                    <div class="container">
+                        <v-product-reviews product={this.currentProduct}></v-product-reviews>
                     </div>
                 </section>
             </div>

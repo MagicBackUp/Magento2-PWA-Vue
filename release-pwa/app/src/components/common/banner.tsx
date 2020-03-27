@@ -33,7 +33,7 @@ const VCmsBanner: FunctionalComponentOptions<BannerOptions> = {
                     return (
                         <v-carousel-item>
                             <router-link tag="a" to={carousel.url} title={carousel.title}>
-                                <img src={filterImg(carousel.image)} alt={carousel.image_alt} />
+                                <img v-lazy={filterImg(carousel.image)} alt={carousel.image_alt} />
                             </router-link>
                         </v-carousel-item>
                     )

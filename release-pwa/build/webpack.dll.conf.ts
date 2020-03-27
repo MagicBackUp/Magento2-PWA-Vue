@@ -10,7 +10,7 @@ const { area, src } = themeConfig.default
 const baseConfig = new WebpackConfig({
     root:  path.join(__dirname, '../app'),
     entry: {
-        vendor: ['@babel/polyfill', 'intersection-observer', 'vue', 'vue-class-component', 'vuex', 'unfetch', 'apollo-client', 'apollo-link', 'apollo-link-http', 'apollo-cache-inmemory', 'graphql-tag', 'vue-apollo', 'vue-lazyload', 'vee-validate']
+        vendor: ['@babel/polyfill', 'intersection-observer', 'vue', 'vuex', 'unfetch', 'apollo-client', 'apollo-link', 'apollo-link-http', 'apollo-cache-inmemory', 'graphql-tag', 'vue-apollo', 'vue-lazyload', 'vee-validate']
     },
     output: {
         path: path.join(__dirname, `../../app/design/${area}/${src}/web/js`),

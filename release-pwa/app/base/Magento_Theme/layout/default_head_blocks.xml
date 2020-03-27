@@ -19,6 +19,8 @@
         <meta name="og:description" content="PWA" />
         <css src="css/app.bundle.css" />
         <remove src="mage/calendar.css" />
+        <remove src="Magefan_Blog::css/blog-m.css" />
+        <remove src="Magefan_Blog::css/blog-custom.css" />
         <remove src="requirejs/require.js" />
         <remove src="mage/polyfill.js" />
     </head>

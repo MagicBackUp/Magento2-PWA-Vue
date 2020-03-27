@@ -1,4 +1,4 @@
-import { VuexConnector } from '../hook'
+import { VuexConnector, VuexActionDebounce } from '../hook'
 import state from './state'
 import getters from './getters'
 import actions from './actions'
@@ -12,7 +12,8 @@ const storeOption: any = {
     mutations,
     modules: {},
     plugins: [
-        apolloPlugin
+        apolloPlugin,
+        VuexActionDebounce
     ]
 }
 

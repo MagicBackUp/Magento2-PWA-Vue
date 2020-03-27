@@ -17,7 +17,7 @@ const VImage: FunctionalComponentOptions<Image> = {
 
         return (
             <p class="v-image">
-                <img src={url} alt={title} />
+                <img v-lazy={url} alt={title} />
             </p>
         )
     } 
