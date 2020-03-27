@@ -143,6 +143,10 @@ export default class VNavBar extends Vue {
     }
 
     public genNavbarSlots (createElement: CreateElement, slots: any) {
+        const container: any = createElement('div', {
+           class: 'container' 
+        }, slots)
+
         return createElement('nav', {
             staticClass: 'navbar',
             class: this.computedClasses,
@@ -156,7 +160,7 @@ export default class VNavBar extends Vue {
                     value: this.closeMenu
                 }
             ]
-        }, slots)
+        }, [container])
     }
 
     public genNavbarBrandNode (createElement: CreateElement) {

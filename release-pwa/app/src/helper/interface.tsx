@@ -14,6 +14,10 @@ export interface Router {
     path: string
 }
 
+export interface I18n {
+    productInfo?: string
+}
+
 export interface Logo {
     url: string
     href: string
@@ -36,4 +40,17 @@ export interface CategoryItem {
 export interface Links {
     title: string
     url: string
+}
+
+export interface Description {
+    html: string | null
+}
+
+export interface Product {
+    id: string
+    name: string | null
+    sku: string | null
+    stock_status: string | null
+    short_description: Description
+    description: Description
 }
