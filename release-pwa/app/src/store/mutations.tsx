@@ -3,6 +3,7 @@ import { MutationTree } from 'vuex'
 const mutations: MutationTree<any> = {
     saveStoreConfig (state, config: any) {
         state.storeConfig = config
+        state.rootIds = config.root_category_id
     },
     saveCategoryMenu (state, menu: any[]) {
         state.categoryMemu = menu

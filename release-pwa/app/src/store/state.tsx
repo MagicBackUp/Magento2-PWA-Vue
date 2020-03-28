@@ -1,6 +1,6 @@
 const state: any = {
     storeConfig: null,
-    rootIds: 2,
+    rootIds: null,
     categoryMemu: [],
     cmsPage: null,
     cmsBanner: [],

@@ -59,6 +59,22 @@ query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pa
                 label
                 url
             }
+            attributes {
+                attribute_code
+                attribute_id
+                attribute_label
+                attribute_options {
+                    label
+                    swatch_data {
+                        type
+                        value
+                    }
+                    value
+                }
+                attribute_type
+                attribute_value
+                entity_type
+            }
             price_range {
                 minimum_price {
                     final_price {

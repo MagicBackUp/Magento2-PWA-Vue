@@ -15,7 +15,6 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
             name
             type_id
             url_key
-            attribute_set_id
             attributes {
                 attribute_code
                 attribute_id

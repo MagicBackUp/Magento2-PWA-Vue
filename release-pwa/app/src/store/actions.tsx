@@ -21,7 +21,7 @@ const actions: ApolloActionTree<any, any> = {
     async routeInit ({ dispatch }) {
         dispatch('getStoreConfig')
     },
-    async getStoreConfig ({ commit, apollo }) {
+    async getStoreConfig ({ commit, dispatch, apollo }) {
         let res: any = await apollo.query({
             query: getStoreConfig
         })
@@ -29,10 +29,12 @@ const actions: ApolloActionTree<any, any> = {
         if (res.data) {
             const storeConfig: any = res.data.storeConfig
             commit('saveStoreConfig', storeConfig)
+            dispatch('getNavigation')
         }
     },
     async getNavigation ({ commit, state, apollo }) {
         let { rootIds } = state
+
         let res: any = await apollo.query({
             query: getNavigation,
             variables: {
