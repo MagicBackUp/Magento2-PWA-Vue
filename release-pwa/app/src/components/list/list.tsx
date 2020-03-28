@@ -8,6 +8,10 @@ import { Getter } from 'vuex-class'
 export default class VProductsList extends Vue {
     @Getter('productList') productList: any
 
+    public getProductAttr (code: string) {
+        const attributes: any[] = this.productList
+    }
+
     protected render (h: CreateElement) {
         const products: any[] = this.productList
 
@@ -39,7 +43,8 @@ export default class VProductsList extends Vue {
                                                     </span>
                                                     <meta itemprop="priceCurrency" content="USD" />    
                                                 </p>
-                                                <p class="name">{product.name}</p>
+                                                <p class="name" itemprop="brand">{product.name}</p>
+                                                <p class="brand" itemprop="brand">{this.getProductAttr('brand')}</p>
                                             </div>
                                         </router-link>
                                     </div>

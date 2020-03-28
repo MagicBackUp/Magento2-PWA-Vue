@@ -2,6 +2,7 @@ import { ApolloActionTree } from './interface'
 import { validateRouter } from '../graphql/validateRouter.gql'
 import { getStoreConfig } from '../graphql/getStoreConfig.gql'
 import { getNavigation } from '../graphql/getNavigation.gql'
+import { createEmptyCart } from '../graphql/createEmptyCart.gql'
 import { getCmsPage } from '../graphql/getCmsPage.gql'
 import { getSlider } from '../graphql/getSlider.gql'
 import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
@@ -49,6 +50,18 @@ const actions: ApolloActionTree<any, any> = {
         if (res.data) {
             const categoryMenu: any = res.data.categoryList[0].children
             commit('saveCategoryMenu', categoryMenu)
+        }
+    },
+    async createEmptyCart ({ commit, apollo }) {
+        let res: any = await apollo.mutate({
+            mutation: createEmptyCart,
+            variables: {
+                cart_id: null
+            }
+        })
+
+        if (res.data) {
+            console.log(res.data)
         }
     },
     async getCmsPage ({ commit, state, apollo }) {

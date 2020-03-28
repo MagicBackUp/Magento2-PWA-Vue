@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as VueHead from 'vue-head'
 import VueRouter from 'vue-router'
 import VueApollo from 'vue-apollo'
+import VueI18n from 'vue-i18n'
 import VueLazyload from 'vue-lazyload'
 import InfiniteLoading from 'vue-infinite-loading'
 import { sync } from 'vuex-router-sync'
@@ -27,6 +28,7 @@ Vue.use(VueHead, {
 })
 Vue.use(VueRouter)
 Vue.use(VueApollo)
+Vue.use(VueI18n)
 Vue.use(Lazyload.install, {
     preLoad: 1.3,
     error: '',
