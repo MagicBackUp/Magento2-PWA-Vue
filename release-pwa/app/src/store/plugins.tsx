@@ -19,7 +19,7 @@ const patchAction: Function = (store: any, type: any, handler: Function, local: 
             rootGetters: store.getters,
             rootState: store.state,
             apollo: store.$apollo.defaultClient,
-            bus: Vue.prototype['$bus']
+            cookies: Vue.prototype['$cookies']
         }, payload, cb)
 
         if (!isPromise(res)) res = Promise.resolve(res)

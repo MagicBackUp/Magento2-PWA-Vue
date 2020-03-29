@@ -52,7 +52,11 @@ const actions: ApolloActionTree<any, any> = {
             commit('saveCategoryMenu', categoryMenu)
         }
     },
-    async createEmptyCart ({ commit, apollo }) {
+    async createEmptyCart ({ commit, apollo, cookies }) {
+        let cart_id: string | undefined = cookies.get('cart_id')
+
+        if (cart_id) return false
+
         let res: any = await apollo.mutate({
             mutation: createEmptyCart,
             variables: {
@@ -61,7 +65,9 @@ const actions: ApolloActionTree<any, any> = {
         })
 
         if (res.data) {
-            console.log(res.data)
+            const cart_id: string = res.data.createEmptyCart
+            cookies.set('cart_id', cart_id, { expires: 86400 })
+            commit('saveCartId', cart_id)
         }
     },
     async getCmsPage ({ commit, state, apollo }) {

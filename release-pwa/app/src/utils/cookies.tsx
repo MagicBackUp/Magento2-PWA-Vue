@@ -1,10 +1,9 @@
 import { VueConstructor } from 'vue'
-import Cookies, { CookieAttributes } from 'js-cookie'
+import * as Cookies from 'js-cookie'
+import { CookieAttributes } from 'js-cookie'
 
 const VueCookies: any = {
-    install: (Vue: VueConstructor, options?: CookieAttributes) => {
-        Cookies.defaults = Object.assign(Cookies.defaults, options)
-
+    install: (Vue: VueConstructor) => {
         const cookies: any = {
             get: (key: string): string | undefined  => {
                 return Cookies.get(key)

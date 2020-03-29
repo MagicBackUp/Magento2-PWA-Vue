@@ -1,9 +1,10 @@
+import VuexPersisted from './persist'
 import { VuexConnector, VuexActionDebounce } from '../hook'
 import state from './state'
 import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
-import apolloPlugin from './plugins'
+import plugins from './plugins'
 
 const storeOption: any = {
     state: state,
@@ -12,7 +13,8 @@ const storeOption: any = {
     mutations,
     modules: {},
     plugins: [
-        apolloPlugin,
+        plugins,
+        VuexPersisted,
         VuexActionDebounce
     ]
 }

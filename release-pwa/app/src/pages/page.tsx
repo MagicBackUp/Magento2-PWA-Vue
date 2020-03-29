@@ -28,10 +28,12 @@ export default class VPage extends Vue {
 
     @State('cmsPage') cmsPage: any
     @Action('getCmsPage') getCmsPage: any
+    @Action('createEmptyCart') createEmptyCart: any
 
     public beforeRouteEnter (to: Route, from: Route, next: Function) {
         next((vm: Vue) => {
             vm.getCmsPage()
+            vm.createEmptyCart()
         })
     }
     

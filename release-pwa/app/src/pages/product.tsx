@@ -39,10 +39,12 @@ export default class VProduct extends Vue {
 
     @State('currentProduct') currentProduct: any
     @Action('getProductDetail') getProductDetail: any
+    @Action('createEmptyCart') createEmptyCart: any
     
     public beforeRouteEnter (to: Route, from: Route, next: Function) {
         next((vm: Vue) => {
             vm.getProductDetail()
+            vm.createEmptyCart()
         })
     }
     

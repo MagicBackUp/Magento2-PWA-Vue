@@ -1,6 +1,5 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
-import { Action } from 'vuex-class' 
 import VNavigation from './navigation'
 
 @Component({
@@ -10,12 +9,6 @@ import VNavigation from './navigation'
     }
 })
 export default class VHeader extends Vue {
-    @Action('createEmptyCart') createEmptyCart: any
-
-    public created () {
-        this.createEmptyCart()
-    }
-
     protected render (h: CreateElement) {
         return (
             <header class="v-header">

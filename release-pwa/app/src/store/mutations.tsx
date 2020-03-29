@@ -8,6 +8,9 @@ const mutations: MutationTree<any> = {
         state.storeConfig = config
         state.rootIds = config.root_category_id
     },
+    saveCartId (state, id: string) {
+        state.cartId = id
+    },
     saveCategoryMenu (state, menu: any[]) {
         state.categoryMemu = menu
     },

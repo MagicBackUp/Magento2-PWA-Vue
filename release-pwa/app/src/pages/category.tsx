@@ -37,10 +37,12 @@ export default class VCategory extends Vue {
 
     @State('currentCategory') currentCategory: any
     @Action('getCategoryInfo') getCategoryInfo: any
+    @Action('createEmptyCart') createEmptyCart: any
 
     public beforeRouteEnter (to: Route, from: Route, next: Function) {
         next((vm: Vue) => {
             vm.getCategoryInfo()
+            vm.createEmptyCart()
         })
     }
     
