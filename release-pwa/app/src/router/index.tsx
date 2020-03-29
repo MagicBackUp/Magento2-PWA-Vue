@@ -1,7 +1,7 @@
 import { Component } from 'vue'
 import VueRouter, { Route } from 'vue-router'
+import { VueRouterUtil } from '@utils/index'
 import routes from './config'
-import RouterUtil from '@utils/router'
 
 const router: VueRouter = new VueRouter({
     mode: 'history',
@@ -17,8 +17,8 @@ const router: VueRouter = new VueRouter({
 })
 
 router.beforeEach((to: Route, from: Route, next: any) => {
-    if (RouterUtil.hasRouter(to)) {
-        const params: string = RouterUtil.filterRouter(to)
+    if (VueRouterUtil.hasRouter(to)) {
+        const params: string = VueRouterUtil.filterRouter(to)
 
         router.app.$store.dispatch('validateRouter', params).then((res: any) => {
             const urlResolver: any = res.data.urlResolver

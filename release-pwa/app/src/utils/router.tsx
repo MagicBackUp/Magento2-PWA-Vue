@@ -1,15 +1,15 @@
 import { Router } from '@helper/interface'
-import { RouterSet } from '@config/store'
+import { ROUTER_SET } from '@config/index'
 
-const RouterUtil: any =  {
+const VueRouterUtil: any =  {
     hasRouter (router: Router) {
-        return RouterSet.has(router.name)
+        return ROUTER_SET.has(router.name)
     },
     filterRouter (router: Router) {
-        if (RouterSet.has(router.name)) {
+        if (ROUTER_SET.has(router.name)) {
             return router.path.replace(`/${router.name}/`, '')
         }
     }
 }
 
-export default RouterUtil
+export default VueRouterUtil

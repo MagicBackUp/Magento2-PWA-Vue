@@ -1,6 +1,9 @@
 import { MutationTree } from 'vuex'
 
 const mutations: MutationTree<any> = {
+    updateLocale (state, value: string) {
+        state.locale = value
+    },
     saveStoreConfig (state, config: any) {
         state.storeConfig = config
         state.rootIds = config.root_category_id

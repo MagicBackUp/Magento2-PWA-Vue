@@ -5,9 +5,11 @@ import VueRouter from 'vue-router'
 import VueApollo from 'vue-apollo'
 import VueI18n from 'vue-i18n'
 import VueLazyload from 'vue-lazyload'
-import InfiniteLoading from 'vue-infinite-loading'
+import VueInfiniteLoading from 'vue-infinite-loading'
+import { VueCookies } from '@utils/index'
 import { sync } from 'vuex-router-sync'
 import { Component } from 'vue-property-decorator'
+import { DEFAULT_LOCALE } from '@config/index'
 import Vui from '../ui'
 import VApp from './app'
 import router from './router'
@@ -38,7 +40,7 @@ Vue.use(Lazyload.install, {
         'scroll'
     ]
 })
-Vue.use(InfiniteLoading, {
+Vue.use(VueInfiniteLoading, {
     props: {
         spinner: 'bubbles',
         distance: 500,
@@ -52,6 +54,7 @@ Vue.use(InfiniteLoading, {
         noMore: ``
     }
 })
+Vue.use(VueCookies)
 Vue.use(Vui)
 
 Component.registerHooks([
@@ -63,6 +66,9 @@ Component.registerHooks([
 const store: any = new Vuex.Store({
     ...storeOption
 })
+const i18n: VueI18n = new VueI18n({
+    locale: store.state.locale ? store.state.locale : DEFAULT_LOCALE
+})
 
 store.$apollo = apolloOptions
 sync(store, router)
@@ -71,6 +77,7 @@ new Vue({
     el: '#app',
     router,
     store,
+    i18n,
     apolloProvider,
     render: h => h(VApp)
 })
