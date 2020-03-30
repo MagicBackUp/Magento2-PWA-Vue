@@ -66,7 +66,7 @@ const actions: ApolloActionTree<any, any> = {
 
         if (res.data) {
             const cart_id: string = res.data.createEmptyCart
-            cookies.set('cart_id', cart_id, { expires: 86400 })
+            cookies.set('cart_id', cart_id, { expires: 604800 / 60 / 60 / 24 })
             commit('saveCartId', cart_id)
         }
     },

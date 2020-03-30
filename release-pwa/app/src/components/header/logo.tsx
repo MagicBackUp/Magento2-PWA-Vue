@@ -7,10 +7,10 @@ import { Logo } from '@helper/interface'
     name: 'v-logo'
 })
 export default class VLogo extends Vue {
-    @Getter('logoStore') logoStore: any
+    @Getter('logo') logo: any
 
     protected render (h: CreateElement) {
-        const logo: Logo = this.logoStore
+        const logo: Logo = this.logo
 
         return (
             logo && (

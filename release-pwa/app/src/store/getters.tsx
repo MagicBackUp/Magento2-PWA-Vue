@@ -2,7 +2,7 @@ import { GetterTree } from 'vuex'
 import { StoreConfig } from '@helper/interface'
 
 const getters: GetterTree<any, any> = {
-    logoStore: (state) => {
+    logo: (state) => {
         const config: StoreConfig = state.storeConfig
         
         if (config) {
