@@ -79,3 +79,7 @@ type ProductStockItem {
     min_sale_qty: Int @doc(description: "Minimal amount of item that can be bought")
     max_sale_qty: Int @doc(description: "Maximal amount of item that can be bought")
 }
+
+type StoreConfig @doc(description: "The type contains information about a store config") {
+    cookie_domain : String @doc(description: "Cookie Domain") @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\StoreConfig\\Cookie")
+}
