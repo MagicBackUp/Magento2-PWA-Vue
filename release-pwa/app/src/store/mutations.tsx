@@ -30,8 +30,19 @@ const mutations: MutationTree<any> = {
     saveProductDetail (state, product: any) {
         state.currentProduct = product
     },
+    setCategoryFilter (state, filter: any) {
+        state.categoryFilter = filter
+    },
+    setCategorySorter (state, sorter: any) {
+        state.categorySorter = sorter
+    },
+    setCategoryPager (state, pager: any) {
+        state.categoryPager = pager
+    },
     updateProducts (state, products: any) {
-        state.productCollection = products
+        state.productList = products.items
+        state.productFilter = products.filters
+        state.productSorter = products.sort_fields
     }
 }
 

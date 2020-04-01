@@ -7,7 +7,13 @@ const state: any = {
     cmsBanner: [],
     currentCategory: null,
     currentProduct: null,
-    productCollection: null
+    productList: [],
+    productFilter: [],
+    productSorter: [],
+    categoryFilter: null,
+    categorySorter: null,
+    categoryPager: null,
+    infiniteId: + new Date()
 }
 
 export default state

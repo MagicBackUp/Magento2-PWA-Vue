@@ -1,12 +1,12 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
+import { State } from 'vuex-class'
 
 @Component({
     name: 'v-filters'
 })
 export default class VFilters extends Vue {
-    @Getter('filter') filter: any
+    @State('productFilter') productFilter: any
 
     public i18n: any = {
         shoping: 'Shopping Options'
@@ -14,13 +14,13 @@ export default class VFilters extends Vue {
 
     protected render (h: CreateElement) {
         const path: string = this.$route.path
-        const filter: any[] = this.filter
+        const filters: any[] = this.productFilter
 
         return (
             <div class="v-filters">
                 <h2 class="title">{this.i18n.shoping}</h2>
-                {filter && filter.length > 0 && (
-                    filter.map((attribute: any) => {
+                {filters && filters.length > 0 && (
+                    filters.map((attribute: any) => {
                         return (
                             <article>
                                 <div class="in-code">

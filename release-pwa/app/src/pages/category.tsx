@@ -72,7 +72,7 @@ export default class VCategory extends Vue {
                             <aside>
                                 <p class="count">{`${currentCategory.product_count} items found`}</p>
                             </aside>
-                            <v-products-list></v-products-list>
+                            <v-products-list ids={currentCategory.id}></v-products-list>
                         </section>
                     </div> 
                 )}

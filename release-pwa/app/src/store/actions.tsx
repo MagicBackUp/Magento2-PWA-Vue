@@ -108,33 +108,21 @@ const actions: ApolloActionTree<any, any> = {
 
         if (res.data) {
             const category: any = res.data.categoryList[0]
-
             commit('saveCategory', category)
-
-            if (category.product_count > 0) dispatch('getProductList', category.id)
         }
     },
-    async getProductList ({ commit, apollo }, id: string) {
-        let res: any = await apollo.query({
+    async getProductList ({ state, apollo }) {
+        const { categoryFilter, categorySorter, categoryPager } = state
+
+        return await apollo.query({
             query: getProductList,
             variables: {
-                filter: {
-                    category_id: {
-                        eq: id
-                    }
-                },
-                pageSize: 20,
-                currentPage: 1,
-                sort: {
-                    position: 'ASC'
-                }
+                filter: categoryFilter,
+                pageSize: categoryPager.pageSize,
+                currentPage: categoryPager.currentPage,
+                sort: categorySorter
             }
         })
-
-        if (res.data) {
-            const products: any = res.data.products
-            commit('updateProducts', products)
-        }
     },
     async getProductDetail ({ commit, state, apollo }) {
         let path: string = state.route.path

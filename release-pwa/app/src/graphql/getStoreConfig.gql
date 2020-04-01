@@ -9,12 +9,7 @@ query getStoreConfig {
         category_url_suffix
         code
         copyright
-        grid_per_page
-        grid_per_page_values
         header_logo_src
-        list_mode
-        list_per_page
-        list_per_page_values
         locale
         logo_alt
         logo_height
@@ -27,8 +22,33 @@ query getStoreConfig {
         secure_base_static_url
         secure_base_url
         show_cms_breadcrumbs
-        store_name
-        timezone
         welcome
+    }
+    currency {
+        available_currency_codes
+        base_currency_code
+        base_currency_symbol
+        exchange_rates {
+            currency_to
+            rate
+        }
+    }
+    countries {
+        full_name_locale
+        id
+        two_letter_abbreviation
+        available_regions {
+            code
+            id 
+            name
+        }
+    }
+    getRatings {
+        rating_code
+        rating_id
+        rating_options {
+            option_id
+            value
+        }
     }
 }
