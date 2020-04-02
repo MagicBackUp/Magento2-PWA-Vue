@@ -80,6 +80,13 @@ type ProductStockItem {
     max_sale_qty: Int @doc(description: "Maximal amount of item that can be bought")
 }
 
-type StoreConfig @doc(description: "The type contains information about a store config") {
-    cookie_domain : String @doc(description: "Cookie Domain") @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\StoreConfig\\Cookie")
+type StoreConfig {
+    cookie: cookieConfig @doc(described: "Website cookie setting") @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\StoreConfig\\Cookie")
+}
+
+type cookieConfig {
+    cookie_lifetime: String @doc(description: "Cookie lifetime") 
+    cookie_path: String @doc(description: "Cookie path")
+    cookie_domain: String @doc(description: "Cookie domain")
+    cookie_secure: String @doc(description: "Cookie secure https or http")
 }

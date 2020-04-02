@@ -23,6 +23,12 @@ query getStoreConfig {
         secure_base_url
         show_cms_breadcrumbs
         welcome
+        cookie {
+            cookie_lifetime
+            cookie_path
+            cookie_domain
+            cookie_secure
+        }
     }
     currency {
         available_currency_codes

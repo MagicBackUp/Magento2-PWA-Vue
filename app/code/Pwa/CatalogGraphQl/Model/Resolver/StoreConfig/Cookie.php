@@ -23,14 +23,28 @@ class Cookie implements ResolverInterface
      * @param \Magento\Framework\View\Element\Js\Cookie $cookie
      */
     public function __construct(
-        \Magento\Framework\View\Element\Js\Cookie $cookie
+        \Magento\Framework\View\Element\Js\Cookie $cookie,
+        \Magento\Store\Model\StoreManagerInterface $storeManager
     )
     {
         $this->cookie = $cookie;
+        $this->_storeManager = $storeManager;
+    }
+
+    public function isCurrentlySecure()
+    {
+        return $this->_storeManager->getStore()->isCurrentlySecure();
     }
 
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        return $this->cookie->getDomain();
-    }
+        $cookieConfig = [
+            'cookie_lifetime' => $this->cookie->getLifetime(),
+            'cookie_path' => $this->cookie->getDomain(),
+            'cookie_domain' => $this->cookie->getPath(),
+            'cookie_secure' => $this->isCurrentlySecure()
+        ];
+
+        return $cookieConfig;
+    }  
 }
