@@ -7,6 +7,7 @@ import VueI18n from 'vue-i18n'
 import VueLazyload from 'vue-lazyload'
 import VueInfiniteLoading from 'vue-infinite-loading'
 import { VueCookies } from '@utils/index'
+import { VFragment } from '@tool/index'
 import { sync } from 'vuex-router-sync'
 import { Component } from 'vue-property-decorator'
 import { DEFAULT_LOCALE } from '@config/index'
@@ -56,6 +57,7 @@ Vue.use(VueInfiniteLoading, {
 })
 Vue.use(VueCookies)
 Vue.use(Vui)
+Vue.component('v-fragment', VFragment)
 
 Component.registerHooks([
     'beforeRouteEnter',

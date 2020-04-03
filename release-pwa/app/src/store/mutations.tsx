@@ -43,6 +43,12 @@ const mutations: MutationTree<any> = {
         state.productList = products.items
         state.productFilter = products.filters
         state.productSorter = products.sort_fields
+    },
+    routerCategory (state) {
+        state.productList = []
+        state.productFilter = []
+        state.productSorter = []
+        state.infiniteId += 1
     }
 }
 

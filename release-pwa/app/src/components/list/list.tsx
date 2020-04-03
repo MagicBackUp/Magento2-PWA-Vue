@@ -1,19 +1,24 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import { State, Action, Mutation } from 'vuex-class'
+import { VProductItem } from '@components/common'
 
 @Component({
-    name: 'v-products-list'
+    name: 'v-products-list',
+    components: {
+        VProductItem
+    }
 })
 export default class VProductsList extends Vue {
     @Prop(Number) readonly ids: number | undefined
     @Watch('$route', { deep: true })
     onRouteChange (to: any, from: any) {
-        console.log(to)
+        if (to.name === 'category') {
+            this.routerCategory()
+        }
     }
 
-    public infiniteId: number = + new Date()
-
+    @State('infiniteId') infiniteId: any
     @State('categoryPager') categoryPager: any
     @State('productList') productList: any
     @Action('getProductList') getProductList: any
@@ -21,6 +26,7 @@ export default class VProductsList extends Vue {
     @Mutation('setCategorySorter') setCategorySorter: any
     @Mutation('setCategoryPager') setCategoryPager: any
     @Mutation('updateProducts') updateProducts: any
+    @Mutation('routerCategory') routerCategory: any
 
     private mounted () {
         this.init()
@@ -30,10 +36,6 @@ export default class VProductsList extends Vue {
         this.setCategoryFilter({ category_id: { eq: this.ids }})
         this.setCategorySorter({ position: 'ASC' })
         this.setCategoryPager({ currentPage: 1, pageSize: 12, totalPages: 1 })
-    }
-
-    public getProductAttr (code: string) {
-        const attributes: any[] = this.productList
     }
 
     public infiniteScroll ($state: any) {
@@ -63,36 +65,12 @@ export default class VProductsList extends Vue {
 
         return (
             <div class="v-produts-list">
+                {console.log(this.infiniteId)}
                 <ul class="list">
                     {products.map((product: any, index: number) => {
-                        const image: any = product.thumbnail
-                        const mini_price: any = product.price_range.minimum_price
-
                         return (
                             <li key={index} itemscope itemtype="https://schema.org/Product">
-                                <meta itemprop="sku" content={product.sku} />
-                                <div class="v-product-item">
-                                    <router-link tag="a" to={`/product/${product.url_key}`} title={product.title}>
-                                        <figure class="in-figure">
-                                            <div class="picture">
-                                                <img src={image.url} alt={image.label} />
-                                            </div>
-                                        </figure>
-                                        <div class="in-content">
-                                            <p class="price" itemprop="offers" itemscope="" itemtype="https://schema.org/AggregateOffer">
-                                                <span>
-                                                    <data value={mini_price.final_price.value}>
-                                                        <span>$</span>
-                                                        <span itemprop="lowPrice">{mini_price.final_price.value}</span>
-                                                    </data>
-                                                </span>
-                                                <meta itemprop="priceCurrency" content="USD" />    
-                                            </p>
-                                            <p class="name" itemprop="brand">{product.name}</p>
-                                            <p class="brand" itemprop="brand">{this.getProductAttr('brand')}</p>
-                                        </div>
-                                    </router-link>
-                                </div>
+                                <v-product-item product={product}></v-product-item>
                             </li>
                         )
                     })}

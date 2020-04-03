@@ -1,6 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
 import { State } from 'vuex-class'
+import { FILTER_COLOR_WHITE_BORDER } from '@config/index'
 
 @Component({
     name: 'v-filters'
@@ -32,7 +33,7 @@ export default class VFilters extends Vue {
                                             <router-link tag="a" to={`${path}?${attribute.request_var}=${code.value_string}`} class="in-value" title={code.label}>
                                                 {code.swatch_data ? (
                                                     attribute.request_var === 'color' ? (
-                                                        <data value={code.label} title={code.label} class={`in-attr in-${attribute.request_var}`} style={{'--option-background-color': code.swatch_data.value , '--option-border-color': code.swatch_data.value, '--option-check-mark-background': '#fff'}}></data>
+                                                        <data value={code.label} title={code.label} class={`in-attr in-${attribute.request_var}`} style={{'--option-background-color': code.swatch_data.value , '--option-border-color': code.label === 'white' ? FILTER_COLOR_WHITE_BORDER : code.swatch_data.value, '--option-check-mark-background': '#fff'}}></data>
                                                     ) : (
                                                         <span title={code.label} class="in-attr in-text">{code.swatch_data.value}</span>
                                                     )

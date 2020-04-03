@@ -44,6 +44,7 @@
             "@helper/*": ["helper/*"],
             "@config/*": ["config/*"],
             "@utils/*": ["utils/*"],
+            "@tool/*": ["tool/*"],
             "@store/*": ["store/*"]
         },                           
         // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */

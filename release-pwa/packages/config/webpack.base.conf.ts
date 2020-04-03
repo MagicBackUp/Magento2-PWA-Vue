@@ -121,6 +121,7 @@ export class WebpackConfig {
                     '@helper': resolve('app/src/helper/'),
                     '@config': resolve('app/src/config'),
                     '@utils': resolve('app/src/utils/'),
+                    '@tool': resolve('app/src/tool/'),
                     '@store': resolve('app/src/store/')
                 }
             },
