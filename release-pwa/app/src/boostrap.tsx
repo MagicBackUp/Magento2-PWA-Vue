@@ -51,8 +51,8 @@ Vue.use(VueInfiniteLoading, {
         throttleLimit: 50
     },
     slots: {
-        noResults: ``,
-        noMore: ``
+        noResults: `There is no any product to show ...`,
+        noMore: `There is no more product ...`
     }
 })
 Vue.use(VueCookies)

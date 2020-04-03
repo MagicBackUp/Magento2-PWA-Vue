@@ -93,7 +93,7 @@ const actions: ApolloActionTree<any, any> = {
             commit('saveCmsBanner', banner)
         }
     },
-    async getCategoryInfo ({ commit, dispatch, state, apollo }) {
+    async getCategoryInfo ({ commit, state, apollo }) {
         let path: string = state.route.path
         let res: any = await apollo.query({
             query: getCategoryInfo,
@@ -118,8 +118,8 @@ const actions: ApolloActionTree<any, any> = {
             query: getProductList,
             variables: {
                 filter: categoryFilter,
-                pageSize: categoryPager.pageSize,
-                currentPage: categoryPager.currentPage,
+                pageSize: categoryPager.page_size,
+                currentPage: categoryPager.current_page,
                 sort: categorySorter
             }
         })

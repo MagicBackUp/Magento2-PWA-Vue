@@ -26,6 +26,7 @@ const mutations: MutationTree<any> = {
             items: [],
             aggregations: []
         }
+        state.resetCategoryKey += 1
     },
     saveProductDetail (state, product: any) {
         state.currentProduct = product
@@ -40,15 +41,19 @@ const mutations: MutationTree<any> = {
         state.categoryPager = pager
     },
     updateProducts (state, products: any) {
-        state.productList = products.items
+        products.page_info.current_page += 1
+        state.productList = [...state.productList, ...products.items]
         state.productFilter = products.filters
         state.productSorter = products.sort_fields
+        state.categoryPager = products.page_info
     },
-    routerCategory (state) {
+    resetCategory (state) {
         state.productList = []
         state.productFilter = []
         state.productSorter = []
-        state.infiniteId += 1
+        state.categoryFilter = null
+        state.categorySorter = null
+        state.categoryPager = null
     }
 }
 

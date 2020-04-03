@@ -1,5 +1,5 @@
 interface Window {
-    webkitAnimationEnd: any
+    key: any
 }
 
 declare module '*.svg'

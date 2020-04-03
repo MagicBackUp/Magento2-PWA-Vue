@@ -36,6 +36,7 @@ export default class VCategory extends Vue {
     }
 
     @State('currentCategory') currentCategory: any
+    @State('resetCategoryKey') resetCategoryKey: any
     @Action('getCategoryInfo') getCategoryInfo: any
     @Action('createEmptyCart') createEmptyCart: any
 
@@ -72,7 +73,7 @@ export default class VCategory extends Vue {
                             <aside>
                                 <p class="count">{`${currentCategory.product_count} items found`}</p>
                             </aside>
-                            <v-products-list ids={currentCategory.id}></v-products-list>
+                            <v-products-list key={this.resetCategoryKey} ids={currentCategory.id}></v-products-list>
                         </section>
                     </div> 
                 )}

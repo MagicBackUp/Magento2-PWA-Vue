@@ -57,3 +57,14 @@ export interface Product {
     short_description: Description
     description: Description
 }
+
+export interface API {
+    key?: string
+    host?: string
+    url?: string
+    version?: string
+    async?: boolean
+    defer?: boolean
+    protocol?: string
+    callback?: Function
+}

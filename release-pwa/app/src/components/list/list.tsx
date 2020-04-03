@@ -2,6 +2,7 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import { State, Action, Mutation } from 'vuex-class'
 import { VProductItem } from '@components/common'
+import { DEFAULT_CATEGORY_SORT_KEY, DEFAULT_CATEGORY_SORT_VALUE, DEFAULT_CATEGORY_PAGE_SIZE } from '@config/index'
 
 @Component({
     name: 'v-products-list',
@@ -14,7 +15,7 @@ export default class VProductsList extends Vue {
     @Watch('$route', { deep: true })
     onRouteChange (to: any, from: any) {
         if (to.name === 'category') {
-            this.routerCategory()
+            this.resetCategory()
         }
     }
 
@@ -26,31 +27,31 @@ export default class VProductsList extends Vue {
     @Mutation('setCategorySorter') setCategorySorter: any
     @Mutation('setCategoryPager') setCategoryPager: any
     @Mutation('updateProducts') updateProducts: any
-    @Mutation('routerCategory') routerCategory: any
+    @Mutation('resetCategory') resetCategory: any
 
     private mounted () {
         this.init()
     }
 
     public init () {
+        console.log(this.ids)
         this.setCategoryFilter({ category_id: { eq: this.ids }})
-        this.setCategorySorter({ position: 'ASC' })
-        this.setCategoryPager({ currentPage: 1, pageSize: 12, totalPages: 1 })
+        this.setCategorySorter({ [DEFAULT_CATEGORY_SORT_KEY]: DEFAULT_CATEGORY_SORT_VALUE })
+        this.setCategoryPager({ current_page: 1, page_size: DEFAULT_CATEGORY_PAGE_SIZE, total_pages: 1 })
     }
 
     public infiniteScroll ($state: any) {
-        if (this.categoryPager.currentPage <= this.categoryPager.totalPages) {
+        if (this.categoryPager.current_page <= this.categoryPager.total_pages) {
             this.getProductList().then((response: any) => {
                 if (response) {
                     const products: any = response.data.products
 
                     this.updateProducts(products)
-                    // if (products.items.length < this.pageSize) {
+                    if (products.items.length < this.categoryPager.page_size) {
                         $state.complete()
-                    // } else {
-                    //     this.setCategoryPager()
-                    //     $state.loaded()
-                    // }
+                    } else {
+                        $state.loaded()
+                    }
                 } 
             }).catch((error: any) => {
                 $state.complete()
@@ -65,7 +66,6 @@ export default class VProductsList extends Vue {
 
         return (
             <div class="v-produts-list">
-                {console.log(this.infiniteId)}
                 <ul class="list">
                     {products.map((product: any, index: number) => {
                         return (

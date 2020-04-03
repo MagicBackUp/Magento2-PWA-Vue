@@ -13,7 +13,8 @@ const state: any = {
     categoryFilter: null,
     categorySorter: null,
     categoryPager: null,
-    infiniteId: + new Date()
+    infiniteId: + new Date(),
+    resetCategoryKey: + new Date
 }
 
 export default state
