@@ -13,6 +13,7 @@ const state: any = {
     categoryFilter: null,
     categorySorter: null,
     categoryPager: null,
+    categoryPriceRange: [],
     infiniteId: + new Date(),
     resetCategoryKey: + new Date
 }

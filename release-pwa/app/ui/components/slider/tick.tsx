@@ -30,10 +30,10 @@ export default class VSliderTick extends Vue {
     protected render (h: CreateElement) {
         return (
             <div
-                class={['b-slider-tick', { 'is-tick-hidden': this.hidden }]}
+                class={['v-slider-tick', { 'is-tick-hidden': this.hidden }]}
                 style={this.getTickStyle(this.position)}>
                 {this.$slots.default && (
-                    <span class="b-slider-tick-label">
+                    <span class="v-slider-tick-label">
                         {this.$slots.default}
                     </span>
                 )}

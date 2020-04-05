@@ -34,7 +34,6 @@ export default class VProductsList extends Vue {
     }
 
     public init () {
-        console.log(this.ids)
         this.setCategoryFilter({ category_id: { eq: this.ids }})
         this.setCategorySorter({ [DEFAULT_CATEGORY_SORT_KEY]: DEFAULT_CATEGORY_SORT_VALUE })
         this.setCategoryPager({ current_page: 1, page_size: DEFAULT_CATEGORY_PAGE_SIZE, total_pages: 1 })

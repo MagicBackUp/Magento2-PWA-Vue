@@ -22,7 +22,7 @@
     .in-code {
         margin-bottom: 1rem;
 
-        span {
+        > span {
             font-weight: 700;
         }
     }
@@ -42,7 +42,7 @@
         justify-content: var(--product-configurable-attributes-direction);
         align-items: center;
 
-        span {
+        > span {
             background-color: var(--option-background-color);
             border-color: var(--option-border-color);
             border-width: 1px;
@@ -117,5 +117,15 @@
         min-width: calc(1.25*var(--option-size));
         width: auto;
         text-align: center;
+    }
+}
+
+.in-price-range {
+    font-size: .9rem;
+    opacity: .8;
+
+    .symbol {
+        display: inline-block;
+        margin: 0 .2rem;
     }
 }

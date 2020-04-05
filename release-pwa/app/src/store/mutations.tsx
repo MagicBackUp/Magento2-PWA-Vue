@@ -46,6 +46,7 @@ const mutations: MutationTree<any> = {
         state.productFilter = products.filters
         state.productSorter = products.sort_fields
         state.categoryPager = products.page_info
+        state.categoryPriceRange = [products.min_price, products.max_price]
     },
     resetCategory (state) {
         state.productList = []

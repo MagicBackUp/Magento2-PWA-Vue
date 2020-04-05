@@ -18,6 +18,9 @@ import VBreadcrumb from './breadcrumb/breadcrumb'
 import VBreadcrumbItem from './breadcrumb/item'
 import VRate from './rate/rate'
 import VTooltip from './tooltip/tooltip'
+import VSlider from './slider/slider'
+import VSliderThumb from './slider/thumb'
+import VSliderTick from './slider/tick'
 
 const components: VComponent[] = [
     { name: 'v-icon', component: VIcon },
@@ -38,7 +41,10 @@ const components: VComponent[] = [
     { name: 'v-breadcrumb', component: VBreadcrumb },
     { name: 'v-breadcrumb-item', component: VBreadcrumbItem },
     { name: 'v-rate', component: VRate },
-    { name: 'v-tooltip', component: VTooltip }
+    { name: 'v-tooltip', component: VTooltip },
+    { name: 'v-slider', component: VSlider },
+    { name: 'v-slider-thumb', component: VSliderThumb },
+    { name: 'v-slider-tick', component: VSliderTick }
 ]
 
 export default components

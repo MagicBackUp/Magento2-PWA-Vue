@@ -20,12 +20,12 @@ export default class VHomePage extends Vue {
     private method: number = 0
     private checkbox: string = 'Yes'
     private switch: string = 'On'
-    public star: number = 5
+    private star: number = 5
 
     @State('cmsBanner') cmsBanner: any
     @Action('getBanner') getBanner: any
 
-    public mounted () {
+    private mounted () {
         this.getBanner()
     }
     
@@ -54,9 +54,6 @@ export default class VHomePage extends Vue {
                     </div>
                     <div class="v-row">
                         <v-rate vModel={this.star} showScore={true}></v-rate>
-                    </div>
-                    <div class="v-row">
-                        
                     </div>
                     <div class="v-row">
                         <v-progress value={60} show-value={true} format="percent"></v-progress>

@@ -19,20 +19,20 @@ $slider-mark-size: 0.75rem !default;
 	$tick-height: $track-height * $slider-tick-to-track-ratio;
 	$thumb-size: $size;
 
-    .b-slider-track {
+    .v-slider-track {
         height: $track-height;
     }
 
-	.b-slider-thumb {
+	.v-slider-thumb {
 		height: $thumb-size;
 		width: $thumb-size;
     }
 
-    .b-slider-tick {
+    .v-slider-tick {
         height: $tick-height;
     }
 
-    .b-slider-tick-label {
+    .v-slider-tick-label {
         font-size: $slider-mark-size;
         position: absolute;
         top: calc(#{$track-height} / 2 + 2px);
@@ -41,12 +41,12 @@ $slider-mark-size: 0.75rem !default;
     }
 }
 
-.b-slider {
+.v-slider {
     margin: 1em 0;
     background: transparent;
     width: 100%;
 
-    .b-slider-track {
+    .v-slider-track {
         display: flex;
         align-items: center;
         position: relative;
@@ -54,7 +54,7 @@ $slider-mark-size: 0.75rem !default;
         background: $grey-lighter;
         border-radius: $slider-radius;
     }
-    .b-slider-fill {
+    .v-slider-fill {
         position: absolute;
         height: 100%;
         box-shadow: $slider-track-shadow;
@@ -65,7 +65,7 @@ $slider-mark-size: 0.75rem !default;
         top: 50%;
         transform: translateY(-50%);
     }
-    .b-slider-thumb-wrapper {
+    .v-slider-thumb-wrapper {
         display: inline-flex;
         align-items: center;
         position: absolute;
@@ -74,7 +74,7 @@ $slider-mark-size: 0.75rem !default;
         top: 50%;
         flex-direction: column; // Fix shrinked thumb at the end in IE 11
 
-        .b-slider-thumb {
+        .v-slider-thumb {
             box-shadow: $slider-thumb-shadow;
             border: $slider-thumb-border;
             border-radius: $slider-thumb-radius;
@@ -86,25 +86,25 @@ $slider-mark-size: 0.75rem !default;
 
         &.is-dragging {
             cursor: grabbing;
-            .b-slider-thumb {
+            .v-slider-thumb {
                 transform: scale(1.25);
             }
         }
     }
 
     &.is-rounded {
-        .b-slider-thumb {
+        .v-slider-thumb {
             border-radius: $radius-rounded;
         }
     }
     &.is-disabled {
-        .b-slider-track {
+        .v-slider-track {
             cursor: not-allowed;
             opacity: 0.5;
         }
-        .b-slider-thumb-wrapper {
+        .v-slider-thumb-wrapper {
             cursor: not-allowed;
-            .b-slider-thumb {
+            .v-slider-thumb {
                 transform: scale(1);
             }
         }
@@ -124,13 +124,13 @@ $slider-mark-size: 0.75rem !default;
     @each $name, $pair in $colors {
         $color: nth($pair, 1);
         &.is-#{$name} {
-            .b-slider-fill {
+            .v-slider-fill {
                 background: $color !important;
             }
         }
     }
 
-    .b-slider-tick {
+    .v-slider-tick {
         position: absolute;
 		width: $slider-tick-width;
         transform: translate(-50%, -50%);
