@@ -13,22 +13,30 @@ export default class VProductItem extends Vue {
     @Prop(Object) readonly product: object | any
 
     public getProductAttr (code: string) {
-        let attrs: string = ''
+        let result: any = null
         let attributes: any[] = this.product.attributes
 
         attributes.forEach((attr: any) => {
             if (attr.attribute_code === code) {
-                attrs = attr.attribute_value
+                result = attr
             }
         })
 
-        return attrs
+        return result
+    }
+
+    public getColorOptions (): any[] {
+        const attrs: any = this.getProductAttr('color')
+
+        return attrs.attribute_options
     }
 
     protected render (h: CreateElement) {
         const item: any = this.product
         const image: any = item.thumbnail
         const mini_price: any = item.price_range.minimum_price
+        const brandAttr: any = this.getProductAttr('brand')
+        const colorAttr: any[] = this.getColorOptions()
 
         return (
             <v-fragment>
@@ -50,8 +58,17 @@ export default class VProductItem extends Vue {
                                 </span>
                                 <meta itemprop="priceCurrency" content="USD" />    
                             </p>
+                            {item.type_id === 'configurable' && (
+                                <div class="in-options">
+                                    {colorAttr.map((attr: any) => {
+                                        return (
+                                            <span aria-label={attr.label} class="in-color" style={{'background-color': attr.swatch_data.value}}></span>
+                                        )
+                                    })}
+                                </div>
+                            )}
                             <p class="name" itemprop="name">{item.name}</p>
-                            <p class="brand" itemprop="brand">{this.getProductAttr('brand')}</p>
+                            <p class="brand" itemprop="brand">{brandAttr.attribute_value}</p>
                         </div>
                     </router-link>
                 </div>

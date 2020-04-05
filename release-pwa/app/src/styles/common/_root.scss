@@ -42,7 +42,6 @@
     --placeholder-size: 1200px 100%;
     --placeholder-animation: placeholderAnimation 2s linear infinite;
 
-
     // Product
     --product-configurable-attributes-direction: flex-start;
     --product-configurable-attributes-margin: 0;
@@ -51,4 +50,12 @@
     --product-information-padding: 1.875rem 0;
     --product-review-list-border: var(--secondary-dark-color);
     --product-reviews-padding: 1.875rem 0;
+    --product-card-color-size: 10px;
+    --product-card-picture-mask-color: #f5f5f5;
+    --product-card-color-border-color: #efefef;
+    --product-cart-picture-label-background: hsla(0,0%,100%,0.7);
+
+    // Range Slider
+    --range-slider-color: #000;
+    --range-slider-active-color: var(--primary-base-color);
 }
