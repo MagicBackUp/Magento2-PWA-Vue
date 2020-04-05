@@ -1,15 +1,28 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { State } from 'vuex-class'
+import { VImage } from '@components/common'
 
 @Component({
-    name: 'v-product-item'
+    name: 'v-product-item',
+    components: {
+        VImage
+    }
 })
 export default class VProductItem extends Vue {
     @Prop(Object) readonly product: object | any
 
     public getProductAttr (code: string) {
-        const attributes: any[] = this.productList
+        let attrs: string = ''
+        let attributes: any[] = this.product.attributes
+
+        attributes.forEach((attr: any) => {
+            if (attr.attribute_code === code) {
+                attrs = attr.attribute_value
+            }
+        })
+
+        return attrs
     }
 
     protected render (h: CreateElement) {
@@ -24,7 +37,7 @@ export default class VProductItem extends Vue {
                     <router-link tag="a" to={`/product/${item.url_key}`} title={item.title}>
                         <figure class="in-figure">
                             <div class="picture">
-                                <img src={image.url} alt={image.label} />
+                                <v-image url={image.url} title={image.label}></v-image>
                             </div>
                         </figure>
                         <div class="in-content">
@@ -37,7 +50,7 @@ export default class VProductItem extends Vue {
                                 </span>
                                 <meta itemprop="priceCurrency" content="USD" />    
                             </p>
-                            <p class="name" itemprop="brand">{item.name}</p>
+                            <p class="name" itemprop="name">{item.name}</p>
                             <p class="brand" itemprop="brand">{this.getProductAttr('brand')}</p>
                         </div>
                     </router-link>
