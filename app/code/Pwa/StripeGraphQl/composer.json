@@ -1,0 +1,21 @@
+{
+    "name": "pwa/stripe-graphql",
+    "description": "Serves Stripe publishable keys as configured in admin",
+    "type": "magento2-module",
+    "require": {
+        "magento/magento2-base": "^2.3.2",
+        "stripe/module-payments": "^1.4.0"
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Pwa\\StripeGraphQl\\": ""
+        }
+    }
+}
