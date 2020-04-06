@@ -4,6 +4,7 @@ import { State, Action } from 'vuex-class'
 import { Route } from 'vue-router'
 import { VDescription, VImage } from '@components/common'
 import { VFilters } from '@components/filter'
+import { VSorter } from '@components/sorter'
 import { VProductsList } from '@components/list'
 
 @Component({
@@ -17,6 +18,7 @@ import { VProductsList } from '@components/list'
         VDescription,
         VImage,
         VFilters,
+        VSorter,
         VProductsList
     }
 })
@@ -72,6 +74,7 @@ export default class VCategory extends Vue {
                             </article>
                             <aside>
                                 <p class="count">{`${currentCategory.product_count} items found`}</p>
+                                <v-sorter></v-sorter>
                             </aside>
                             <v-products-list key={this.resetCategoryKey} ids={currentCategory.id}></v-products-list>
                         </section>

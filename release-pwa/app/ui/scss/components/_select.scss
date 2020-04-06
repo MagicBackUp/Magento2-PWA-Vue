@@ -1,28 +1,129 @@
-.select {
-    select {
-        // TODO Remove below when the following problem will be fixed from Bulma or Safari:
-        // https://github.com/jgthms/bulma/issues/2626
-        // https://bugs.webkit.org/show_bug.cgi?id=202055
-        text-rendering: auto !important;
+.ui {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    cursor: pointer;
+    word-wrap: break-word;
+    white-space: normal;
+    transform: rotate(0deg);
+    background: #fff;
+    padding: .6rem;
+    color: rgba(0,0,0,.87);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+    transition: box-shadow .1s ease,width .1s ease;
 
-        padding-right: 2.5em;
-        option {
-            color: $grey-dark;
-            padding: 0.25em 0.5em;
-        }
-        option:disabled {
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-        optgroup {
-            color: $grey-light;
-            font-weight: $weight-normal;
-            font-style: normal;
-            padding: 0.25em 0;
+    .search {
+        position: absolute;
+        top: 0;
+        left: 1px;
+        width: 100%;
+        padding: .6rem;
+        z-index: 2;
+        cursor: text;
+        background: transparent;
+        border: none;
+    }
+
+    .text {
+        color: hsla(0,0%,74.9%,.87);
+        cursor: text;
+        position: relative;
+        left: 1px;
+        z-index: 3;
+    }
+
+    .icon {
+        cursor: pointer;
+        position: absolute;
+        width: auto;
+        height: auto;
+        line-height: 1.21428571em;
+        top: .78571429em;
+        right: 1em;
+        z-index: 3;
+        margin: -.78571429em;
+        padding: .91666667em;
+        opacity: .8;
+        transition: opacity .1s ease;
+    }
+
+    .menu {
+        min-width: 100%;
+        width: 100%;
+        max-height: 16.02857143rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -1px;
+        min-width: calc(100% + 2px);
+        width: calc(100% + 2px);
+        border: 1px solid rgba(34,36,38,.15);
+        border-top: unset;
+        border-radius: 0 0 .28571429rem .28571429rem;
+        box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+        transition: opacity .1s ease;
+        cursor: auto;
+        position: absolute;
+        display: none;
+        top: 100%;
+        left: 0;
+        min-width: max-content;
+        background: #fff;
+        text-align: left;
+        z-index: 11;
+        will-change: transform,opacity;
+    }
+
+    .item {
+        border-top: 1px solid #fafafa;
+        padding: .78571429rem 1.14285714rem;
+        white-space: normal;
+        word-wrap: normal;
+        position: relative;
+        cursor: pointer;
+        display: block;
+        border: none;
+        height: auto;
+        text-align: left;
+        border-top: none;
+        line-height: 1em;
+        color: rgba(0,0,0,.87);
+        padding: .78571429rem 1.14285714rem;
+        font-size: 1rem;
+        text-transform: none;
+        font-weight: 400;
+        -webkit-touch-callout: none;
+
+        &:hover {
+            background: rgba(0,0,0,.05);
+            color: rgba(0,0,0,.95);
+            z-index: 13;
         }
     }
-    &.is-empty select {
-        color: rgba($grey, 0.7);
-    }
 
+    &.visible {
+        z-index: 10;
+        border-color: #96c8da;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+
+        .text {
+            font-weight: 400;
+            color: rgba(0,0,0,.8);
+            pointer-events: none;
+        }
+
+        .search {
+            cursor: auto;
+        }
+
+        .menu {
+            border-color: #96c8da;
+            box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+        }
+    }
 }
