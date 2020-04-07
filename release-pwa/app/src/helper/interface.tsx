@@ -20,6 +20,7 @@ export interface I18n {
     noReviews?: string
     writeReview?: string
     addTocart?: string
+    buyNow?: string
 }
 
 export interface Logo {

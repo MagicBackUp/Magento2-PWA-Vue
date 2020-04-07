@@ -10,7 +10,8 @@ export default class VProductAction extends Vue {
     @Prop(Object) product: Product | any
 
     public i18n: I18n = {
-        addTocart: 'Add To Cart'
+        addTocart: 'Add To Cart',
+        buyNow: 'Buy Now'
     }
 
     public getSwatchData (id: string, value: number) {
@@ -33,6 +34,11 @@ export default class VProductAction extends Vue {
     }
 
     public addTocart (e: Event) {
+        e.stopPropagation()
+        console.log('Adding to cart ...')
+    }
+
+    public buyNow (e: Event) {
         e.stopPropagation()
         console.log('Adding to cart ...')
     }
@@ -66,7 +72,10 @@ export default class VProductAction extends Vue {
                             )
                         })
                     )}
-                    <v-button type="is-primary" onClick={(e: Event) => { this.addTocart(e) }}>{this.i18n.addTocart}</v-button>
+                    <div class="in-buttons">
+                        <v-button type="is-primary" onClick={(e: Event) => { this.addTocart(e) }}>{this.i18n.addTocart}</v-button>
+                        <v-button type="is-success" onClick={(e: Event) => { this.buyNow(e) }}>{this.i18n.buyNow}</v-button>
+                    </div>
                 </section>
             )
         )

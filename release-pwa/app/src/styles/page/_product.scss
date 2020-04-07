@@ -15,16 +15,26 @@
         margin: 1rem 0;
     }
 
-    .in-attribute {
+    .in-action {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .in-attribute {
+        flex-basis: 50%;
     }
 
     .in-options {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+
+        > span {
+            display: inline-block;
+            margin-left: calc(var(--product-card-color-size) / 3);
+        }
     }
 
     .in-color {
@@ -33,7 +43,6 @@
         height: calc(var(--option-size) / 1.2);
         border-radius: 50%;
         overflow: hidden;
-        margin-left: calc(var(--product-card-color-size) / 3);
         border: 1px solid var(--product-card-color-border-color);
     }
 }
