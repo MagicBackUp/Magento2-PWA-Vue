@@ -45,6 +45,11 @@
         overflow: hidden;
         border: 1px solid var(--product-card-color-border-color);
     }
+
+    .b-numberinput {
+        margin: 2rem 0;
+        flex-basis: 100%;
+    }
 }
 
 .v-information {

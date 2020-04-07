@@ -13,6 +13,7 @@ export default class VProductAction extends Vue {
         addTocart: 'Add To Cart',
         buyNow: 'Buy Now'
     }
+    public qty: number = 1
 
     public getSwatchData (id: string, value: number) {
         let swatch_data: any = {}
@@ -72,10 +73,11 @@ export default class VProductAction extends Vue {
                             )
                         })
                     )}
-                    <div class="in-buttons">
+                    <v-number vModel={this.qty} min={1} controls-position={'compact'}></v-number>
+                    <section class="in-buttons">
                         <v-button type="is-primary" onClick={(e: Event) => { this.addTocart(e) }}>{this.i18n.addTocart}</v-button>
                         <v-button type="is-success" onClick={(e: Event) => { this.buyNow(e) }}>{this.i18n.buyNow}</v-button>
-                    </div>
+                    </section>
                 </section>
             )
         )

@@ -22,6 +22,7 @@ import VSlider from './slider/slider'
 import VSliderThumb from './slider/thumb'
 import VSliderTick from './slider/tick'
 import VSelect from './select/select'
+import VNumber from './number/number'
 
 const components: VComponent[] = [
     { name: 'v-icon', component: VIcon },
@@ -46,7 +47,8 @@ const components: VComponent[] = [
     { name: 'v-slider', component: VSlider },
     { name: 'v-slider-thumb', component: VSliderThumb },
     { name: 'v-slider-tick', component: VSliderTick },
-    { name: 'v-select', component: VSelect }
+    { name: 'v-select', component: VSelect },
+    { name: 'v-number', component: VNumber }
 ]
 
 export default components

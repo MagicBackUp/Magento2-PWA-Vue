@@ -1,5 +1,5 @@
 import Vue, { CreateElement } from 'vue'
-import { Component, Prop } from 'vue-property-decorator'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 import { config, VElementMixins } from '../../utils'
 import VIcon from '../icon/icon'
 
@@ -22,6 +22,11 @@ export default class VInput extends Vue {
     @Prop({ default: '' }) readonly customClass: string | undefined
     @Prop(String) readonly iconRight: string | undefined
     @Prop(Boolean) readonly iconRightClickable: boolean | undefined
+
+    @Watch('value')
+    onValueChanged (value: any) {
+        this.computedValue = value
+    }
 
     public newValue: number | string = this.value
     public newType: string = this.type
@@ -174,7 +179,7 @@ export default class VInput extends Vue {
                         class={['textarea', this.inputClasses, this.customClass]}
                         maxlength={this.maxlength}
                         value={this.computedValue}
-                       {...{attrs: this.$attrs}}
+                        {...{attrs: this.$attrs}}
                         onInput={(e: Event) => { this.onInput(e) }}
                         onBlur={() => { this.onBlur() }}
                         onFocus={() => { this.onFocus() }}
