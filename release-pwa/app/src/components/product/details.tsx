@@ -16,7 +16,7 @@ const VProductDetail: FunctionalComponentOptions<ProductDetail> = {
 
         return (
             product && (
-                <article class="in-details">
+                <div class="in-details">
                     <section class="in-name">
                         <h4 itemprop="brand">{product.name}</h4>
                         <h1 itemprop="name">{product.name}</h1>
@@ -28,7 +28,7 @@ const VProductDetail: FunctionalComponentOptions<ProductDetail> = {
                     <section class="in-short">
                         <div itemprop="description" domPropsInnerHTML={product.short_description.html}></div>
                     </section>
-                </article>
+                </div>
             )
         )
     } 

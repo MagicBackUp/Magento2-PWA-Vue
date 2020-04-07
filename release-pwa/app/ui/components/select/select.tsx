@@ -1,16 +1,12 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import { escapedRegExp } from './util'
-import VIcon from '../icon/icon'
 import common from './common'
 
 @Component({
-    name: 'v-basic-select',
-    components: {
-        VIcon
-    }
+    name: 'v-select'
 })
-export default class VBasicSelect extends Vue {
+export default class VSelect extends Vue {
     @Prop({ default: null }) readonly id: string | any
     @Prop({ default: '' }) readonly name: string | undefined
     @Prop({ default: false }) readonly isError: boolean | undefined
@@ -49,7 +45,7 @@ export default class VBasicSelect extends Vue {
 
     private get searchTextCustomAttr () {
         if (this.selectedOption && this.selectedOption.value) {
-          return this.customAttr(this.selectedOption)
+            return this.customAttr(this.selectedOption)
         }
         return ''
     }
@@ -87,14 +83,14 @@ export default class VBasicSelect extends Vue {
 
     private get menuClass () {
         return {
-          visible: this.showMenu,
-          hidden: !this.showMenu
+            visible: this.showMenu,
+            hidden: !this.showMenu
         }
     }
     
     private get menuStyle () {
         return {
-          display: this.showMenu ? 'block' : 'none'
+            display: this.showMenu ? 'block' : 'none'
         }
     }
     

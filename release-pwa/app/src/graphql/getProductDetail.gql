@@ -87,11 +87,6 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
                 }
                 __typename
             }
-            product_links {
-                link_type
-                linked_product_sku
-                position
-            }
             categories {
                 name
                 url_path
@@ -118,6 +113,52 @@ query getProductDetail($filter: ProductAttributeFilterInput!) {
             new_to_date
             special_from_date
             special_to_date
+            related_products {
+                id
+                sku
+                name
+                type_id
+                url_key
+                attributes {
+                    attribute_code
+                    attribute_id
+                    attribute_label
+                    attribute_options {
+                        label
+                        swatch_data {
+                            type
+                            value
+                        }
+                        value
+                    }
+                    attribute_type
+                    attribute_value
+                    entity_type
+                }
+            }
+            upsell_products {
+                id
+                sku
+                name
+                type_id
+                url_key
+                attributes {
+                    attribute_code
+                    attribute_id
+                    attribute_label
+                    attribute_options {
+                        label
+                        swatch_data {
+                            type
+                            value
+                        }
+                        value
+                    }
+                    attribute_type
+                    attribute_value
+                    entity_type
+                }
+            }
         }
     }
 }

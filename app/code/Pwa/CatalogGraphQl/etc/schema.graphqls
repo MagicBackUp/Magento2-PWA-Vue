@@ -81,12 +81,16 @@ type ProductStockItem {
 }
 
 type StoreConfig {
-    cookie: cookieConfig @doc(described: "Website cookie setting") @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\StoreConfig\\Cookie")
+    cookie: CookieConfig @doc(described: "Website cookie setting") @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\StoreConfig\\Cookie")
 }
 
-type cookieConfig {
+type CookieConfig {
     cookie_lifetime: String @doc(description: "Cookie lifetime") 
     cookie_path: String @doc(description: "Cookie path")
     cookie_domain: String @doc(description: "Cookie domain")
     cookie_secure: String @doc(description: "Cookie secure https or http")
+}
+
+type SortField {
+    order: SortEnum @doc(description: "A number assigned to a product") @resolver(class: "Pwa\\CatalogGraphQl\\Model\\Resolver\\Category\\SortFields")
 }

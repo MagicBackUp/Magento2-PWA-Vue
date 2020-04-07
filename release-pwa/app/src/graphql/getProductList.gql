@@ -113,6 +113,7 @@ query getProductList($search: String, $filter: ProductAttributeFilterInput!, $pa
             options {
                 label
                 value
+                # order
             }
         }
         total_count

@@ -19,6 +19,7 @@ export interface I18n {
     customerReivew?: string
     noReviews?: string
     writeReview?: string
+    addTocart?: string
 }
 
 export interface Logo {
@@ -67,4 +68,18 @@ export interface API {
     defer?: boolean
     protocol?: string
     callback?: Function
+}
+
+export interface ProductAttribute {
+    attribute_code: string
+    attribute_id: string
+    id: number
+    product_id: number
+    label: string
+    values: Array<AttributeLabel>
+}
+
+export interface AttributeLabel {
+    label: string
+    value_index: number
 }

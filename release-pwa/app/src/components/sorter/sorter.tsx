@@ -15,7 +15,7 @@ export default class VSorter extends Vue {
 
         return (
             options && options.length > 0 && (
-                <v-basic-select options={options} vModel={this.activeSorter} placeholder={this.productSorter.default}></v-basic-select>
+                <v-select options={options} vModel={this.activeSorter} placeholder={this.productSorter.default}></v-select>
             )
         )
     }

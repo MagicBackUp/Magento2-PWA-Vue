@@ -1,11 +1,11 @@
 import VProductMedia from './media'
-import VProductDetail from './details'
+import VProductContainer from './container'
 import VProductInformation from './information'
 import VProductReviews from './reviews'
 
 export {
     VProductMedia,
-    VProductDetail,
+    VProductContainer,
     VProductInformation,
     VProductReviews
 }

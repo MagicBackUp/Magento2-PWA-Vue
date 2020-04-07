@@ -2,7 +2,7 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import { State, Action } from 'vuex-class'
 import { Route } from 'vue-router'
-import { VProductMedia, VProductDetail, VProductInformation, VProductReviews } from '@components/product'
+import { VProductMedia, VProductContainer, VProductInformation, VProductReviews } from '@components/product'
 import { I18n } from '@helper/interface'
 
 @Component({
@@ -14,7 +14,7 @@ import { I18n } from '@helper/interface'
     },
     components: {
         VProductMedia,
-        VProductDetail,
+        VProductContainer,
         VProductInformation,
         VProductReviews
     }
@@ -60,7 +60,7 @@ export default class VProduct extends Vue {
                     <div class="container">
                         <section class="in-wrapper">
                             <v-product-media product={this.currentProduct}></v-product-media>
-                            <v-product-detail product={this.currentProduct}></v-product-detail>
+                            <v-product-container product={this.currentProduct}></v-product-container>
                         </section>
                     </div>
                 </section>

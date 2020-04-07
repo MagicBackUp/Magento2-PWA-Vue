@@ -9,6 +9,35 @@
     }
 }
 
+.v-container {
+    .in-short {
+        font-size: .9rem;
+        margin: 1rem 0;
+    }
+
+    .in-attribute {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .in-options {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .in-color {
+        display: inline-block;
+        width: calc(var(--option-size) / 1.2);
+        height: calc(var(--option-size) / 1.2);
+        border-radius: 50%;
+        overflow: hidden;
+        margin-left: calc(var(--product-card-color-size) / 3);
+        border: 1px solid var(--product-card-color-border-color);
+    }
+}
+
 .v-information {
     padding: var(--product-information-padding);
     background-color: var(--product-information-background);
