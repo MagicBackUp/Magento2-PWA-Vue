@@ -1,4 +1,9 @@
-mutation addConfigurableToCart ($cart_id: String!, $quantity: Float!, $sku: String!) {
+input CustomizableOptionInput {
+    id: Int!
+    value_string: String!
+}
+
+mutation addConfigurableToCart ($cart_id: String!, $quantity: Float!, $sku: String!, $options: [CustomizableOptionInput]) {
     addConfigurableProductsToCart(
         input: {
             cart_id: $cart_id, 
@@ -7,8 +12,7 @@ mutation addConfigurableToCart ($cart_id: String!, $quantity: Float!, $sku: Stri
                     quantity: $quantity, 
                     sku: $sku 
                 },
-                customizable_options: {},
-                variant_sku: ''
+                customizable_options: $options
             }
         })
     {
@@ -16,8 +20,13 @@ mutation addConfigurableToCart ($cart_id: String!, $quantity: Float!, $sku: Stri
             items {
                 id
                 product {
+                    id
                     name
                     sku
+                    thumbnail {
+                        label
+                        url
+                    }
                 }
                 quantity
             }
@@ -39,6 +48,24 @@ mutation addConfigurableToCart ($cart_id: String!, $quantity: Float!, $sku: Stri
                 }
                 subtotal_with_discount_excluding_tax {
                     value
+                }
+            }
+            total_quantity
+            applied_coupons {
+                code
+            }
+            shipping_addresses {
+                selected_shipping_method {
+                    carrier_code
+                    carrier_title
+                    method_code
+                    method_title
+                    amount {
+                        value
+                    }
+                    base_amount {
+                        value
+                    }
                 }
             }
         }

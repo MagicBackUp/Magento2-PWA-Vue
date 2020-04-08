@@ -5,6 +5,7 @@ const state: any = {
     storeConfig: null,
     rootIds: null,
     cartId: Cookies.get(DEFAULT_COOKIES_CART_ID) || null,
+    cart: null,
     isLogin: false,
     categoryMemu: [],
     cmsPage: null,

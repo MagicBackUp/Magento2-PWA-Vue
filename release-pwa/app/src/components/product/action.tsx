@@ -1,7 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { Action } from 'vuex-class'
-import { I18n, Product, ProductAttribute, AttributeLabel } from '@helper/interface'
+import { I18n, Product, ProductAttribute, AttributeLabel, ProductOption } from '@helper/interface'
 import { DEFAULT_PRODUCT_CONIGURABLE } from '@config/index'
 
 @Component({
@@ -15,8 +15,10 @@ export default class VProductAction extends Vue {
         buyNow: 'Buy Now'
     }
     public qty: number = 1
+    public options: ProductOption = {}
 
     @Action('addSimpleToCart') addSimpleToCart: any
+    @Action('addConfigurableToCart') addConfigurableToCart: any
 
     public getSwatchData (id: string, value: number) {
         let swatch_data: any = {}
@@ -40,9 +42,16 @@ export default class VProductAction extends Vue {
     public addTocart (sku: string, e: Event) {
         e.stopPropagation()
         if (this.product.type_id === DEFAULT_PRODUCT_CONIGURABLE) {
-            
+            this.addConfigurableToCart({
+                sku: sku, 
+                qty: this.qty,
+                options: this.options
+            })
         } else {
-            this.addSimpleToCart({ sku: sku, qty: this.qty })
+            this.addSimpleToCart({ 
+                sku: sku, 
+                qty: this.qty 
+            })
         }
     }
 

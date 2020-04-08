@@ -11,6 +11,9 @@ const mutations: MutationTree<any> = {
     saveCartId (state, id: string) {
         state.cartId = id
     },
+    saveCartInfo (state, cart: any) {
+        state.cart = cart
+    },
     saveCategoryMenu (state, menu: any[]) {
         state.categoryMemu = menu
     },

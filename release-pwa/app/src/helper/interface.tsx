@@ -60,6 +60,23 @@ export interface CategoryItem {
     children: any[]
 }
 
+export interface Cart {
+    items: Array<CartItem>
+    total_quantity: number
+    applied_coupons?: CouponCode
+    shipping_addresses?: any[]
+}
+
+export interface CartItem {
+    id: string
+    product: Product
+    quantity: number
+}
+
+export interface CouponCode {
+    code?: string
+}
+
 export interface Links {
     title: string
     url: string
@@ -102,4 +119,9 @@ export interface ProductAttribute {
 export interface AttributeLabel {
     label: string
     value_index: number
+}
+
+export interface ProductOption {
+    id?: number
+    value_string?: string
 }

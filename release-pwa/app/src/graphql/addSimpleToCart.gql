@@ -17,6 +17,10 @@ mutation addSimpleToCart ($cart_id: String!, $quantity: Float!, $sku: String!) {
                     id
                     name
                     sku
+                    thumbnail {
+                        label
+                        url
+                    }
                 }
                 quantity
             }
@@ -40,8 +44,23 @@ mutation addSimpleToCart ($cart_id: String!, $quantity: Float!, $sku: String!) {
                     value
                 }
             }
-            applied_coupon {
+            total_quantity
+            applied_coupons {
                 code
+            }
+            shipping_addresses {
+                selected_shipping_method {
+                    carrier_code
+                    carrier_title
+                    method_code
+                    method_title
+                    amount {
+                        value
+                    }
+                    base_amount {
+                        value
+                    }
+                }
             }
         }
     }
