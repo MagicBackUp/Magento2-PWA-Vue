@@ -42,11 +42,17 @@ export default class VProductAction extends Vue {
     public addTocart (sku: string, e: Event) {
         e.stopPropagation()
         if (this.product.type_id === DEFAULT_PRODUCT_CONIGURABLE) {
-            this.addConfigurableToCart({
-                sku: sku, 
-                qty: this.qty,
-                options: this.options
-            })
+            // this.addConfigurableToCart({
+            //     sku: sku, 
+            //     qty: this.qty,
+            //     options: this.options
+            // })
+            // this.$vui.toast.open({
+            //     duration: 5000,
+            //     message: `Something's not good, also I'm on bottom`,
+            //     position: 'is-bottom',
+            //     type: 'is-danger'
+            // })
         } else {
             this.addSimpleToCart({ 
                 sku: sku, 

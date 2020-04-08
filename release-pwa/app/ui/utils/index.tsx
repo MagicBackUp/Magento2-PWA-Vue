@@ -4,6 +4,7 @@ import { use, registerComponent, registerComponentProgrammatic, VComponent } fro
 import getIcons from './icons'
 import VElementMixins from './element'
 import VRadioMixins from './radio'
+import VNoticeMixin from './notice'
 
 export {
     config,
@@ -17,5 +18,6 @@ export {
     registerComponentProgrammatic,
     VComponent,
     VElementMixins,
-    VRadioMixins
+    VRadioMixins,
+    VNoticeMixin
 }

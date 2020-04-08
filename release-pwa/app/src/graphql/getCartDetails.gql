@@ -6,9 +6,18 @@ query getCartDetails($cart_id: String!) {
                 id
                 name
                 sku
+                type_id
+                url_key
                 thumbnail {
                     label
                     url
+                }
+                price_range {
+                    minimum_price {
+                        final_price {
+                            value
+                        }
+                    }
                 }
             }
             quantity

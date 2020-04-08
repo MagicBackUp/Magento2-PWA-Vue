@@ -1,6 +1,5 @@
 import { CreateElement, FunctionalComponentOptions, RenderContext } from 'vue'
 import { connector } from '@store/index'
-import router from 'router'
 
 interface BannerOptions {
     carousels: any[]

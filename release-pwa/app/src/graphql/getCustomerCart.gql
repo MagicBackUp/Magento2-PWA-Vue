@@ -6,9 +6,18 @@ query getCustomerCart {
                 id
                 name
                 sku
+                type_id
+                url_key
                 thumbnail {
                     label
                     url
+                }
+                price_range {
+                    minimum_price {
+                        final_price {
+                            value
+                        }
+                    }
                 }
             }
             quantity

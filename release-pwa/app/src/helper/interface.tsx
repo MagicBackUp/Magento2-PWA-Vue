@@ -32,15 +32,6 @@ export interface IOSOptions {
     remindDuration?: number
 }
 
-export interface I18n {
-    productInfo?: string
-    customerReivew?: string
-    noReviews?: string
-    writeReview?: string
-    addTocart?: string
-    buyNow?: string
-}
-
 export interface Logo {
     url: string
     href: string
@@ -124,4 +115,24 @@ export interface AttributeLabel {
 export interface ProductOption {
     id?: number
     value_string?: string
+}
+
+export interface I18n {
+    productInfo?: string
+    customerReivew?: string
+    noReviews?: string
+    writeReview?: string
+    addTocart?: string
+    buyNow?: string
+    shoppingCart?: string
+    shoppingSummary?: string
+    clearCart?: string
+    remove?: string
+    quantity?: string
+    subtotal?: string
+    shippingFee?: string
+    tax?: string
+    grandTotal?: string
+    goCheckout?: string
+    comfirmCheckout?: string
 }

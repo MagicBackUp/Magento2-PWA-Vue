@@ -14,7 +14,7 @@ const storeOption: any = {
     modules: {},
     plugins: [
         plugins,
-        VuexPersisted,
+        // VuexPersisted,
         VuexActionDebounce
     ]
 }
