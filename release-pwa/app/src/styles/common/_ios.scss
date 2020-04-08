@@ -1,0 +1,153 @@
+.ios-alert-overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	font-size: 1.4rem;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 10600;
+
+	&.v-enter {
+		opacity: 0;
+
+		.ios-alert {
+			opacity: 0;
+			transform: translate3d(-50%, -50%, 0) scale(1.185);
+		}
+	}
+
+	&.v-enter-active {
+		transition: opacity .4s;
+
+		.ios-alert {
+			transition: all .4s;
+		}
+	}
+
+	&.v-leave-active {
+		opacity: 0;
+		transition: opacity .4s;
+
+		.ios-alert {
+			opacity: 0;
+			z-index: 10999;
+			transform: translate3d(-50%, -50%, 0) scale(0.815);
+			transition: all .4s;
+		}
+	}
+
+	* {
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+}
+
+.ios-alert {
+	width: 27rem;
+	position: absolute;
+	z-index: 11000;
+	left: 50%;
+	top: 50%;
+	text-align: center;
+	border-radius: .7rem;
+	transform: translate3d(-50%, -50%, 0);
+}
+
+.ios-alert-inner {
+	padding: 1.5rem;
+	border-bottom: 1px solid #b5b5b5;
+	border-top-left-radius: .7rem;
+	border-top-right-radius: .7rem;
+	background: #e8e8e8;
+}
+
+.ios-alert-inner-remind {
+	border-bottom-right-radius: .7rem;
+	border-bottom-left-radius: .7rem;
+}
+
+.ios-alert-title {
+	font-weight: bold;
+	font-size: 1.8rem;
+	text-align: center;
+	word-break: break-word;
+
+	& + .ios-alert-text {
+		margin-top: .5rem;
+	}
+}
+
+.ios-alert-text-input {
+	font-size: 1.4rem;
+	width: 100%;
+	height: 3rem;
+	margin: 0;
+	margin-top: 1.5rem;
+	padding: 0 .5rem;
+	display: block;
+	background: #fff;
+	border: 1px solid #a0a0a0;
+	border-radius: .5rem;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	appearance: none;
+}
+
+.ios-alert-buttons {
+	overflow: hidden;
+}
+
+.ios-alert-button {
+	color: #007aff;
+	font-size: 1.7rem;
+	width: 100%;
+	height: 4.4rem;
+	line-height: 4.4rem;
+	display: block;
+	padding: 0 .5rem;
+	text-align: center;
+	position: relative;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	cursor: pointer;
+	background-color: #e8e8e8;
+	border-bottom: 1px solid #b5b5b5;
+
+	&.ios-alert-button-bold {
+		font-weight: bold;
+	}
+
+	&:active {
+		background-color: #d4d4d4;
+	}
+
+	&:last-child {
+		border-radius: 0 0 .7rem .7rem;
+	}
+}
+
+.ios-alert-buttons-horizontal {
+	height: 4.4rem;
+	display: flex;
+	justify-content: center;
+
+	.ios-alert-button {
+		border-bottom: none;
+		border-right: 1px solid #b5b5b5;
+		flex: 1;
+
+		&:first-child {
+			border-radius: 0 0 0 .7rem;
+
+			&:last-child {
+				border-radius: 0 0 .7rem .7rem;
+			}
+		}
+
+		&:last-child {
+			border-right: none;
+			border-radius: 0 0 .7rem 0;
+		}
+	}
+}

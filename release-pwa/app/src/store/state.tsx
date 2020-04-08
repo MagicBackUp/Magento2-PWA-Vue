@@ -1,7 +1,11 @@
+import * as Cookies from 'js-cookie'
+import { DEFAULT_COOKIES_CART_ID } from '@config/index'
+
 const state: any = {
     storeConfig: null,
     rootIds: null,
-    cartId: null,
+    cartId: Cookies.get(DEFAULT_COOKIES_CART_ID) || null,
+    isLogin: false,
     categoryMemu: [],
     cmsPage: null,
     cmsBanner: [],

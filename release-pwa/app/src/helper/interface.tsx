@@ -9,9 +9,27 @@ export interface StoreConfig {
     secure_base_media_url: string
 }
 
+export interface CookiesConfig {
+    lifetime: number
+    domain?: string
+    path?: string,
+    secure?: boolean
+}
+
 export interface Router {
     name: string
     path: string
+}
+
+export interface IOSOptions {
+    defaultOption: string
+    title?: string | null
+    text?: string | null
+    input?: boolean
+    placeholder?: string
+    cancelText?: string
+    okText?: string
+    remindDuration?: number
 }
 
 export interface I18n {
@@ -54,7 +72,8 @@ export interface Description {
 export interface Product {
     id: string
     name: string | null
-    sku: string | null
+    sku: string
+    type_id: string
     stock_status: string | null
     short_description: Description
     description: Description

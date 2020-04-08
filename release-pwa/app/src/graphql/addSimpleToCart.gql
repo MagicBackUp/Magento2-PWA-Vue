@@ -1,4 +1,4 @@
-mutation addSimpleCart ($cart_id: String!, $quantity: Float!, $sku: String!) {
+mutation addSimpleToCart ($cart_id: String!, $quantity: Float!, $sku: String!) {
     addSimpleProductsToCart(
         input: {
             cart_id: $cart_id, 

@@ -19,6 +19,7 @@ const patchAction: Function = (store: any, type: any, handler: Function, local: 
             rootGetters: store.getters,
             rootState: store.state,
             apollo: store.$apollo.defaultClient,
+            iosAlert: Vue.prototype['$iosAlert'],
             cookies: Vue.prototype['$cookies']
         }, payload, cb)
 

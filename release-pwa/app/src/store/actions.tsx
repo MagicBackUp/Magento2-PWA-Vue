@@ -3,12 +3,16 @@ import { validateRouter } from '../graphql/validateRouter.gql'
 import { getStoreConfig } from '../graphql/getStoreConfig.gql'
 import { getNavigation } from '../graphql/getNavigation.gql'
 import { createEmptyCart } from '../graphql/createEmptyCart.gql'
+import { getCustomerCart } from '../graphql/getCustomerCart.gql'
+import { getCartDetails } from '../graphql/getCartDetails.gql'
 import { getCmsPage } from '../graphql/getCmsPage.gql'
 import { getSlider } from '../graphql/getSlider.gql'
 import { getCategoryInfo } from '../graphql/getCategoryInfo.gql'
 import { getProductDetail } from '../graphql/getProductDetail.gql'
 import { getProductList } from '../graphql/getProductList.gql'
 import { getBlogPosts } from '../graphql/getBlogPosts.gql'
+import { addSimpleToCart } from '../graphql/addSimpleToCart.gql'
+import { addConfigurableToCart } from '../graphql/addConfigurableToCart.gql'
 
 const actions: ApolloActionTree<any, any> = {
     async validateRouter ({ apollo }, url: string) {
@@ -66,9 +70,28 @@ const actions: ApolloActionTree<any, any> = {
 
         if (res.data) {
             const cart_id: string = res.data.createEmptyCart
-            cookies.set('cart_id', cart_id, { expires: 604800 / 60 / 60 / 24 })
+            cookies.set('cart_id', cart_id, { expires: 604800 })
             commit('saveCartId', cart_id)
         }
+    },
+    async getCartInfo ({ commit, state, apollo, iosAlert }, id?: string) {
+        let { isLogin, cartId } = state
+
+        try {
+            let res: any = await apollo.query({
+                query: isLogin ? getCartDetails : getCustomerCart,
+                variables: isLogin ? { cart_id: cartId } : {}
+            })
+    
+            if (res.data) {
+                console.log(res.data)
+            }
+        } catch ({ graphQLErrors }) {
+            const message: string = graphQLErrors[0].message
+            iosAlert(message).then(() => {
+                
+            }).catch((e: Error) => {})
+        }    
     },
     async getCmsPage ({ commit, state, apollo }) {
         let path: string = state.route.path
@@ -156,6 +179,26 @@ const actions: ApolloActionTree<any, any> = {
         if (res.data) {
             console.log(res.data)
         }
+    },
+    async addSimpleToCart ({ commit, state, apollo }, playload: any) {
+        let { cartId } = state
+        let { qty, sku } = playload
+
+        let res: any = await apollo.mutate({
+            mutation: addSimpleToCart,
+            variables: {
+                cart_id: cartId,
+                quantity: qty,
+                sku: sku
+            }
+        })
+
+        if (res.data) {
+            console.log(res.data)
+        }
+    },
+    async addConfigurableToCart ({ commit, state, apollo }) {
+
     }
 }
 

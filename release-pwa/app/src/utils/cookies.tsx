@@ -40,6 +40,7 @@ const VueCookies: any = {
             }
         }
 
+        window.cookies = cookies
         Vue.prototype.$cookies = cookies
     }
 }
