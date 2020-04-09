@@ -117,6 +117,17 @@ export interface ProductOption {
     value_string?: string
 }
 
+export interface AddressType {
+    firstname?: string
+    lastname?: string
+    phone?: string
+    country?: string
+    state?: string
+    address?: string[]
+    city?: string
+    zipcode?: string
+}
+
 export interface I18n {
     productInfo?: string
     customerReivew?: string
@@ -140,4 +151,10 @@ export interface I18n {
     removeItem?: string
     comfirmCheckout?: string
     paymentCard?: string
+    placeHolder?: string
+    shippingStep?: string
+    shippingAddress?: string
+    firstname?: string
+    lastname?: string
+    phone?: string
 }

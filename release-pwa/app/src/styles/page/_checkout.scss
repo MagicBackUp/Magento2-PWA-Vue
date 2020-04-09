@@ -1,0 +1,7 @@
+.v-checkout {
+    .in-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(calc(50% - 1rem),470px));
+        grid-gap: 2rem;
+    }
+}

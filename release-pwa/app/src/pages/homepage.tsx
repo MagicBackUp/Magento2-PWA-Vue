@@ -16,12 +16,6 @@ import { VCmsBanner } from '@components/common'
     }
 })
 export default class VHomePage extends Vue {
-    private name: string = ''
-    private method: number = 0
-    private checkbox: string = 'Yes'
-    private switch: string = 'On'
-    private star: number = 5
-
     @State('cmsBanner') cmsBanner: any
     @Action('getBanner') getBanner: any
 
@@ -38,22 +32,6 @@ export default class VHomePage extends Vue {
                             <v-cms-banner carousels={this.cmsBanner}></v-cms-banner>
                         </div>
                     )}
-                    <div class="v-row">
-                        <v-input vModel={this.name} password-reveal={true}></v-input>
-                    </div>
-                    <div class="v-row">
-                        <v-radio name="name" vModel={this.method} native-value={0}></v-radio>
-                        <v-radio name="name" vModel={this.method} native-value={1}></v-radio>
-                    </div>
-                    <div class="v-row">
-                        <v-checkbox name="checkbox" vModel={this.checkbox} true-value={'Yes'} false-value={'No'}>{this.checkbox}</v-checkbox>
-                    </div>
-                    <div class="v-row">
-                        <v-switch name="switch" vModel={this.switch} true-value={'On'} false-value={'Off'}>{this.switch}</v-switch>
-                    </div>
-                    <div class="v-row">
-                        <v-rate vModel={this.star} showScore={true}></v-rate>
-                    </div>
                 </div>
             </div>
         )
