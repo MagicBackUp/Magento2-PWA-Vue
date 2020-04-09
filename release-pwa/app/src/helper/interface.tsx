@@ -135,7 +135,9 @@ export interface I18n {
     shippingFee?: string
     tax?: string
     grandTotal?: string
-    goCheckout?: string
+    secureCheckout?: string
+    continueShopping?: string
     removeItem?: string
     comfirmCheckout?: string
+    paymentCard?: string
 }

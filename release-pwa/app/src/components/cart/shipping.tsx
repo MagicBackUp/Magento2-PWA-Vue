@@ -62,7 +62,7 @@ export default class VShipping extends Vue {
                                         </router-link>
                                         <div class="operate">
                                             <v-button size="is-small" icon-left={`delete`} onClick={(e: Event) => { this.removeItem(e, item.id) } }>{this.i18n.delete}</v-button>
-                                            <v-number vModel={item.quantity} min={1} controls-position={'compact'}></v-number>
+                                            <v-number value={item.quantity} min={1} controls-position={'compact'}></v-number>
                                         </div>
                                     </li>
                                 )

@@ -209,7 +209,7 @@ export class WebpackConfig {
                         loader: 'raw-loader'
                     },
                     {
-                        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+                        test: /\.(png|jpg|jpe?g|gif)(\?.*)?$/,
                         loader: 'url-loader',
                         options: {
                             limit: 10000,
