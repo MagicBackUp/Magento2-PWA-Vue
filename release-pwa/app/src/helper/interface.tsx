@@ -136,5 +136,6 @@ export interface I18n {
     tax?: string
     grandTotal?: string
     goCheckout?: string
+    removeItem?: string
     comfirmCheckout?: string
 }

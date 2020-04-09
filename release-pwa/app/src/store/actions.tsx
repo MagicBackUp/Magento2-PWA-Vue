@@ -13,6 +13,7 @@ import { getProductList } from '../graphql/getProductList.gql'
 import { getBlogPosts } from '../graphql/getBlogPosts.gql'
 import { addSimpleToCart } from '../graphql/addSimpleToCart.gql'
 import { addConfigurableToCart } from '../graphql/addConfigurableToCart.gql'
+import { removeCartItem } from '../graphql/removeCartItem.gql'
 
 const actions: ApolloActionTree<any, any> = {
     async validateRouter ({ apollo }, url: string) {
@@ -282,6 +283,29 @@ const actions: ApolloActionTree<any, any> = {
 
             if (res.data) {
                 const cart: any = res.data.addConfigurableToCart.cart
+                commit('saveCartInfo', cart)
+            }
+        } catch ({ graphQLErrors }) {
+            const message: string = graphQLErrors[0].message
+            iosAlert(message).then(() => {
+                
+            }).catch((e: Error) => {})
+        }
+    },
+    async removeCartItem ({ commit, state, apollo, iosAlert }, id: number) {
+        let { cartId } = state
+
+        try {
+            let res: any = await apollo.mutate({
+                mutation: removeCartItem,
+                variables: {
+                    cart_id: cartId,
+                    cart_item_id: id
+                }
+            })
+
+            if (res.data) {
+                const cart: any = res.data.removeItemFromCart.cart
                 commit('saveCartInfo', cart)
             }
         } catch ({ graphQLErrors }) {

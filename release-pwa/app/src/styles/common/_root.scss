@@ -18,7 +18,10 @@
     --overlay-background: #fff;
     --footer-font-size: 12px;
     --footer-height: 150px;
-    --category-details-background: var(--secondary-base-color);
+
+    // Image
+    --image-default-background: var(--secondary-base-color);
+    --image-content-color: #0a0a0a;
 
     // Vedio
     --video-play-background: #000;
@@ -30,6 +33,7 @@
     --input-background-color: #fff;
     --input-padding: 13px 20px;
 
+    // Option
     --option-position: relative;
     --option-background-color: #fff;
     --option-check-mark-background: #0a0a0a;
@@ -39,9 +43,17 @@
     --option-text-color: #979797;
     --option-border-color: #979797;
 
+    // Placeholder
     --placeholder-image: linear-gradient(90deg,#ebebeb 0,#d9d9d9 15%,#ebebeb 30%);
     --placeholder-size: 1200px 100%;
     --placeholder-animation: placeholderAnimation 2s linear infinite;
+
+    // Range Slider
+    --range-slider-color: #000;
+    --range-slider-active-color: var(--primary-base-color);
+
+    // Category
+    --category-details-background: var(--secondary-base-color);
 
     // Product
     --product-configurable-attributes-direction: flex-start;
@@ -56,7 +68,30 @@
     --product-card-color-border-color: #efefef;
     --product-cart-picture-label-background: hsla(0,0%,100%,0.7);
 
-    // Range Slider
-    --range-slider-color: #000;
-    --range-slider-active-color: var(--primary-base-color);
+    // Cart
+    --cart-page-totals-background: var(--secondary-base-color);
+    --cart-page-divider-background: #d8d8d8;
+    --cart-page-promo-background: #fff;
+    --cart-page-table-head-background: var(--secondary-base-color);
+    --cart-overlay-totals-background: var(--secondary-base-color);
+    --cart-overlay-divider-background: #d8d8d8;
+    --cart-overlay-promo-background: #fff;
+    --cart-item-heading-color: #000;
+    --cart-item-subheading-color: #888;
+    --cart-item-option-color: #adadad;
+    --cart-item-background: #fff;
+    --cart-item-actions-background: var(--secondary-base-color);
+    --cart-item-action-border: #d8d8d8;
+    --cart-item-actions-color: #000;
+    --cart-item-divider-color: var(--expandable-content-divider-color);
+
+    // Checkout
+    --checkout-delivery-option-check-mark-color: var(--primary-base-color);
+    --checkout-delivery-option-check-mark-hover-color: var(--secondary-dark-color);
+    --checkout-delivery-option-border-color: var(--primary-divider-color);
+    --checkout-address-table-border: var(--secondary-base-color);
+    --checkout-address-table-hover-border: var(--secondary-base-color);
+    --checkout-address-table-check-mark-hover-color: var(--secondary-dark-color);
+    --checkout-address-selected-color: var(--primary-base-color);
+    --checkout-address-table-check-mark-selected-color: var(--checkout-address-table-border);
 }

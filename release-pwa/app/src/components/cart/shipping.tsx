@@ -1,6 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
-import { State } from 'vuex-class'
+import { State, Action } from 'vuex-class'
 import { I18n } from '@helper/interface'
 
 @Component({
@@ -8,6 +8,7 @@ import { I18n } from '@helper/interface'
 })
 export default class VShipping extends Vue {
     @State('cart') cart: any
+    @Action('removeCartItem') removeCartItem: any
 
     public i18n: I18n = {
         shoppingCart: 'Shopping Cart',
@@ -16,7 +17,15 @@ export default class VShipping extends Vue {
         item: 'Item',
         qty: 'Qty',
         price: 'Price',
-        subtotal: 'Subtotal'
+        subtotal: 'Subtotal',
+        removeItem: 'Remove this item ?'
+    }
+
+    public removeItem (e: Event, id: number) {
+        e.stopPropagation()
+        this.$iosConfirm(this.i18n.removeItem).then(() => {
+            this.removeCartItem(id)
+        }).catch((e: Error) => {})
     }
 
     protected render (h: CreateElement) {
@@ -52,7 +61,7 @@ export default class VShipping extends Vue {
                                             </figure>
                                         </router-link>
                                         <div class="operate">
-                                            <v-button size="is-small" icon-left={`delete`}>{this.i18n.delete}</v-button>
+                                            <v-button size="is-small" icon-left={`delete`} onClick={(e: Event) => { this.removeItem(e, item.id) } }>{this.i18n.delete}</v-button>
                                             <v-number vModel={item.quantity} min={1} controls-position={'compact'}></v-number>
                                         </div>
                                     </li>
