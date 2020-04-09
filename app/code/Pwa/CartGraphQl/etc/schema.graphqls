@@ -1,0 +1,11 @@
+type Mutation {
+    removeCartAllItems(input: RemoveCartAllItemsInput): RemoveCartAllItemsOutput @resolver(class: "Pwa\\CartGraphQl\\Model\\Resolver\\RemoveCartAllItems")
+}
+
+input RemoveCartAllItemsInput {
+    cart_id: String!
+}
+
+type RemoveCartAllItemsOutput {
+    cart: Cart!
+}
