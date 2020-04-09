@@ -10,7 +10,7 @@ export default class VSummary extends Vue {
     @State('cart') cart: any
 
     public i18n: I18n = {
-        shoppingSummary: 'Shopping Summary',
+        summary: 'Summary',
         subtotal: 'Subtotal',
         shippingFee: 'Shipping & Handling',
         tax: 'Tax',
@@ -28,13 +28,13 @@ export default class VSummary extends Vue {
     protected render (h: CreateElement) {
         return (
             <div class="in-summary">
-                <h1 class="title">{this.i18n.shoppingSummary}</h1>
+                <h1 class="title">{this.i18n.summary}</h1>
                 <div class="in-content">
                     {this.cart && this.cart.items.length > 0 && (
                         <ul>
                             <li>
                                 <p>{this.i18n.subtotal}</p>
-                                <p>{this.cart.prices.subtotal_with_discount_excluding_tax.value}</p>
+                                <p>{this.cart.prices.subtotal_including_tax.value}</p>
                             </li>
                             <li>
                                 <p>{this.i18n.shippingFee}</p>

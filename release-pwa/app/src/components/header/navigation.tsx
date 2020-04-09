@@ -51,11 +51,13 @@ export default class VNavigation extends Vue {
                 )}
                 <template slot="end">
                     <v-navbar-item tag="div">
-                        <v-icon icon="account" size="is-small"></v-icon>
-                        <router-link tag="a" to={`/cart`} class="in-cart-link">
+                        <a href="javascript:;" class="in-link">
+                            <v-icon icon="account" size="is-small"></v-icon>
+                        </a>
+                        <router-link tag="a" to={`/cart`} class="in-link">
                             <v-icon icon="cart" size="is-small"></v-icon>
                             {this.cart && this.cart.total_quantity > 0 && (
-                                <span>{this.cart.total_quantity}</span>
+                                <span class="number">{this.cart.total_quantity}</span>
                             )}
                         </router-link>
                     </v-navbar-item>

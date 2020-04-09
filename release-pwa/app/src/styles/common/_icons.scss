@@ -24,4 +24,22 @@
             content: '\e761';
         }
     }
+
+    &-minus {
+        &::before {
+            content: '\e673';
+        }
+    }
+
+    &-plus {
+        &::before {
+            content: '\e853';
+        }
+    }
+
+    &-delete {
+        &::before {
+            content: '\e645';
+        }
+    }
 }

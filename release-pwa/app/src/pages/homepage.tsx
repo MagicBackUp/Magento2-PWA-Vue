@@ -33,7 +33,6 @@ export default class VHomePage extends Vue {
         return (
             <div class="v-homepage">
                 <div class="container">
-                    <h1>Silk SPA - Headless Magento</h1>
                     {this.cmsBanner.length > 0 && (
                         <div class="v-row">
                             <v-cms-banner carousels={this.cmsBanner}></v-cms-banner>
@@ -54,9 +53,6 @@ export default class VHomePage extends Vue {
                     </div>
                     <div class="v-row">
                         <v-rate vModel={this.star} showScore={true}></v-rate>
-                    </div>
-                    <div class="v-row">
-                        <v-progress value={60} show-value={true} format="percent"></v-progress>
                     </div>
                 </div>
             </div>

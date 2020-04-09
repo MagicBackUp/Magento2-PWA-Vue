@@ -74,7 +74,7 @@ export default class VButton extends Vue {
                 {this.iconLeft && (
                     <v-icon
                         pack={this.iconPack}
-                        icon={this.iconRight}
+                        icon={this.iconLeft}
                         size={this.iconSize}
                     ></v-icon>
                 )}

@@ -125,10 +125,12 @@ export interface I18n {
     addTocart?: string
     buyNow?: string
     shoppingCart?: string
-    shoppingSummary?: string
+    summary?: string
     clearCart?: string
-    remove?: string
-    quantity?: string
+    delete?: string
+    item?: string
+    qty?: string
+    price?: string
     subtotal?: string
     shippingFee?: string
     tax?: string

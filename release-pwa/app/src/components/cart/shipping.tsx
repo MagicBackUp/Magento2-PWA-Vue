@@ -12,8 +12,11 @@ export default class VShipping extends Vue {
     public i18n: I18n = {
         shoppingCart: 'Shopping Cart',
         clearCart: 'Clear Cart',
-        remove: 'Remove',
-        quantity: 'Quantity'
+        delete: 'Delete',
+        item: 'Item',
+        qty: 'Qty',
+        price: 'Price',
+        subtotal: 'Subtotal'
     }
 
     protected render (h: CreateElement) {
@@ -21,29 +24,42 @@ export default class VShipping extends Vue {
             <div class="in-shipping">
                 <h1 class="title">{this.i18n.shoppingCart}</h1>
                 {this.cart && this.cart.items.length > 0 && (
-                    <ul class="in-list">
-                        {this.cart.items.map((item: any) => {
-                            return (
-                                <li>
-                                    <div class="img">
-                                        <img v-lazy={item.product.thumbnail.url} alt={item.product.thumbnail.label} />
-                                    </div>
-                                    <div class="info">
-                                        <a href="javascript:;" title={item.product.name}>{item.product.name}</a>
-                                        <small class="sku">{item.product.sku}</small>
-                                        <p class="qty">
-                                            <span>{this.i18n.quantity}</span>
-                                            <span>{item.quantity}</span>
-                                        </p>
-                                    </div>
-                                    <div class="operation">
-                                        <p class="price">{item.product.price_range.minimum_price.final_price.value}</p>
-                                        <a href="javascript" class="remove" title={this.i18n.remove}>{this.i18n.remove}</a>
-                                    </div>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <v-fragment>
+                        <p class="in-head">
+                            <span>{this.i18n.item}</span>
+                            <span>{this.i18n.qty}</span>
+                            <span>{this.i18n.subtotal}</span>
+                        </p>
+                        <ul class="in-list">
+                            {this.cart.items.map((item: any) => {
+                                return (
+                                    <li itemscope="" itemtype="http://schema.org/Product">
+                                        <router-link tag="a" to={`/product/${item.product.url_key}`} class="in-link" title={item.product.name}>
+                                            <figure>
+                                                <div class="img">
+                                                    <img v-lazy={item.product.thumbnail.url} alt={item.product.thumbnail.label} />
+                                                </div>
+                                                <figcaption class="content">
+                                                    <p itemprop="name" class="name">{item.product.name}</p>
+                                                    <ul class="options">
+                                                        <li aria-label="size">Extra small size</li>
+                                                        <li aria-label="color">Red</li>
+                                                    </ul>
+                                                    <p aria-label={this.i18n.price} class="price">
+                                                        <data value={item.product.price_range.minimum_price.final_price.value}>{'$' + item.product.price_range.minimum_price.final_price.value}</data>
+                                                    </p>
+                                                </figcaption>
+                                            </figure>
+                                        </router-link>
+                                        <div class="operate">
+                                            <v-button size="is-small" icon-left={`delete`}>{this.i18n.delete}</v-button>
+                                            <v-number vModel={item.quantity} min={1} controls-position={'compact'}></v-number>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </v-fragment>
                 )}
             </div>
         )

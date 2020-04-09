@@ -1,3 +1,22 @@
 .v-header {
     height: var(--header-height);
+
+    .in-link {
+        display: inline-block;
+        margin: 0 .5rem;
+        position: relative;
+    }
+
+    .number {
+        position: absolute;
+        top: -.5rem;
+        right: -1rem;
+        color: var(--secondary-error-color);
+        font-size: .7rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        z-index: 20;
+        background-color: var(--primary-red-color);
+        border-radius: 50%;
+    }
 }
