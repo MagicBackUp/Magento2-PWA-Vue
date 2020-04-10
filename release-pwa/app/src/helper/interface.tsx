@@ -157,4 +157,6 @@ export interface I18n {
     firstname?: string
     lastname?: string
     phone?: string
+    paymentMethod?: string
+    orderReview?: string
 }

@@ -1,7 +1,7 @@
-import VSteps from './steps'
+import VViews from './views'
 import VTotals from './totals'
 
 export {
-    VSteps,
+    VViews,
     VTotals
 }

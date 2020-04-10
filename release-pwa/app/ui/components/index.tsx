@@ -24,6 +24,8 @@ import VSliderTick from './slider/tick'
 import VSelect from './select/select'
 import VNumber from './number/number'
 import VToast from './toast/toast'
+import VSteps from './steps/steps'
+import VStepItem from './steps/item'
 
 const components: VComponent[] = [
     { name: 'v-icon', component: VIcon },
@@ -50,7 +52,9 @@ const components: VComponent[] = [
     { name: 'v-slider-tick', component: VSliderTick },
     { name: 'v-select', component: VSelect },
     { name: 'v-number', component: VNumber },
-    { name: 'v-toast', component: VToast }
+    { name: 'v-toast', component: VToast },
+    { name: 'v-steps', component: VSteps },
+    { name: 'v-step-item', component: VStepItem }
 ]
 
 export default components

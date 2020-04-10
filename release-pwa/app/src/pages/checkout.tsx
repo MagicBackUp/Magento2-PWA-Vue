@@ -1,6 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component } from 'vue-property-decorator'
-import { VSteps, VTotals } from '@components/checkout'
+import { VViews, VTotals } from '@components/checkout'
 
 @Component({
     name: 'v-checkout',
@@ -11,7 +11,7 @@ import { VSteps, VTotals } from '@components/checkout'
         }
     },
     components: {
-        VSteps,
+        VViews,
         VTotals
     }
 })
@@ -21,7 +21,7 @@ export default class VCheckout extends Vue {
             <div class="v-checkout">
                 <div class="container">
                     <section class="in-wrapper">
-                        <v-steps></v-steps>
+                        <v-views></v-views>
                         <v-totals></v-totals>
                     </section>
                 </div>
